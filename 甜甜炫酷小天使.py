@@ -43,7 +43,7 @@ def func1():
     switch=0
     while True:
         if switch%6==0:
-            driver.implicitly_wait(0.25)
+            driver.implicitly_wait(1)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35005 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='34985 120188']")
@@ -60,7 +60,7 @@ def func1():
                     driver.close()
                     func1()
         if switch%6==1:
-            driver.implicitly_wait(0.25)
+            driver.implicitly_wait(1)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35005 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='49239 120188']")
@@ -77,7 +77,7 @@ def func1():
                     driver.close()
                     func1()
         if switch%6==2:
-            driver.implicitly_wait(0.25)
+            driver.implicitly_wait(1)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35005 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='33412 120188']")
@@ -94,7 +94,7 @@ def func1():
                     driver.close()
                     func1()
         if switch%6==3:
-            driver.implicitly_wait(0.25)
+            driver.implicitly_wait(1)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35005 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='35038 120188']")
@@ -111,7 +111,7 @@ def func1():
                     driver.close()
                     func1()
         if switch%6==4:
-            driver.implicitly_wait(0.25)
+            driver.implicitly_wait(1)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35005 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='63036 120188']")
@@ -128,7 +128,7 @@ def func1():
                     driver.close()
                     func1()
         if switch%6==5:
-            driver.implicitly_wait(0.25)
+            driver.implicitly_wait(1)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35005 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='49241 120188']")
@@ -150,5 +150,3 @@ def func1():
 func1()
 
 print('Course selected')
-
-
