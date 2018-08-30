@@ -16,8 +16,8 @@ def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('leix2')
-    driver.find_element_by_id("easpass").send_keys('Xulei19970314??')
+    driver.find_element_by_id("netid").send_keys('shaokef2')
+    driver.find_element_by_id("easpass").send_keys('Fsk19971019?')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -44,16 +44,7 @@ def func1():
         driver.implicitly_wait(7.5)
         try:
             shit1=driver.find_element_by_xpath("//input[@value='66601 120188']")
-            driver.find_element_by_xpath("//input[@value='Register']").click()
-            driver.implicitly_wait(7.5)
-            driver.find_element_by_xpath("//*[@id='action_id6']/option[@value='DW']").click()
-            driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-            driver.implicitly_wait(7.5)
-            driver.back()
-            driver.back()
-            driver.back()
-            driver.find_element_by_xpath("//tbody/tr[21]/td/form/input[@value='View Sections']").click()
-            driver.find_element_by_xpath("//input[@value='66601 120188']").click()
+            shit1.click()
             driver.find_element_by_xpath("//input[@value='Register']").click()
             break
         except NoSuchElementException:
