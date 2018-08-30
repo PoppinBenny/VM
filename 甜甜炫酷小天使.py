@@ -14,7 +14,7 @@ options.add_argument('--no-sandbox')
 def func1():
     driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(7.5)
 
     driver.find_element_by_id("netid").send_keys('xintian4')
     driver.find_element_by_id("easpass").send_keys('Ji45mu00xu187!')

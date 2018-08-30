@@ -14,7 +14,7 @@ options.add_argument('--no-sandbox')
 def func1():
     driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(7.5)
 
     driver.find_element_by_id("netid").send_keys('ay2')
     driver.find_element_by_id("easpass").send_keys('Bxw0330!')
@@ -43,14 +43,14 @@ def func1():
     switch=0
     while True:
         if switch%4==0:
-            driver.implicitly_wait(1.25)
+            driver.implicitly_wait(2)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='38009 120188']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
-                driver.implicitly_wait(5)
+                driver.implicitly_wait(7.5)
                 driver.find_element_by_xpath("//*[@id='action_id4']/option[@value='DW']").click()
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                driver.implicitly_wait(5)
+                driver.implicitly_wait(7.5)
                 driver.back()
                 driver.back()
                 driver.back()
@@ -68,14 +68,14 @@ def func1():
                     driver.close()
                     func1()
         if switch%4==1:
-            driver.implicitly_wait(1.25)
+            driver.implicitly_wait(2)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='38010 120188']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
-                driver.implicitly_wait(5)
+                driver.implicitly_wait(7.5)
                 driver.find_element_by_xpath("//*[@id='action_id4']/option[@value='DW']").click()
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                driver.implicitly_wait(5)
+                driver.implicitly_wait(7.5)
                 driver.back()
                 driver.back()
                 driver.back()
@@ -93,14 +93,14 @@ def func1():
                     driver.close()
                     func1()
         if switch%4==2:
-            driver.implicitly_wait(1.25)
+            driver.implicitly_wait(2)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='48194 120188']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
-                driver.implicitly_wait(5)
+                driver.implicitly_wait(7.5)
                 driver.find_element_by_xpath("//*[@id='action_id4']/option[@value='DW']").click()
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                driver.implicitly_wait(5)
+                driver.implicitly_wait(7.5)
                 driver.back()
                 driver.back()
                 driver.back()
@@ -118,14 +118,14 @@ def func1():
                     driver.close()
                     func1()
         if switch%4==3:
-            driver.implicitly_wait(1.25)
+            driver.implicitly_wait(2)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='65448 120188']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
-                driver.implicitly_wait(5)
+                driver.implicitly_wait(7.5)
                 driver.find_element_by_xpath("//*[@id='action_id4']/option[@value='DW']").click()
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                driver.implicitly_wait(5)
+                driver.implicitly_wait(7.5)
                 driver.back()
                 driver.back()
                 driver.back()
