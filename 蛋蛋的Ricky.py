@@ -14,7 +14,7 @@ options.add_argument('--no-sandbox')
 def func1():
     driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
-    driver.implicitly_wait(1.55)
+    driver.implicitly_wait(7.5)
 
     driver.find_element_by_id("netid").send_keys('ruikang2')
     driver.find_element_by_id("easpass").send_keys('2ndKX991019kk')
@@ -43,7 +43,7 @@ def func1():
     switch=0
     while True:
         if switch%2==0:
-            driver.implicitly_wait(1)
+            driver.implicitly_wait(3.75)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='40083 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='60279 120188']")
@@ -61,7 +61,7 @@ def func1():
                     driver.close()
                     func1()
         if switch%2==1:
-            driver.implicitly_wait(1)
+            driver.implicitly_wait(3.75)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='40083 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='59603 120188']")
