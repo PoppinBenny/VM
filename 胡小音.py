@@ -46,8 +46,18 @@ def func1():
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='45556 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='49241 120188']")
-                shit1.click()
-                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                driver.implicitly_wait(7.5)
+                driver.find_element_by_xpath("//*[@id='action_id7']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//*[@id='action_id8']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(7.5)
+                driver.back()
+                driver.back()
+                driver.back()
+                driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
+                driver.find_element_by_xpath("//input[@value='45556 120188']").click()
+                driver.find_element_by_xpath("//input[@value='49241 120188']").click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
@@ -63,8 +73,19 @@ def func1():
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='45556 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='65036 120188']")
-                shit1.click()
-                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                driver.implicitly_wait(7.5)
+                driver.find_element_by_xpath("//*[@id='action_id7']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//*[@id='action_id8']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(7.5)
+                driver.back()
+                driver.back()
+                driver.back()
+                driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
+                driver.find_element_by_xpath("//input[@value='45556 120188']").click()
+                driver.find_element_by_xpath("//input[@value='65036 120188']").click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
@@ -79,8 +100,19 @@ def func1():
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='45556 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='65038 120188']")
-                shit1.click()
-                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                driver.implicitly_wait(7.5)
+                driver.find_element_by_xpath("//*[@id='action_id7']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//*[@id='action_id8']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(7.5)
+                driver.back()
+                driver.back()
+                driver.back()
+                driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
+                driver.find_element_by_xpath("//input[@value='45556 120188']").click()
+                driver.find_element_by_xpath("//input[@value='65038 120188']").click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
@@ -95,8 +127,19 @@ def func1():
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35005 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='46963 120188']")
-                shit1.click()
-                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                driver.implicitly_wait(7.5)
+                driver.find_element_by_xpath("//*[@id='action_id7']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//*[@id='action_id8']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(7.5)
+                driver.back()
+                driver.back()
+                driver.back()
+                driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
+                driver.find_element_by_xpath("//input[@value='35005 120188']").click()
+                driver.find_element_by_xpath("//input[@value='46963 120188']").click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
@@ -111,8 +154,19 @@ def func1():
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35005 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='35008 120188']")
-                shit1.click()
-                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                driver.implicitly_wait(7.5)
+                driver.find_element_by_xpath("//*[@id='action_id7']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//*[@id='action_id8']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(7.5)
+                driver.back()
+                driver.back()
+                driver.back()
+                driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
+                driver.find_element_by_xpath("//input[@value='35005 120188']").click()
+                driver.find_element_by_xpath("//input[@value='35008 120188']").click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
@@ -127,8 +181,19 @@ def func1():
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35005 120188']")
                 shit2=driver.find_element_by_xpath("//input[@value='49234 120188']")
-                shit1.click()
-                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                driver.implicitly_wait(7.5)
+                driver.find_element_by_xpath("//*[@id='action_id7']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//*[@id='action_id8']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(7.5)
+                driver.back()
+                driver.back()
+                driver.back()
+                driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
+                driver.find_element_by_xpath("//input[@value='35005 120188']").click()
+                driver.find_element_by_xpath("//input[@value='49234 120188']").click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
