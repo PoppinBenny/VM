@@ -1,5 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -7,17 +6,14 @@ from selenium.common.exceptions import NoSuchElementException
 import os,time
 from selenium.common.exceptions import TimeoutException
 
-options = Options()
-options.add_argument('--headless')
-options.add_argument('--no-sandbox')
 
 def func1():
-    driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
+    driver=webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
-    driver.implicitly_wait(7.5)
+    driver.implicitly_wait(5)
 
-    driver.find_element_by_id("netid").send_keys('yiyangn2')
-    driver.find_element_by_id("easpass").send_keys('08304015)Nyy')
+    driver.find_element_by_id("netid").send_keys('leix2')
+    driver.find_element_by_id("easpass").send_keys('Xulei19970314$')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -33,18 +29,27 @@ def func1():
     ("//option[@value='120188']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='STAT']").click()
+    driver.find_element_by_xpath("//option[@value='ECON']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[12]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[15]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     while True:
-        driver.implicitly_wait(7.5)
+        driver.implicitly_wait(1)
         try:
-            shit1=driver.find_element_by_xpath("//input[@value='58798 120188']")
-            shit1.click()
+            shit1=driver.find_element_by_xpath("//input[@value='70758 120188']")
+            driver.find_element_by_xpath("//input[@value='Register']").click()
+            driver.implicitly_wait(5)
+            driver.find_element_by_xpath("//*[@id='action_id5']/option[@value='DW']").click()
+            driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+            driver.implicitly_wait(5)
+            driver.back()
+            driver.back()
+            driver.back()
+            driver.find_element_by_xpath("//tbody/tr[15]/td/form/input[@value='View Sections']").click()
+            driver.find_element_by_xpath("//input[@value='70758 120188']").click()
             driver.find_element_by_xpath("//input[@value='Register']").click()
             break
         except NoSuchElementException:
@@ -52,7 +57,7 @@ def func1():
                 print('no available yet, trying again....')
                 driver.back()
                 driver.implicitly_wait(30)
-                driver.find_element_by_xpath("//tbody/tr[12]/td/form/input[@value='View Sections']").click()
+                driver.find_element_by_xpath("//tbody/tr[15]/td/form/input[@value='View Sections']").click()
             except NoSuchElementException:
                 time.sleep(30)
                 driver.close()
@@ -61,3 +66,5 @@ def func1():
 func1()
 
 print('Course selected')
+
+
