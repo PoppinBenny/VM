@@ -37,7 +37,7 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[6]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[5]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
@@ -54,7 +54,7 @@ def func1():
                 driver.back()
                 driver.back()
                 driver.back()
-                driver.find_element_by_xpath("//tbody/tr[6]/td/form/input[@value='View Sections']").click()
+                driver.find_element_by_xpath("//tbody/tr[5]/td/form/input[@value='View Sections']").click()
                 driver.find_element_by_xpath("//input[@value='65470 120188']").click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
@@ -78,7 +78,7 @@ def func1():
                 driver.back()
                 driver.back()
                 driver.back()
-                driver.find_element_by_xpath("//tbody/tr[6]/td/form/input[@value='View Sections']").click()
+                driver.find_element_by_xpath("//tbody/tr[5]/td/form/input[@value='View Sections']").click()
                 driver.find_element_by_xpath("//input[@value='70974 120188']").click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
@@ -87,7 +87,7 @@ def func1():
                     print('no available yet, trying again....')
                     switch+=1
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[6]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr[5]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
