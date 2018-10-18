@@ -51,7 +51,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no available yet, trying again....')
+                    print('no 5 yet, trying again....')
                     switch+=1
                     driver.implicitly_wait(30)
                 except NoSuchElementException:
@@ -140,7 +140,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        
+
 
 func1()
 

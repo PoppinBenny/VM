@@ -48,7 +48,7 @@ def func1():
             driver.find_element_by_xpath("//input[@value='Register']").click()
         except NoSuchElementException:
             try:
-                print('no available yet, trying again....')
+                print('no 6 yet, trying again....')
                 driver.back()
                 driver.implicitly_wait(30)
                 driver.find_element_by_xpath("//tbody/tr[5]/td/form/input[@value='View Sections']").click()
