@@ -45,7 +45,7 @@ def func1():
         if switch%3==0:
             driver.implicitly_wait(2.5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='51681 120188']")
+                shit1=driver.find_element_by_xpath("//input[@value='68289 120188']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
                 driver.find_element_by_xpath("//*[@id='action_id7']/option[@value='DW']").click()
@@ -55,7 +55,7 @@ def func1():
                 driver.back()
                 driver.back()
                 driver.find_element_by_xpath("//tbody/tr[3]/td/form/input[@value='View Sections']").click()
-                driver.find_element_by_xpath("//input[@value='51681 120188']").click()
+                driver.find_element_by_xpath("//input[@value='68289 120188']").click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
@@ -71,7 +71,7 @@ def func1():
         if switch%3==1:
             driver.implicitly_wait(2.5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='68289 120188']")
+                shit1=driver.find_element_by_xpath("//input[@value='68132 120188']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
                 driver.find_element_by_xpath("//*[@id='action_id7']/option[@value='DW']").click()
@@ -81,7 +81,7 @@ def func1():
                 driver.back()
                 driver.back()
                 driver.find_element_by_xpath("//tbody/tr[19]/td/form/input[@value='View Sections']").click()
-                driver.find_element_by_xpath("//input[@value='68289 120188']").click()
+                driver.find_element_by_xpath("//input[@value='68132 120188']").click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
@@ -109,7 +109,7 @@ def func1():
         if switch%3==2:
             driver.implicitly_wait(2.5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='68132 120188']")
+                shit1=driver.find_element_by_xpath("//input[@value='51681 120188']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
                 driver.find_element_by_xpath("//*[@id='action_id7']/option[@value='DW']").click()
@@ -119,7 +119,7 @@ def func1():
                 driver.back()
                 driver.back()
                 driver.find_element_by_xpath("//tbody/tr[3]/td/form/input[@value='View Sections']").click()
-                driver.find_element_by_xpath("//input[@value='68132 120188']").click()
+                driver.find_element_by_xpath("//input[@value='51681 120188']").click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
