@@ -51,7 +51,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no available yet, trying again....')
+                    print('no 2 yet, trying again....')
                     switch+=1
                     driver.back()
                     driver.back()
