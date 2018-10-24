@@ -77,6 +77,7 @@ def func1():
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='65489 120188']")
                 shit1.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
