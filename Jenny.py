@@ -30,7 +30,7 @@ def func1():
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("term_input_id").find_element_by_xpath\
-    ("//option[@value='120188']").click()
+    ("//option[@value='120191']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//option[@value='STAT']").click()
@@ -45,7 +45,7 @@ def func1():
         if switch%2==0:
             driver.implicitly_wait(2)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='56929 120188']")
+                shit1=driver.find_element_by_xpath("//input[@value='56929 120191']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
@@ -63,7 +63,7 @@ def func1():
         if switch%2==1:
             driver.implicitly_wait(2)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='67124 120188']")
+                shit1=driver.find_element_by_xpath("//input[@value='67124 120191']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
