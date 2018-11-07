@@ -46,7 +46,7 @@ def func1():
             shit1=driver.find_element_by_xpath("//input[@value='31247 120191']")
             driver.find_element_by_xpath("//input[@value='Register']").click()
             driver.implicitly_wait(7.5)
-            driver.find_element_by_xpath("//*[@id='action_id6']/option[@value='DW']").click()
+            driver.find_element_by_xpath("//*[@id='action_id3']/option[@value='DW']").click()
             driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
             driver.implicitly_wait(7.5)
             driver.back()
