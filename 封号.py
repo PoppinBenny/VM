@@ -51,7 +51,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no 1 yet, trying again....')
+                    print('no 2 yet, trying again....')
                     driver.back()
                     switch+=1
                     driver.find_element_by_xpath("//tbody/tr[20]/td/form/input[@value='View Sections']").click()
@@ -68,7 +68,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no 1 yet, trying again....')
+                    print('no 2 yet, trying again....')
                     driver.back()
                     switch+=1
                     driver.find_element_by_xpath("//tbody/tr[22]/td/form/input[@value='View Sections']").click()
@@ -85,7 +85,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no 1 yet, trying again....')
+                    print('no 2 yet, trying again....')
                     driver.back()
                     switch+=1
                     driver.find_element_by_xpath("//tbody/tr[15]/td/form/input[@value='View Sections']").click()
