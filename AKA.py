@@ -41,7 +41,7 @@ def func1():
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     while True:
-            driver.implicitly_wait(5)
+            driver.implicitly_wait(6)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='65865 120191']")
                 shit1.click()
