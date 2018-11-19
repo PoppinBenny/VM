@@ -46,6 +46,7 @@ def func1():
         shit1.click()
         driver.find_element_by_xpath("//input[@value='Register']").click()
         driver.back()
+        print('2')
         
 func1()
 
