@@ -52,7 +52,7 @@ def func1():
                 driver.back()
             except NoSuchElementException:
                 try:
-                    print('no available yet, trying again....')
+                    print('no 7 yet, trying again....')
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
