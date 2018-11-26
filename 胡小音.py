@@ -42,7 +42,6 @@ def func1():
 
 
     while True:
-            time.sleep(30)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='31213 120191']")
                 shit2=driver.find_element_by_xpath("//input[@value='31218 120191']")
@@ -50,6 +49,8 @@ def func1():
                 shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.back()
+                print('7')
+                time.sleep(30)
             except NoSuchElementException:
                 try:
                     print('no 7 yet, trying again....')
