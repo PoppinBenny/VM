@@ -54,7 +54,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no 7 yet, trying again....')
+                    print('no available yet, trying again....')
                     switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
