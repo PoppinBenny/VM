@@ -37,27 +37,112 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[12]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[8]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
 
+    switch=0
     while True:
+        if switch%6==0:
+            driver.implicitly_wait(1)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='31213 120191']")
-                shit2=driver.find_element_by_xpath("//input[@value='31218 120191']")
+                shit1=driver.find_element_by_xpath("//input[@value='39311 120191']")
+                shit2=driver.find_element_by_xpath("//input[@value='31187 120191']")
                 shit1.click()
                 shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
-                driver.back()
-                print('7')
-                time.sleep(30)
+                break
             except NoSuchElementException:
                 try:
-                    print('no 7 yet, trying again....')
+                    print('no available yet, trying again....')
+                    switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
+        if switch%6==1:
+            driver.implicitly_wait(1)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='39311 120191']")
+                shit2=driver.find_element_by_xpath("//input[@value='48264 120191']")
+                shit1.click()
+                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%6==2:
+            driver.implicitly_wait(1)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='39311 120191']")
+                shit2=driver.find_element_by_xpath("//input[@value='57330 120191']")
+                shit1.click()
+                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%6==3:
+            driver.implicitly_wait(1)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='39311 120191']")
+                shit2=driver.find_element_by_xpath("//input[@value='57446 120191']")
+                shit1.click()
+                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%6==4:
+            driver.implicitly_wait(1)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
+                shit2=driver.find_element_by_xpath("//input[@value='50442 120191']")
+                shit1.click()
+                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%6==5:
+            driver.implicitly_wait(1)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
+                shit2=driver.find_element_by_xpath("//input[@value='51089 120191']")
+                shit1.click()
+                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    driver.back()
+                    switch+=1
+                    driver.find_element_by_xpath("//tbody/tr[8]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+
 
 func1()
 
