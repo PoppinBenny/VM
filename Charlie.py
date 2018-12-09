@@ -57,15 +57,14 @@ def func1():
                 driver.back()
                 driver.back()
                 driver.find_element_by_xpath("//tbody/tr[7]/td/form/input[@value='View Sections']").click()
-                driver.find_element_by_xpath("//input[@value='35804 120188']").click()
-                driver.find_element_by_xpath("//input[@value='35971 120188']").click()
-                driver.find_element_by_xpath("//input[@value='51772 120188']").click()
+                driver.find_element_by_xpath("//input[@value='35804 120191']").click()
+                driver.find_element_by_xpath("//input[@value='35971 120191']").click()
+                driver.find_element_by_xpath("//input[@value='51772 120191']").click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
                     print('no available yet, trying again....')
-                    driver.back()
                     switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
@@ -86,9 +85,9 @@ def func1():
                 driver.back()
                 driver.back()
                 driver.find_element_by_xpath("//tbody/tr[7]/td/form/input[@value='View Sections']").click()
-                driver.find_element_by_xpath("//input[@value='35804 120188']").click()
-                driver.find_element_by_xpath("//input[@value='35971 120188']").click()
-                driver.find_element_by_xpath("//input[@value='38015 120188']").click()
+                driver.find_element_by_xpath("//input[@value='35804 120191']").click()
+                driver.find_element_by_xpath("//input[@value='35971 120191']").click()
+                driver.find_element_by_xpath("//input[@value='38015 120191']").click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
