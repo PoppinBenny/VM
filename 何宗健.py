@@ -29,7 +29,7 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_id("term_input_id").find_element_by_xpath\
+    driver.find_element_by_name("p_term").find_element_by_xpath\
     ("//option[@value='120191']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
