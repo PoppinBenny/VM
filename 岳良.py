@@ -52,7 +52,7 @@ def func1():
                 try:
                     print('no available yet')
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[ECE]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr[87]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
