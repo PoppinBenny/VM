@@ -16,8 +16,8 @@ def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('ruoyuz3')
-    driver.find_element_by_id("easpass").send_keys('Zh,,980921')
+    driver.find_element_by_id("netid").send_keys('ruizhel2')
+    driver.find_element_by_id("easpass").send_keys('Laligege0579')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -33,31 +33,26 @@ def func1():
     ("//option[@value='120191']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='CS']").click()
+    driver.find_element_by_xpath("//option[@value='STAT']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[13]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[14]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
-
 
     switch=0
     while True:
         if switch%2==0:
             driver.implicitly_wait(3)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='61689 120191']")
-                shit2=driver.find_element_by_xpath("//input[@value='61695 120191']")
+                shit1=driver.find_element_by_xpath("//input[@value='46320 120191']")
                 shit1.click()
-                shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
-                    print('3')
+                    print('7')
                     switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[17]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
@@ -65,16 +60,15 @@ def func1():
         if switch%2==1:
             driver.implicitly_wait(3)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='61476 120191']")
+                shit1=driver.find_element_by_xpath("//input[@value='63561 120191']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
-                    print('3')
-                    switch+=1
+                    print('7')
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[13]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr[14]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
