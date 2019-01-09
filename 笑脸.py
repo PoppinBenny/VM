@@ -7,8 +7,12 @@ from selenium.common.exceptions import NoSuchElementException
 import os,time
 from selenium.common.exceptions import TimeoutException
 
+options = Options()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+
 def func1():
-    driver=webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
+    driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
