@@ -7,13 +7,17 @@ from selenium.common.exceptions import NoSuchElementException
 import os,time
 from selenium.common.exceptions import TimeoutException
 
+options = Options()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+
 def func1():
-    driver=webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
+    driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('yunzhez2')
-    driver.find_element_by_id("easpass").send_keys('0522Zyzrayyyyyy')
+    driver.find_element_by_id("netid").send_keys('rsha2')
+    driver.find_element_by_id("easpass").send_keys('Srz19970919!')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -25,33 +29,35 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_name("p_term").find_element_by_xpath\
-    ("//option[@value='120191']").click()
+    driver.find_element_by_id("term_input_id").find_element_by_xpath\
+    ("//option[@value='120188']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='CS']").click()
+    driver.find_element_by_xpath("//option[@value='BADM']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[17]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[27]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     while True:
             driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='61476 120191']")
+                shit1=driver.find_element_by_xpath("//input[@value='50233 120188']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
-                    print('17')
+                    print('no available yet, trying again....')
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[17]/td/form/input[@value='View Sections']").click()
+                    driver.implicitly_wait(30)
+                    driver.find_element_by_xpath("//tbody/tr[27]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
+
 
 func1()
 
