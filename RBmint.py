@@ -16,8 +16,8 @@ def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('zh13')
-    driver.find_element_by_id("easpass").send_keys('Jackseize24hours0018')
+    driver.find_element_by_id("netid").send_keys('mzhai4')
+    driver.find_element_by_id("easpass").send_keys('Royce990520*')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
