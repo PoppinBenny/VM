@@ -37,13 +37,13 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[23]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[17]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     while True:
             driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='56929 120191']")
+                shit1=driver.find_element_by_xpath("//input[@value='36179 120191']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
@@ -51,7 +51,7 @@ def func1():
                 try:
                     print('no 17 yet, trying again....')
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[23]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr[17]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
