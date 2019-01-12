@@ -53,7 +53,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('12')
+                    print('100')
                     switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
@@ -70,7 +70,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('12')
+                    print('100')
                     switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
