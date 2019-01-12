@@ -53,7 +53,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('100')
+                    print('3')
                     switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
@@ -70,14 +70,14 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('100')
+                    print('3')
                     switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
         if switch%4==2:
-            driver.implicitly_wait(0.2)
+            driver.implicitly_wait(0.25)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='44662 120191']")
                 shit2=driver.find_element_by_xpath("//input[@value='57737 120191']")
@@ -94,7 +94,7 @@ def func1():
                     driver.close()
                     func1()
         if switch%4==3:
-            driver.implicitly_wait(0.2)
+            driver.implicitly_wait(0.25)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='44662 120191']")
                 shit2=driver.find_element_by_xpath("//input[@value='57738 120191']")
