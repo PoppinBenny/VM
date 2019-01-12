@@ -40,8 +40,10 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr[8]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
-            driver.implicitly_wait(6)
+        if switch%4==0:
+            driver.implicitly_wait(5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
                 shit2=driver.find_element_by_xpath("//input[@value='51089 120191']")
@@ -52,6 +54,58 @@ def func1():
             except NoSuchElementException:
                 try:
                     print('10')
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%4==1:
+            driver.implicitly_wait(0.25)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
+                shit2=driver.find_element_by_xpath("//input[@value='50441 120191']")
+                shit1.click()
+                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    print('10')
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%4==2:
+            driver.implicitly_wait(0.25)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
+                shit2=driver.find_element_by_xpath("//input[@value='50442 120191']")
+                shit1.click()
+                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    print('10')
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%4==3:
+            driver.implicitly_wait(0.25)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
+                shit2=driver.find_element_by_xpath("//input[@value='51087 120191']")
+                shit1.click()
+                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    print('10')
+                    switch+=1
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr[8]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
