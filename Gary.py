@@ -52,11 +52,8 @@ def func1():
             for j in disc:
                 driver.implicitly_wait(0.25)
                 try:
-                    print(switch)
                     str1="//input[@value='"+str(i)+" 120191']"
                     str2="//input[@value='"+str(j)+" 120191']"
-                    print(str1)
-                    print(str2)
                     shit1=driver.find_element_by_xpath("//input[@value='35804 120191']")
                     shit2=driver.find_element_by_xpath(str1)
                     shit3=driver.find_element_by_xpath(str2)
