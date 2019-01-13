@@ -40,9 +40,9 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr[14]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-
+    switch=0
     while True:
-        if switch%5==0:
+        if switch%3==0:
             driver.implicitly_wait(5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='46320 120191']")
@@ -57,7 +57,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%5==1:
+        if switch%3==1:
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='63561 120191']")
@@ -72,7 +72,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%5==2:
+        if switch%3==2:
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='69351 120191']")
