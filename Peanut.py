@@ -54,7 +54,7 @@ def func1():
                 driver.back()
                 driver.back()
                 driver.find_element_by_xpath("//tbody/tr[9]/td/form/input[@value='View Sections']").click()
-                driver.find_element_by_xpath("//input[@value='32505 120191']").click()
+                driver.find_element_by_xpath("//input[@value='32541 120191']").click()
                 driver.find_element_by_xpath("//input[@value='55638 120191']").click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
