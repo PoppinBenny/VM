@@ -16,8 +16,8 @@ def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('yhuo5')
-    driver.find_element_by_id("easpass").send_keys("Yunshuhuochloe0528/")
+    driver.find_element_by_id("netid").send_keys('jiangl2')
+    driver.find_element_by_id("easpass").send_keys('A332211a')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -37,41 +37,21 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[20]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[18]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
-        if switch%2==0:
-            driver.implicitly_wait(3)
+            driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='69366 120191']")
+                shit1=driver.find_element_by_xpath("//input[@value='33600 120191']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
-                    print('no 13 yet, trying again....')
-                    switch+=1
+                    print('3')
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[27]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%2==1:
-            driver.implicitly_wait(3)
-            try:
-                shit1=driver.find_element_by_xpath("//input[@value='69371 120191']")
-                shit1.click()
-                driver.find_element_by_xpath("//input[@value='Register']").click()
-                break
-            except NoSuchElementException:
-                try:
-                    print('no 13 yet, trying again....')
-                    switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[20]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr[18]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
