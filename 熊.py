@@ -47,38 +47,37 @@ def func1():
     b=False
     while True:
         print('25')
-        for i in lab:
-            for j in disc:
-                driver.implicitly_wait(0.8)
+        for i in disc:
+            driver.implicitly_wait(0.8)
+            try:
+                str1="//input[@value='"+str(i)+" 120191']"
+                shit1=driver.find_element_by_xpath("//input[@value='61818 120191']")
+                shit2=driver.find_element_by_xpath(str1)
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                driver.implicitly_wait(7.5)
+                driver.find_element_by_xpath("//*[@id='action_id8']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//*[@id='action_id9']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(7.5)
+                driver.back()
+                driver.back()
+                driver.back()
+                driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
+                driver.find_element_by_xpath("//input[@value='61818 120191']").click()
+                driver.find_element_by_xpath(str1).click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                b=True
+            except NoSuchElementException:
                 try:
-                    str1="//input[@value='"+str(i)+" 120191']"
-                    shit1=driver.find_element_by_xpath("//input[@value='61818 120191']")
-                    shit2=driver.find_element_by_xpath(str1)
-                    driver.find_element_by_xpath("//input[@value='Register']").click()
-                    driver.implicitly_wait(7.5)
-                    driver.find_element_by_xpath("//*[@id='action_id8']/option[@value='DW']").click()
-                    driver.find_element_by_xpath("//*[@id='action_id9']/option[@value='DW']").click()
-                    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                    driver.implicitly_wait(7.5)
-                    driver.back()
-                    driver.back()
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
-                    driver.find_element_by_xpath("//input[@value='61818 120191']").click()
-                    driver.find_element_by_xpath(str1).click()
-                    driver.find_element_by_xpath("//input[@value='Register']").click()
-                    b=True
+                    switch+=1
+                    if switch==7:
+                        switch=0
+                        driver.back()
+                        driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
-                    try:
-                        switch+=1
-                        if switch==7:
-                            switch=0
-                            driver.back()
-                            driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
-                    except NoSuchElementException:
-                        time.sleep(30)
-                        driver.close()
-                        func1()
+                    time.sleep(30)
+                    driver.close()
+                    func1()
         if b==True:
             break
 
