@@ -48,7 +48,7 @@ def func1():
                 shit1=driver.find_element_by_xpath("//input[@value='65385 120191']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
-                driver.find_element_by_xpath("//*[@id='action_id8']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//*[@id='action_id7']/option[@value='DW']").click()
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(7.5)
                 driver.back()
@@ -86,17 +86,9 @@ def func1():
                 shit1=driver.find_element_by_xpath("//input[@value='46157 120191']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
-                driver.find_element_by_xpath("//*[@id='action_id5']/option[@value='DW']").click()
-                driver.find_element_by_xpath("//*[@id='action_id6']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//*[@id='action_id8']/option[@value='DW']").click()
+                driver.find_element_by_id("crn_id1").send_keys('46157')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                driver.implicitly_wait(7.5)
-                driver.back()
-                driver.back()
-                driver.back()
-                driver.find_element_by_xpath("//tbody/tr[8]/td/form/input[@value='View Sections']").click()
-                driver.find_element_by_xpath("//input[@value='46121 120191']").click()
-                driver.find_element_by_xpath("//input[@value='46157 120191']").click()
-                driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
