@@ -17,7 +17,7 @@ def func1():
     driver.implicitly_wait(7.5)
 
     driver.find_element_by_id("netid").send_keys('pcheng11')
-    driver.find_element_by_id("easpass").send_keys('Cpy19961119uiuc?')
+    driver.find_element_by_id("easpass").send_keys('Cpy19961119uiuc-')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -47,7 +47,7 @@ def func1():
                 shit3=driver.find_element_by_xpath("//input[@value='63899 120191']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
-                driver.find_element_by_xpath("//*[@id='action_id6']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//*[@id='action_id5']/option[@value='DW']").click()
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(7.5)
                 driver.back()
