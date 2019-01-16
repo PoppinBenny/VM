@@ -49,7 +49,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no 19 yet, trying again....')
+                    print('no 14 yet, trying again....')
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr[54]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
