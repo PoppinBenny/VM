@@ -42,7 +42,7 @@ def func1():
 
     switch=0
     while True:
-        if switch%2==0:
+        if switch%3==0:
             driver.implicitly_wait(5.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
@@ -59,11 +59,28 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%2==1:
-            driver.implicitly_wait(0.5)
+        if switch%3==1:
+            driver.implicitly_wait(5.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
                 shit2=driver.find_element_by_xpath("//input[@value='51087 120191']")
+                shit1.click()
+                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    print('5')
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%3==2:
+            driver.implicitly_wait(0.5)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
+                shit2=driver.find_element_by_xpath("//input[@value='48266 120191']")
                 shit1.click()
                 shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
