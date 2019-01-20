@@ -11,6 +11,9 @@ options = Options()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 
+disc=[31187, 48265, 48263, 61915, 57446, 48264, 57329, 57330]
+disc2=[48266, 51089, 51087]
+
 def func1():
     driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
@@ -41,43 +44,49 @@ def func1():
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
+    b=False
     while True:
-        if switch%2==0:
-            driver.implicitly_wait(5.5)
-            try:
-                shit1=driver.find_element_by_xpath("//input[@value='39311 120191']")
-                shit2=driver.find_element_by_xpath("//input[@value='57330 120191']")
-                shit1.click()
-                shit2.click()
-                driver.find_element_by_xpath("//input[@value='Register']").click()
-                break
-            except NoSuchElementException:
-                try:
-                    print('15')
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%2==1:
+        print('29')
+        for i in disc:
             driver.implicitly_wait(0.5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
-                shit2=driver.find_element_by_xpath("//input[@value='51089 120191']")
+                str1="//input[@value='"+str(i)+" 120191']"
+                shit1=driver.find_element_by_xpath("//input[@value='39311 120191']")
+                shit2=driver.find_element_by_xpath(str1)
                 shit1.click()
                 shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
-                break
+                b=True
             except NoSuchElementException:
                 try:
-                    print('15')
                     switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[8]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
+        for i in disc2:
+            driver.implicitly_wait(0.5)
+            try:
+                str1="//input[@value='"+str(i)+" 120191']"
+                shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
+                shit2=driver.find_element_by_xpath(str1)
+                shit1.click()
+                shit2.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                b=True
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                    if switch==11:
+                        switch=0
+                        driver.back()
+                        driver.find_element_by_xpath("//tbody/tr[8]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if b==True:
+            break
 
 
 func1()
