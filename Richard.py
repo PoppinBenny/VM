@@ -47,17 +47,8 @@ def func1():
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='39311 120191']")
                 shit2=driver.find_element_by_xpath("//input[@value='57330 120191']")
-                driver.find_element_by_xpath("//input[@value='Register']").click()
-                driver.implicitly_wait(7.5)
-                driver.find_element_by_xpath("//*[@id='action_id3']/option[@value='DW']").click()
-                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                driver.implicitly_wait(7.5)
-                driver.back()
-                driver.back()
-                driver.back()
-                driver.find_element_by_xpath("//tbody/tr[24]/td/form/input[@value='View Sections']").click()
-                driver.find_element_by_xpath("//input[@value='39311 120191']").click()
-                driver.find_element_by_xpath("//input[@value='57330 120191']").click()
+                shit1.click()
+                shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
@@ -73,17 +64,8 @@ def func1():
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
                 shit2=driver.find_element_by_xpath("//input[@value='51089 120191']")
-                driver.find_element_by_xpath("//input[@value='Register']").click()
-                driver.implicitly_wait(7.5)
-                driver.find_element_by_xpath("//*[@id='action_id3']/option[@value='DW']").click()
-                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                driver.implicitly_wait(7.5)
-                driver.back()
-                driver.back()
-                driver.back()
-                driver.find_element_by_xpath("//tbody/tr[24]/td/form/input[@value='View Sections']").click()
-                driver.find_element_by_xpath("//input[@value='50094 120191']").click()
-                driver.find_element_by_xpath("//input[@value='51089 120191']").click()
+                shit1.click()
+                shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:

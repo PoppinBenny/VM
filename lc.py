@@ -43,7 +43,7 @@ def func1():
     while True:
             driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='56929 120191']")
+                shit1=driver.find_element_by_xpath("//input[@value='31423 120191']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
@@ -61,4 +61,3 @@ def func1():
 func1()
 
 print('Course selected')
-
