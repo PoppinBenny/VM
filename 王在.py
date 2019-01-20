@@ -11,8 +11,7 @@ options = Options()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 
-disc=[31187, 48265, 48263, 61915, 57446, 48264, 57329, 57330]
-disc2=[48266, 51089, 51087]
+disc=[48263, 61915, 61916, 57446, 57330]
 
 def func1():
     driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
@@ -46,7 +45,7 @@ def func1():
     switch=0
     b=False
     while True:
-        print('16')
+        print('10')
         for i in disc:
             driver.implicitly_wait(0.5)
             try:
@@ -60,24 +59,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        for i in disc2:
-            driver.implicitly_wait(0.5)
-            try:
-                str1="//input[@value='"+str(i)+" 120191']"
-                shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
-                shit2=driver.find_element_by_xpath(str1)
-                shit1.click()
-                shit2.click()
-                driver.find_element_by_xpath("//input[@value='Register']").click()
-                b=True
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                    if switch==11:
+                    if switch==5:
                         switch=0
                         driver.back()
                         driver.find_element_by_xpath("//tbody/tr[8]/td/form/input[@value='View Sections']").click()
