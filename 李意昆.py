@@ -13,6 +13,7 @@ options.add_argument('--no-sandbox')
 
 disc=[57329,48265,61915]
 disc2=[48266, 51087, 51089]
+disc3=[41916,37828,37829]
 
 def func1():
     driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
@@ -48,7 +49,7 @@ def func1():
     while True:
         print('7')
         for i in disc:
-            driver.implicitly_wait(0.5)
+            driver.implicitly_wait(0.6)
             try:
                 str1="//input[@value='"+str(i)+" 120191']"
                 shit1=driver.find_element_by_xpath("//input[@value='39311 120191']")
@@ -65,7 +66,7 @@ def func1():
                     driver.close()
                     func1()
         for i in disc2:
-            driver.implicitly_wait(0.5)
+            driver.implicitly_wait(0.6)
             try:
                 str1="//input[@value='"+str(i)+" 120191']"
                 shit1=driver.find_element_by_xpath("//input[@value='50094 120191']")
@@ -78,8 +79,50 @@ def func1():
                 try:
                     switch+=1
                     if switch==6:
+                        driver.back()
+                        driver.back()
+                        driver.back()
+                        driver.back()
+                        driver.find_element_by_link_text("I Agree to the Above Statement").click()
+                        driver.implicitly_wait(10)
+                        driver.find_element_by_name("p_term").find_element_by_xpath\
+                        ("//option[@value='120191']").click()
+                        driver.find_element_by_xpath("//input[@value='Submit']").click()
+                        driver.implicitly_wait(10)
+                        driver.find_element_by_xpath("//option[@value='MATH']").click()
+                        driver.find_element_by_xpath("//input[@value='Course Search']").click()
+                        driver.implicitly_wait(10)
+                        driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        for i in disc3:
+            driver.implicitly_wait(0.6)
+            try:
+                str1="//input[@value='"+str(i)+" 120191']"
+                shit1=driver.find_element_by_xpath(str1)
+                shit1.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                b=True
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                    if switch==9:
                         switch=0
                         driver.back()
+                        driver.back()
+                        driver.back()
+                        driver.back()
+                        driver.find_element_by_link_text("I Agree to the Above Statement").click()
+                        driver.implicitly_wait(10)
+                        driver.find_element_by_name("p_term").find_element_by_xpath\
+                        ("//option[@value='120191']").click()
+                        driver.find_element_by_xpath("//input[@value='Submit']").click()
+                        driver.implicitly_wait(10)
+                        driver.find_element_by_xpath("//option[@value='CS']").click()
+                        driver.find_element_by_xpath("//input[@value='Course Search']").click()
+                        driver.implicitly_wait(10)
                         driver.find_element_by_xpath("//tbody/tr[8]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
