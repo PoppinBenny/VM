@@ -46,7 +46,7 @@ def func1():
     switch=0
     b=False
     while True:
-        print('16')
+        print('15')
         for i in disc:
             driver.implicitly_wait(0.5)
             try:
