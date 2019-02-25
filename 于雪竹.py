@@ -21,6 +21,9 @@ def func1():
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
+    driver.find_element_by_name('BTN_CONTINUE').click()
+    driver.implicitly_wait(10)
+
     driver.find_element_by_link_text("Registration & Records").click()
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
