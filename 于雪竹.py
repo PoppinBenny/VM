@@ -20,12 +20,13 @@ def func1():
     driver.find_element_by_id("easpass").send_keys('Renfen8838@')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
+    
+    driver.find_element_by_name('BTN_CONTINUE').click()
+    driver.implicitly_wait(10)
+    
     driver.find_element_by_id("netid").send_keys('xyu67')
     driver.find_element_by_id("easpass").send_keys('Renfen8838@')
     driver.find_element_by_name("BTN_LOGIN").click()
-    driver.implicitly_wait(10)
-
-    driver.find_element_by_name('BTN_CONTINUE').click()
     driver.implicitly_wait(10)
 
     driver.find_element_by_link_text("Registration & Records").click()
