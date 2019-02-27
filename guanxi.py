@@ -20,6 +20,10 @@ def func1():
     driver.find_element_by_id("easpass").send_keys('Sgx1998100888888')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
+    driver.find_element_by_id("netid").send_keys('guanxis2')
+    driver.find_element_by_id("easpass").send_keys('Sgx1998100888888')
+    driver.find_element_by_name("BTN_LOGIN").click()
+    driver.implicitly_wait(10)
 
     driver.find_element_by_link_text("Registration & Records").click()
     driver.implicitly_wait(10)
