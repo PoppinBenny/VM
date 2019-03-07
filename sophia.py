@@ -16,12 +16,12 @@ def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('yangrui2')
-    driver.find_element_by_id("easpass").send_keys('Psalm110829')
+    driver.find_element_by_id("netid").send_keys('yiruil2')
+    driver.find_element_by_id("easpass").send_keys('Hu12345!')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_id("netid").send_keys('yangrui2')
-    driver.find_element_by_id("easpass").send_keys('Psalm110829')
+    driver.find_element_by_id("netid").send_keys('yiruil2')
+    driver.find_element_by_id("easpass").send_keys('Hu12345!')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -41,21 +41,21 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[20]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[19]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     while True:
             driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='56186 120191']")
+                shit1=driver.find_element_by_xpath("//input[@value='56184 120191']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
-                    print('8')
+                    print('11')
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[20]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr[19]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
