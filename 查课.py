@@ -14,12 +14,13 @@ options.add_argument('--no-sandbox')
 
 
 course=input("Course number?")
-major=course.split()[0].upper()
+course=course.upper()
+major=course.split()[0]
 index=course.split()[1]
 
 driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
 driver.get('https://courses.illinois.edu/schedule/DEFAULT/DEFAULT')
-time.sleep(2)
+time.sleep(1)
 driver.find_element_by_xpath("/html/body/div[1]/div[1]/div/a").click()
 
 
@@ -36,7 +37,7 @@ except NoSuchElementException:
 
 driver.find_element_by_xpath("//*[@id='term-dt']/tbody/tr["+str(i)+"]/td[2]/a").click()
 
-time.sleep(2)
+driver.implicitly_wait(7)
 i=1
 try:
     while True:
