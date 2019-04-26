@@ -46,8 +46,8 @@ def func1():
 
     switch=0
     while True:
-        if switch%6==0:
-            driver.implicitly_wait(2)
+        if switch%5==0:
+            driver.implicitly_wait(2.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35919 120198']")
                 shit2=driver.find_element_by_xpath("//input[@value='35956 120198']")
@@ -63,28 +63,11 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%6==1:
+        if switch%5==1:
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35919 120198']")
                 shit2=driver.find_element_by_xpath("//input[@value='65051 120198']")
-                shit1.click()
-                shit2.click()
-                driver.find_element_by_xpath("//input[@value='Register']").click()
-                break
-            except NoSuchElementException:
-                try:
-                    print('no 14 yet, trying again....')
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%6==2:
-            driver.implicitly_wait(0.5)
-            try:
-                shit1=driver.find_element_by_xpath("//input[@value='35919 120198']")
-                shit2=driver.find_element_by_xpath("//input[@value='65053 120198']")
                 shit1.click()
                 shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
@@ -99,7 +82,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%6==3:
+        if switch%5==2:
             driver.implicitly_wait(2)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='64513 120198']")
@@ -116,7 +99,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%6==4:
+        if switch%5==3:
             driver.implicitly_wait(2)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='64513 120198']")
@@ -133,7 +116,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%6==5:
+        if switch%5==4:
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='64513 120198']")
