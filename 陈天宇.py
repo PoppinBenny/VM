@@ -7,12 +7,33 @@ from selenium.common.exceptions import NoSuchElementException
 import os,time
 from selenium.common.exceptions import TimeoutException
 
-options = Options()
-options.add_argument('--headless')
-options.add_argument('--no-sandbox')
+gce=True
+
+if gce:
+    options = Options()
+    options.add_argument('--headless')
+    options.add_argument('--no-sandbox')
+
+    driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
+else:
+    driver=webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
+
+
+def find_drop(index):
+    i=2
+    try:
+        while True:
+            number=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+            if str(index)==number:
+                driver.find_element_by_xpath("//*[@id='action_id"+str(i-1)+"']/option[@value='DW']").click()
+                break
+            i+=1
+    except NoSuchElementException:
+        print('Index does not exist')
+        driver.quit()
+
 
 def func1():
-    driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
