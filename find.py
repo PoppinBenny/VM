@@ -11,6 +11,11 @@ options = Options()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
 
+course=input("Course number?")
+course=course.upper()
+major=course.split()[0]
+index=course.split()[1]
+
 driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
 driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
 driver.implicitly_wait(7.5)
