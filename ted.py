@@ -72,44 +72,22 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr[12]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
-        if switch%20<19:
-            print(17)
-            for i in lecture1:
-                for j in disc1:
-                    driver.implicitly_wait(0.15)
-                    try:
-                        str1="//input[@value='"+str(i)+" 120198']"
-                        str2="//input[@value='"+str(j)+" 120198']"
-                        shit1=driver.find_element_by_xpath(str1)
-                        shit2=driver.find_element_by_xpath(str2)
-                        shit1.click()
-                        shit2.click()
-                        driver.find_element_by_xpath("//input[@value='Register']").click()
-                        driver.implicitly_wait(10)
-                        driver.back()
-                        switch=3
-                    except NoSuchElementException:
-                        pass
-            switch+=1
-            if switch%20<19:
-                driver.back()
-                driver.find_element_by_xpath("//tbody/tr[12]/td/form/input[@value='View Sections']").click()
-            elif switch%20==19:
-                driver.back()
-                driver.find_element_by_xpath("//tbody/tr[13]/td/form/input[@value='View Sections']").click()
-        elif switch%20==19:
-            shit1=driver.find_element_by_xpath("//input[@value='63733 120198']")
-            shit2=driver.find_element_by_xpath("//input[@value='63737 120198']")
-            shit1.click()
-            shit2.click()
-            driver.find_element_by_xpath("//input[@value='Register']").click()
-            driver.implicitly_wait(10)
-            driver.back()
-            driver.back()
-            driver.find_element_by_xpath("//tbody/tr[12]/td/form/input[@value='View Sections']").click()
-            switch+=1
+        print(17)
+        driver.find_element_by_xpath("//input[@value='Register']").click()
+        driver.implicitly_wait(10)
+        driver.find_element_by_id("crn_id1").send_keys('35919')
+        driver.find_element_by_id("crn_id2").send_keys('65184')
+        driver.find_element_by_id("crn_id3").send_keys('63733')
+        driver.find_element_by_id("crn_id4").send_keys('63737')
+        driver.implicitly_wait(10)
+        driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+        time.sleep(120)
+        driver.back()
+        driver.back()
+        
+        
+        
 
 
 
