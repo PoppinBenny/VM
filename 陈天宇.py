@@ -62,41 +62,27 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[17]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[29]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
-        if switch%2==0:
-            driver.implicitly_wait(3)
+            driver.implicitly_wait(6)
             try:
-                shit3=driver.find_element_by_xpath("//input[@value='31786 120198']")
-                shit3.click()
+                shit1=driver.find_element_by_xpath("//input[@value='66593 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
+                driver.implicitly_wait(7.5)
+                find_drop(69169)
+                driver.implicitly_wait(10)
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(10)
+                driver.find_element_by_id("crn_id1").send_keys(66593')
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
                 try:
                     print('no 28 yet, trying again....')
-                    switch+=1
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr[29]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%2==1:
-            driver.implicitly_wait(3)
-            try:
-                shit3=driver.find_element_by_xpath("//input[@value='66593 120198']")
-                shit3.click()
-                driver.find_element_by_xpath("//input[@value='Register']").click()
-                break
-            except NoSuchElementException:
-                try:
-                    print('no 28 yet, trying again....')
-                    switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[17]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
