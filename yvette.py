@@ -38,15 +38,12 @@ def func1():
     driver.implicitly_wait(7.5)
 
     driver.find_element_by_id("netid").send_keys('yig2')
-    driver.find_element_by_id("easpass").send_keys('Mini1917')
+    driver.find_element_by_id("easpass").send_keys('asyhdll6D')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_name("BTN_CONTINUE").click()
-    driver.implicitly_wait(10)
-
     driver.find_element_by_id("netid").send_keys('yig2')
-    driver.find_element_by_id("easpass").send_keys('Mini1917')
+    driver.find_element_by_id("easpass").send_keys('asyhdll6D')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -66,7 +63,7 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[6]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[7]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
@@ -124,7 +121,7 @@ def func1():
                     driver.find_element_by_xpath("//option[@value='FAA']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//tbody/tr[6]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr[7]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
