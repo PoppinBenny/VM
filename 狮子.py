@@ -77,6 +77,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     print('no 8 yet, trying again....')
+                    switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
@@ -91,6 +92,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     print('no 8 yet, trying again....')
+                    switch+=1
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:

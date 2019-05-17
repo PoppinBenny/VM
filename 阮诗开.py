@@ -66,7 +66,6 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr[52]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
             driver.implicitly_wait(2.5)
             try:
@@ -83,7 +82,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     print('no 12')
-                    switch+=1
+
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr[52]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
