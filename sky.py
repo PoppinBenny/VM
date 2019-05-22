@@ -60,7 +60,7 @@ def func1():
     ("//option[@value='120198']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='ACCY']").click()
+    driver.find_element_by_xpath("//option[@value='CS']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
@@ -75,13 +75,16 @@ def func1():
         for lab in labs:
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='"+str(lab)+" 120198']")
+                shit2=driver.find_element_by_xpath("//input[@value='35919 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
                 find_drop(35956)
+                find_drop(35919)
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
                 driver.find_element_by_id("crn_id1").send_keys(str(lab))
+                driver.find_element_by_id("crn_id2").send_keys('35919')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 b=True
             except NoSuchElementException:
