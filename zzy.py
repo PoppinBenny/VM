@@ -71,8 +71,8 @@ def func1():
 
     switch=0
     while True:
-        if switch%3==0:
-            driver.implicitly_wait(2)
+        if switch%2==0:
+            driver.implicitly_wait(3)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='66737 120198']")
                 shit2=driver.find_element_by_xpath("//input[@value='68785 120198']")
@@ -97,27 +97,10 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%3==1:
-            driver.implicitly_wait(2)
+        if switch%2==1:
+            driver.implicitly_wait(3)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='63161 120198']")
-                shit1.click()
-                driver.find_element_by_xpath("//input[@value='Register']").click()
-                break
-            except NoSuchElementException:
-                try:
-                    print('no 7 yet, trying again....')
-                    switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[29]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%3==2:
-            driver.implicitly_wait(2)
-            try:
-                shit1=driver.find_element_by_xpath("//input[@value='39543 120198']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
