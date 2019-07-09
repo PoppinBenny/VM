@@ -71,7 +71,7 @@ def func1():
             driver.implicitly_wait(5.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35005 120198']")
-                shit2=driver.find_element_by_xpath("//input[@value='65038 120198']")
+                shit2=driver.find_element_by_xpath("//input[@value='35008 120198']")
                 shit1.click()
                 shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
@@ -88,7 +88,7 @@ def func1():
             driver.implicitly_wait(5.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='35030 120198']")
-                shit2=driver.find_element_by_xpath("//input[@value='65038 120198']")
+                shit2=driver.find_element_by_xpath("//input[@value='33374 120198']")
                 shit1.click()
                 shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
