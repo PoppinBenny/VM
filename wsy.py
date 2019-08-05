@@ -87,7 +87,7 @@ def func1():
                     ("//option[@value='120198']").click()
                     driver.find_element_by_xpath("//input[@value='Submit']").click()
                     driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='FIN']").click()
+                    driver.find_element_by_xpath("//option[@value='ACCY']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
                     driver.find_element_by_xpath("//tbody/tr[4]/td/form/input[@value='View Sections']").click()
@@ -98,7 +98,7 @@ def func1():
         if switch%2==1:
             driver.implicitly_wait(3)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='37403 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='29670 120198']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
