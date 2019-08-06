@@ -38,11 +38,11 @@ def func1():
     driver.implicitly_wait(7.5)
 
     driver.find_element_by_id("netid").send_keys('lidingl2')
-    driver.find_element_by_id("easpass").send_keys('Hlld0217')
+    driver.find_element_by_id("easpass").send_keys('Hlld19970217')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("netid").send_keys('lidingl2')
-    driver.find_element_by_id("easpass").send_keys('Hlld0217')
+    driver.find_element_by_id("easpass").send_keys('Hlld19970217')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
