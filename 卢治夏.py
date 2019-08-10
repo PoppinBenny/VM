@@ -41,6 +41,10 @@ def func1():
     driver.find_element_by_id("easpass").send_keys('19980615BBl!')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
+
+    driver.find_element_by_name("BTN_CONTINUE").click()
+    driver.implicitly_wait(10)
+    
     driver.find_element_by_id("netid").send_keys('zhixial2')
     driver.find_element_by_id("easpass").send_keys('19980615BBl!')
     driver.find_element_by_name("BTN_LOGIN").click()
