@@ -9,8 +9,8 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-disc=[35956,35959,58758,62137,62137,62140,62833,62834,65051,65053,65054,65184]
-lec=[35917,35919]
+disc=[63734,63735,63736,63740,64544,64545,64546,64547,64548]
+lec=[63733,,64513]
 
 if gce:
     options = Options()
@@ -66,7 +66,7 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[12]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[13]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
@@ -88,10 +88,10 @@ def func1():
                 except NoSuchElementException:
                     try:
                         switch+=1
-                        if switch==24:
+                        if switch==18:
                             switch=0
                             driver.back()
-                            driver.find_element_by_xpath("//tbody/tr[12]/td/form/input[@value='View Sections']").click()
+                            driver.find_element_by_xpath("//tbody/tr[13]/td/form/input[@value='View Sections']").click()
                     except NoSuchElementException:
                         time.sleep(30)
                         driver.close()

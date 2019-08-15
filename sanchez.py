@@ -73,12 +73,12 @@ def func1():
                 shit1=driver.find_element_by_xpath("//input[@value='65613 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
-                find_drop(62732)
+                find_drop(64271)
+                find_drop(64683)
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys('64271')
-                driver.find_element_by_id("crn_id2").send_keys('64683')
+                driver.find_element_by_id("crn_id1").send_keys('65613')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
@@ -97,12 +97,12 @@ def func1():
                 shit1=driver.find_element_by_xpath("//input[@value='35711 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
-                find_drop(62732)
+                find_drop(64271)
+                find_drop(64683)
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys('64271')
-                driver.find_element_by_id("crn_id2").send_keys('64683')
+                driver.find_element_by_id("crn_id1").send_keys('35711')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
@@ -119,12 +119,12 @@ def func1():
                 shit1=driver.find_element_by_xpath("//input[@value='62029 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
-                find_drop(62732)
+                find_drop(64271)
+                find_drop(64683)
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys('64271')
-                driver.find_element_by_id("crn_id2").send_keys('64683')
+                driver.find_element_by_id("crn_id1").send_keys('62029')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
@@ -143,3 +143,4 @@ def func1():
 func1()
 
 print('Course selected')
+
