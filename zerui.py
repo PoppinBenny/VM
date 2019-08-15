@@ -10,7 +10,7 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 disc=[63734,63735,63736,63740,64544,64545,64546,64547,64548]
-lec=[63733,,64513]
+lec=[63733,64513]
 
 if gce:
     options = Options()
