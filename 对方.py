@@ -38,11 +38,11 @@ def func1():
     driver.implicitly_wait(7.5)
 
     driver.find_element_by_id("netid").send_keys('yuxifan2')
-    driver.find_element_by_id("easpass").send_keys('6363fanxl;')
+    driver.find_element_by_id("easpass").send_keys('6363fanxI;')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("netid").send_keys('yuxifan2')
-    driver.find_element_by_id("easpass").send_keys('6363fanxl;')
+    driver.find_element_by_id("easpass").send_keys('6363fanxI;')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -68,7 +68,7 @@ def func1():
     while True:
             driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='70812 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='43357 120198']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
