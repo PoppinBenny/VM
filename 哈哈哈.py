@@ -41,6 +41,10 @@ def func1():
     driver.find_element_by_id("easpass").send_keys("Bxw0330!")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
+
+    driver.find_element_by_name("BTN_CONTINUE").click()
+    driver.implicitly_wait(10)
+
     driver.find_element_by_id("netid").send_keys('ay2')
     driver.find_element_by_id("easpass").send_keys("Bxw0330!")
     driver.find_element_by_name("BTN_LOGIN").click()
