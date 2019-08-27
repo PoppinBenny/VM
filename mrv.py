@@ -176,7 +176,7 @@ def func1():
         if switch%7==6:
             driver.implicitly_wait(1)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='66623 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='66620 120198']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
