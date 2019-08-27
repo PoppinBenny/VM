@@ -37,13 +37,13 @@ def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('wenchuh2')
-    driver.find_element_by_id("easpass").send_keys("Hwc2020#")
+    driver.find_element_by_id("netid").send_keys('yimingc3')
+    driver.find_element_by_id("easpass").send_keys("1197748241Dominator")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_id("netid").send_keys('wenchuh2')
-    driver.find_element_by_id("easpass").send_keys("Hwc2020#")
+    driver.find_element_by_id("netid").send_keys('yimingc3')
+    driver.find_element_by_id("easpass").send_keys("1197748241Dominator")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -59,31 +59,63 @@ def func1():
     ("//option[@value='120198']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='ECE']").click()
+    driver.find_element_by_xpath("//option[@value='STAT']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[32]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[13]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
-            driver.implicitly_wait(6)
+        if switch%3==0:
+            driver.implicitly_wait(5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='47765 120198']")
-                shit2=driver.find_element_by_xpath("//input[@value='61939 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='65080 120198']")
                 shit1.click()
-                shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
-                    print('no 52')
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[32]/td/form/input[@value='View Sections']").click()
+                    print('no 54 yet, trying again....')
+                    switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
+        if switch%3==1:
+            driver.implicitly_wait(0.5)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='65613 120198']")
+                shit1.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    print('no 54 yet, trying again....')
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%3==2:
+            driver.implicitly_wait(0.5)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='58798 120198']")
+                shit1.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    print('no 54 yet, trying again....')
+                    switch+=1
+                    driver.back()
+                    driver.find_element_by_xpath("//tbody/tr[13]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        
 
 
 func1()
