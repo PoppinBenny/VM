@@ -37,13 +37,13 @@ def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('ziyangp2')
-    driver.find_element_by_id("easpass").send_keys("87345558Pzy!!")
+    driver.find_element_by_id("netid").send_keys('yilinz5')
+    driver.find_element_by_id("easpass").send_keys("Zyl990412")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_id("netid").send_keys('ziyangp2')
-    driver.find_element_by_id("easpass").send_keys("87345558Pzy!!")
+    driver.find_element_by_id("netid").send_keys('yilinz5')
+    driver.find_element_by_id("easpass").send_keys("Zyl990412")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -59,53 +59,29 @@ def func1():
     ("//option[@value='120198']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='STAT']").click()
+    driver.find_element_by_xpath("//option[@value='ECON']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
     driver.find_element_by_xpath("//tbody/tr[19]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
-        if switch%2==0:
-            driver.implicitly_wait(3)
+            driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='70221 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='70552 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
-                find_drop(60184)
+                find_drop(66623)
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys('70221')
+                driver.find_element_by_id("crn_id1").send_keys('70552')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
                 try:
-                    print('no 51')
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%2==0:
-            driver.implicitly_wait(3)
-            try:
-                shit1=driver.find_element_by_xpath("//input[@value='70223 120198']")
-                driver.find_element_by_xpath("//input[@value='Register']").click()
-                driver.implicitly_wait(7.5)
-                find_drop(60184)
-                driver.implicitly_wait(10)
-                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys('70223')
-                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                break
-            except NoSuchElementException:
-                try:
-                    print('no 51')
-                    switch+=1
+                    print('no 56')
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr[19]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
