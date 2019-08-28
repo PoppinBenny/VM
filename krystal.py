@@ -34,13 +34,11 @@ def find_drop(index):
 
 
 def func1():
-    driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
+    driver.get('https://apps.uillinois.edu/selfservice/')
     driver.implicitly_wait(7.5)
-
-    driver.find_element_by_id("netid").send_keys('hongbin2')
-    driver.find_element_by_id("easpass").send_keys('Srz19970919!')
-    driver.find_element_by_name("BTN_LOGIN").click()
-    driver.implicitly_wait(10)
+    driver.find_element_by_xpath("//*[@id='ctl00_ContentPlaceHolder1_ctl06_pnlTemplatedContent']/div/div/div[2]/a/div[1]/img").click()
+    driver.implicitly_wait(7.5)
+    
     driver.find_element_by_id("netid").send_keys('hongbin2')
     driver.find_element_by_id("easpass").send_keys('Srz19970919!')
     driver.find_element_by_name("BTN_LOGIN").click()
