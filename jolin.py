@@ -35,6 +35,7 @@ def find_drop(index):
 
 def func1():
     driver.get('https://apps.uillinois.edu/selfservice/')
+    driver.get('https://apps.uillinois.edu/selfservice/')
     driver.implicitly_wait(7.5)
     driver.find_element_by_xpath("//*[@id='ctl00_ContentPlaceHolder1_ctl06_pnlTemplatedContent']/div/div/div[2]/a/div[1]/img").click()
     driver.implicitly_wait(7.5)
