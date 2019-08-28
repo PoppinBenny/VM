@@ -117,10 +117,10 @@ def func1():
                     ("//option[@value='120198']").click()
                     driver.find_element_by_xpath("//input[@value='Submit']").click()
                     driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='ATMS']").click()
+                    driver.find_element_by_xpath("//option[@value='FIN']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//tbody/tr[4]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr[6]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
