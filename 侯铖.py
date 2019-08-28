@@ -36,13 +36,13 @@ def find_drop(index):
 def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
-
-    driver.find_element_by_id("netid").send_keys('jz46')
-    driver.find_element_by_id("easpass").send_keys("QWEasdzxc123.")
+    
+    driver.find_element_by_id("netid").send_keys('chengh2')
+    driver.find_element_by_id("easpass").send_keys('CJnimei123a')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_id("netid").send_keys('jz46')
-    driver.find_element_by_id("easpass").send_keys("QWEasdzxc123.")
+    driver.find_element_by_id("netid").send_keys('chengh2')
+    driver.find_element_by_id("easpass").send_keys('CJnimei123a')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -58,32 +58,64 @@ def func1():
     ("//option[@value='120198']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='HIST']").click()
+    driver.find_element_by_xpath("//option[@value='STAT']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[9]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[22]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
-            driver.implicitly_wait(6)
+        if switch%3==0:
+            driver.implicitly_wait(2)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='32483 120198']")
-                shit2=driver.find_element_by_xpath("//input[@value='32481 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='52527 120198']")
                 shit1.click()
-                shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
-                    print('no 42 yet, trying again....')
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[9]/td/form/input[@value='View Sections']").click()
+                    print('no 40 yet, trying again....')
+                    switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
-        
+        if switch%3==1:
+            driver.implicitly_wait(1)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='60184 120198']")
+                shit1.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    print('no 40 yet, trying again....')
+                    switch+=1
+                    driver.back()
+                    driver.find_element_by_xpath("//tbody/tr[5]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%3==1:
+            driver.implicitly_wait(3)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='68770 120198']")
+                shit1.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    print('no 40 yet, trying again....')
+                    switch+=1
+                    driver.back()
+                    driver.find_element_by_xpath("//tbody/tr[22]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
 
 
 func1()
