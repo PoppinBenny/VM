@@ -97,6 +97,7 @@ def func1():
                     driver.close()
                     func1()
         if switch%2==1:'''
+        if switch==0:
             driver.implicitly_wait(6)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='58798 120198']")
