@@ -62,7 +62,7 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[101]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[10]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
