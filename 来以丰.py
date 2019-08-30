@@ -72,7 +72,9 @@ def func1():
             driver.implicitly_wait(5.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='66603 120198']")
+                shit2=driver.find_element_by_xpath("//input[@value='70160 120198']")
                 shit1.click()
+                shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
@@ -87,7 +89,7 @@ def func1():
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='64271 120198']")
-                shit2=driver.find_element_by_xpath("//input[@value='70160 120198']")
+                shit2=driver.find_element_by_xpath("//input[@value='64684 120198']")
                 shit1.click()
                 shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
