@@ -73,9 +73,15 @@ def func1():
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='66603 120198']")
                 shit2=driver.find_element_by_xpath("//input[@value='70160 120198']")
-                shit1.click()
-                shit2.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
+                driver.implicitly_wait(7.5)
+                find_drop(66576)
+                driver.implicitly_wait(10)
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(10)
+                driver.find_element_by_id("crn_id1").send_keys('66603')
+                driver.find_element_by_id("crn_id1").send_keys('70160')
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
                 try:
@@ -90,9 +96,13 @@ def func1():
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='64271 120198']")
                 shit2=driver.find_element_by_xpath("//input[@value='64684 120198']")
-                shit1.click()
-                shit2.click()
-                driver.find_element_by_xpath("//input[@value='Register']").click()
+                find_drop(67291)
+                driver.implicitly_wait(10)
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(10)
+                driver.find_element_by_id("crn_id1").send_keys('64271')
+                driver.find_element_by_id("crn_id1").send_keys('64684')
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
                 try:
