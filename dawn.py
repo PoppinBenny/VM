@@ -76,7 +76,7 @@ def func1():
                 try:
                     print('no 11')
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[23]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr[24]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
