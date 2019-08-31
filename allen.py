@@ -154,7 +154,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        
+
 
 
 func1()
