@@ -37,13 +37,13 @@ def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('xinyanz3')
-    driver.find_element_by_id("easpass").send_keys("Zxy_19970927")
+    driver.find_element_by_id("netid").send_keys('letianz2')
+    driver.find_element_by_id("easpass").send_keys("Zlt980112@")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_id("netid").send_keys('xinyanz3')
-    driver.find_element_by_id("easpass").send_keys("Zxy_19970927")
+    driver.find_element_by_id("netid").send_keys('letianz2')
+    driver.find_element_by_id("easpass").send_keys("Zlt980112@")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -75,7 +75,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no 3 yet, trying again....')
+                    print('no 6 yet, trying again....')
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr[28]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
