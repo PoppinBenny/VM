@@ -80,7 +80,7 @@ def func1():
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
                 driver.find_element_by_id("crn_id1").send_keys('66603')
-                driver.find_element_by_id("crn_id1").send_keys('70160')
+                driver.find_element_by_id("crn_id2").send_keys('70160')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
@@ -101,7 +101,7 @@ def func1():
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
                 driver.find_element_by_id("crn_id1").send_keys('64271')
-                driver.find_element_by_id("crn_id1").send_keys('64684')
+                driver.find_element_by_id("crn_id2").send_keys('64684')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
@@ -114,7 +114,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        
+
 
 
 func1()
