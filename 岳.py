@@ -69,7 +69,7 @@ def func1():
     while True:
             driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='40068 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='40086 120198']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
