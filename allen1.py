@@ -71,7 +71,7 @@ def func1():
             driver.implicitly_wait(4.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='66445 120198']")
-                shit2=driver.find_element_by_xpath("//input[@value='72093 120198']")
+                shit2=driver.find_element_by_xpath("//input[@value='72092 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
                 find_drop(40091)
@@ -80,7 +80,7 @@ def func1():
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
                 driver.find_element_by_id("crn_id1").send_keys('66445')
-                driver.find_element_by_id("crn_id1").send_keys('72093')
+                driver.find_element_by_id("crn_id1").send_keys('72092')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
@@ -95,7 +95,7 @@ def func1():
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='66445 120198']")
-                shit2=driver.find_element_by_xpath("//input[@value='66553 120198']")
+                shit2=driver.find_element_by_xpath("//input[@value='66455 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
                 find_drop(40091)
@@ -104,7 +104,7 @@ def func1():
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
                 driver.find_element_by_id("crn_id1").send_keys('66445')
-                driver.find_element_by_id("crn_id1").send_keys('66553')
+                driver.find_element_by_id("crn_id1").send_keys('66455')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
@@ -119,7 +119,7 @@ def func1():
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='66445 120198']")
-                shit2=driver.find_element_by_xpath("//input[@value='72202 120198']")
+                shit2=driver.find_element_by_xpath("//input[@value='72201 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
                 find_drop(40091)
@@ -128,7 +128,7 @@ def func1():
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
                 driver.find_element_by_id("crn_id1").send_keys('66445')
-                driver.find_element_by_id("crn_id1").send_keys('72202')
+                driver.find_element_by_id("crn_id1").send_keys('72201')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
@@ -143,7 +143,7 @@ def func1():
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='66445 120198']")
-                shit2=driver.find_element_by_xpath("//input[@value='72095 120198']")
+                shit2=driver.find_element_by_xpath("//input[@value='72094 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
                 find_drop(40091)
@@ -152,7 +152,7 @@ def func1():
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
                 driver.find_element_by_id("crn_id1").send_keys('66445')
-                driver.find_element_by_id("crn_id1").send_keys('72095')
+                driver.find_element_by_id("crn_id1").send_keys('72094')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
