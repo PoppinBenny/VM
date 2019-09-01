@@ -58,11 +58,11 @@ def func1():
     ("//option[@value='120198']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='ECON']").click()
+    driver.find_element_by_xpath("//option[@value='MATH']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[21]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[30]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     while True:
@@ -76,12 +76,12 @@ def func1():
                 try:
                     print('no 60 yet, trying again....')
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[21]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr[30]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
-        
+
 
 
 func1()
