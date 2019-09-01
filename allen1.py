@@ -70,7 +70,7 @@ def func1():
         if switch%4==0:
             driver.implicitly_wait(4.5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='66542 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='66445 120198']")
                 shit2=driver.find_element_by_xpath("//input[@value='72093 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
@@ -79,7 +79,7 @@ def func1():
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys('66542')
+                driver.find_element_by_id("crn_id1").send_keys('66445')
                 driver.find_element_by_id("crn_id1").send_keys('72093')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
@@ -94,7 +94,7 @@ def func1():
         if switch%4==1:
             driver.implicitly_wait(0.5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='66542 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='66445 120198']")
                 shit2=driver.find_element_by_xpath("//input[@value='66553 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
@@ -103,7 +103,7 @@ def func1():
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys('66542')
+                driver.find_element_by_id("crn_id1").send_keys('66445')
                 driver.find_element_by_id("crn_id1").send_keys('66553')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
@@ -118,7 +118,7 @@ def func1():
         if switch%4==2:
             driver.implicitly_wait(0.5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='66542 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='66445 120198']")
                 shit2=driver.find_element_by_xpath("//input[@value='72202 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
@@ -127,7 +127,7 @@ def func1():
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys('66542')
+                driver.find_element_by_id("crn_id1").send_keys('66445')
                 driver.find_element_by_id("crn_id1").send_keys('72202')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
@@ -142,7 +142,7 @@ def func1():
         if switch%4==3:
             driver.implicitly_wait(0.5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='66542 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='66445 120198']")
                 shit2=driver.find_element_by_xpath("//input[@value='72095 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
@@ -151,7 +151,7 @@ def func1():
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys('66542')
+                driver.find_element_by_id("crn_id1").send_keys('66445')
                 driver.find_element_by_id("crn_id1").send_keys('72095')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
