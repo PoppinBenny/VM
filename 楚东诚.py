@@ -94,7 +94,7 @@ def func1():
         if switch%2==1:
             driver.implicitly_wait(0.5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='72281 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='40083 120198']")
                 shit2=driver.find_element_by_xpath("//input[@value='71541 120198']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
@@ -102,7 +102,7 @@ def func1():
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys('72281')
+                driver.find_element_by_id("crn_id1").send_keys('40083')
                 driver.find_element_by_id("crn_id1").send_keys('51541')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
