@@ -70,14 +70,20 @@ def func1():
             driver.implicitly_wait(6)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='41268 120198']")
-                shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
+                driver.implicitly_wait(7.5)
+                find_drop(41256)
+                driver.implicitly_wait(10)
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(10)
+                driver.find_element_by_id("crn_id1").send_keys('41268')
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
                 try:
-                    print('no 23 yet, trying again....')
+                    print('no 23')
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[8]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr[15]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
