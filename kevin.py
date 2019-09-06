@@ -37,13 +37,13 @@ def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('td2')
-    driver.find_element_by_id("easpass").send_keys("105024077Aa")
+    driver.find_element_by_id("netid").send_keys('hyl2')
+    driver.find_element_by_id("easpass").send_keys("Mrkevinlin123")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_id("netid").send_keys('td2')
-    driver.find_element_by_id("easpass").send_keys("105024077Aa")
+    driver.find_element_by_id("netid").send_keys('hyl2')
+    driver.find_element_by_id("easpass").send_keys("Mrkevinlin123")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -69,7 +69,7 @@ def func1():
     while True:
             driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='30109 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='40086 120198']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
