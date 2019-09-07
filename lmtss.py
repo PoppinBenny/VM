@@ -37,13 +37,13 @@ def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('yunyij2')
-    driver.find_element_by_id("easpass").send_keys("ONE1998jyy")
+    driver.find_element_by_id("netid").send_keys('jianc2')
+    driver.find_element_by_id("easpass").send_keys("990215~Cj")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_id("netid").send_keys('yunyij2')
-    driver.find_element_by_id("easpass").send_keys("ONE1998jyy")
+    driver.find_element_by_id("netid").send_keys('jianc2')
+    driver.find_element_by_id("easpass").send_keys("990215~Cj")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -73,7 +73,7 @@ def func1():
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
                 find_drop(57705)
-                find_drop(66221)
+                find_drop(66224)
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
@@ -89,7 +89,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        
+
 
 
 func1()
