@@ -70,14 +70,8 @@ def func1():
             driver.implicitly_wait(6)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='51681 120198']")
+                shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
-                driver.implicitly_wait(7.5)
-                find_drop(33991)
-                driver.implicitly_wait(10)
-                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys('51681')
-                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
                 try:
