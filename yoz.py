@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 import os,time
 from selenium.common.exceptions import TimeoutException
 
-gce=True
+gce=False
 
 if gce:
     options = Options()
@@ -37,13 +37,13 @@ def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('kaiting3')
-    driver.find_element_by_id("easpass").send_keys("Piwatanabemayu940326(")
+    driver.find_element_by_id("netid").send_keys('yujiaz7')
+    driver.find_element_by_id("easpass").send_keys("YOZhy1512")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_id("netid").send_keys('kaiting3')
-    driver.find_element_by_id("easpass").send_keys("Piwatanabemayu940326(")
+    driver.find_element_by_id("netid").send_keys('yujiaz7')
+    driver.find_element_by_id("easpass").send_keys("YOZhy1512")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -70,8 +70,14 @@ def func1():
             driver.implicitly_wait(6)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='51681 120198']")
-                shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
+                driver.implicitly_wait(7.5)
+                find_drop(59390)
+                driver.implicitly_wait(10)
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(10)
+                driver.find_element_by_id("crn_id1").send_keys('51681')
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
                 try:
