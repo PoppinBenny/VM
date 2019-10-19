@@ -69,6 +69,7 @@ def func1():
     switch=0
     while True:
         if switch%4==0:
+            print(1)
             driver.implicitly_wait(1.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='40160 120198']")
