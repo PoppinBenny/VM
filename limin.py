@@ -68,7 +68,7 @@ def func1():
 
     switch=0
     while True:
-        if switch%7==0:
+        if switch%8==0:
             print(3)
             driver.implicitly_wait(3)
             try:
@@ -97,7 +97,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==1:
+        if switch%8==1:
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='57009 120198']")
@@ -111,7 +111,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==2:
+        if switch%8==2:
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='57057 120198']")
@@ -125,7 +125,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==3:
+        if switch%8==3:
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='57058 120198']")
@@ -139,7 +139,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==4:
+        if switch%8==4:
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='57060 120198']")
@@ -153,7 +153,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==5:
+        if switch%8==5:
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='57061 120198']")
@@ -167,10 +167,38 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==6:
+        if switch%8==6:
             driver.implicitly_wait(0.5)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='60791 120198']")
+                shit1.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_name("p_term").find_element_by_xpath\
+                    ("//option[@value='120198']").click()
+                    driver.find_element_by_xpath("//input[@value='Submit']").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_xpath("//option[@value='KIN']").click()
+                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_xpath("//tbody/tr[21]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%8==7:
+            driver.implicitly_wait(0.5)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='64837 120198']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
