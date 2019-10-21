@@ -59,17 +59,17 @@ def func1():
     ("//option[@value='120198']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='DANC']").click()
+    driver.find_element_by_xpath("//option[@value='GEOG']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_xpath("//tbody/tr[3]/td/form/input[@value='View Sections']").click()
+    driver.find_element_by_xpath("//tbody/tr[4]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     while True:
             driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='68289 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='67829 120198']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
@@ -77,7 +77,7 @@ def func1():
                 try:
                     print('no 16')
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr[3]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr[4]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
