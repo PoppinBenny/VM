@@ -38,12 +38,12 @@ def func1():
     driver.implicitly_wait(7.5)
 
     driver.find_element_by_id("netid").send_keys('jt15')
-    driver.find_element_by_id("easpass").send_keys("TJc991007")
+    driver.find_element_by_id("easpass").send_keys("TJc19991007")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
     driver.find_element_by_id("netid").send_keys('jt15')
-    driver.find_element_by_id("easpass").send_keys("TJc991007")
+    driver.find_element_by_id("easpass").send_keys("TJc19991007")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -83,7 +83,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no 4')
+                    print('no 3')
                     switch+=1
                     driver.back()
                     driver.back()
@@ -118,7 +118,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no 4')
+                    print('no 3')
                     switch+=1
                     driver.back()
                     driver.back()
