@@ -59,7 +59,7 @@ def func1():
     ("//option[@value='120198']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='GEOG']").click()
+    driver.find_element_by_xpath("//option[@value='HDFS']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
@@ -69,7 +69,7 @@ def func1():
     while True:
             driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='67829 120198']")
+                shit1=driver.find_element_by_xpath("//input[@value='71359 120198']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
