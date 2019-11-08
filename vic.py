@@ -180,7 +180,7 @@ def func1():
                     driver.find_element_by_xpath("//option[@value='STAT']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//tbody/tr["+i1+"]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
