@@ -8,7 +8,9 @@ import os,time
 from selenium.common.exceptions import TimeoutException
 
 gce=True
-major='STAT'
+major='ARTD'
+xuhao1='402'
+crn1='50477'
 
 if gce:
     options = Options()
@@ -52,13 +54,13 @@ def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('wenchuh2')
-    driver.find_element_by_id("easpass").send_keys("Hwc2020#")
+    driver.find_element_by_id("netid").send_keys('ningyuy2')
+    driver.find_element_by_id("easpass").send_keys("Yu19980530.")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
-    driver.find_element_by_id("netid").send_keys('wenchuh2')
-    driver.find_element_by_id("easpass").send_keys("Hwc2020#")
+    driver.find_element_by_id("netid").send_keys('ningyuy2')
+    driver.find_element_by_id("easpass").send_keys("Yu19980530.")
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -78,16 +80,22 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    i1=find('385')
+    i1=find(xuhao1)
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     while True:
             driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='63553 120201']")
-                shit1.click()
+                shit1=driver.find_element_by_xpath("//input[@value='"+crn1+" 120201']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
+                driver.implicitly_wait(7.5)
+                find_drop(67168)
+                driver.implicitly_wait(10)
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                driver.implicitly_wait(10)
+                driver.find_element_by_id("crn_id1").send_keys(crn1)
+                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
                 try:
@@ -98,6 +106,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
+
 
 func1()
 
