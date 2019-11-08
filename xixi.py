@@ -102,7 +102,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no 2')
+                    print('no 1')
                     switch+=1
                     driver.back()
                     driver.back()
@@ -139,7 +139,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no 2')
+                    print('no 1')
                     switch+=1
                     driver.back()
                     driver.back()
