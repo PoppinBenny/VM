@@ -7,7 +7,7 @@ from selenium.common.exceptions import NoSuchElementException
 import os,time
 from selenium.common.exceptions import TimeoutException
 
-gce=False
+gce=True
 major='STAT'
 xuhao1='425'
 crn1='61877'
