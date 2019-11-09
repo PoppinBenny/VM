@@ -10,18 +10,10 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major1='STAT'
-xuhao1='448'
-crn1='67124'
-crn11='67126'
+xuhao=['448','440','443']
+crn=['67124','67126','56929','70358']
 
-xuhao2='440'
-crn2='56929'
-
-xuhao3='443'
-crn3='70358'
-
-drop1='33998'
-
+drops=['29988'] #要加引号
 
 account='yipinl2'
 password='Yp961227'
@@ -61,9 +53,24 @@ def find(A):
     except NoSuchElementException:
         print('Course index does not exist')
         driver.quit()
-        
-    return i 
 
+    return i
+
+def normal(crn):
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    shit1.click()
+    driver.find_element_by_xpath("//input[@value='Register']").click()
+
+def drop_mode(crn,drop):
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    driver.find_element_by_xpath("//input[@value='Register']").click()
+    driver.implicitly_wait(7.5)
+    find_drop(drop)
+    driver.implicitly_wait(10)
+    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+    driver.implicitly_wait(10)
+    driver.find_element_by_id("crn_id1").send_keys(crn)
+    driver.find_element_by_xpath("//input[@value='Submit Changes']")
 
 def func1():
     driver.get('https://eas.admin.uillinois.edu/eas/servlet/EasLogin?redirect=https://webprod.admin.uillinois.edu/ssa/servlet/SelfServiceLogin?appName=edu.uillinois.aits.SelfServiceLogin&dad=BANPROD1')
@@ -83,6 +90,29 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
+
+    if len(drops)!=0:
+        for drop in drops:
+            driver.find_element_by_link_text("Add/Drop Classes").click()
+            driver.implicitly_wait(10)
+            driver.find_element_by_link_text("I Agree to the Above Statement").click()
+            driver.implicitly_wait(10)
+            driver.find_element_by_xpath("//input[@value='Submit']").click()
+            driver.implicitly_wait(10)
+            i=2
+            try:
+                while True:
+                    temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+                    if drop==temp:
+                        driver.back()
+                        driver.back()
+                        driver.back()
+                        break
+                    i+=1
+            except NoSuchElementException:
+                print('Drop index does not exist')
+                driver.quit()
+
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
@@ -95,71 +125,56 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    i1=find(xuhao1)
-    i2=0
-    i3=0
+    i1=find(xuhao[0])
+    i2=find(xuhao[1])
+    i3=find(xuhao[2])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
     while True:
         if switch%4==0:
-                driver.implicitly_wait(1.5)
+            driver.implicitly_wait(1.5)
+            try:
+                if len(drops)==0:
+                    normal(crn[0])
+                else:
+                    drop_mode(crn[0],drop[0])
+                break
+            except NoSuchElementException:
                 try:
-                    shit1=driver.find_element_by_xpath("//input[@value='"+crn1+" 120201']")
-                    driver.find_element_by_xpath("//input[@value='Register']").click()
-                    driver.implicitly_wait(7.5)
-                    find_drop(drop1)
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_id("crn_id1").send_keys(crn1)
-                    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                    break
+                    print('no '+n)
+                    switch+=1
                 except NoSuchElementException:
-                    try:
-                        print('no '+n)
-                        switch+=1
-                    except NoSuchElementException:
-                        time.sleep(30)
-                        driver.close()
-                        func1()
+                    time.sleep(30)
+                    driver.close()
+                    func1()
         if switch%4==1:
-                driver.implicitly_wait(1.5)
+            driver.implicitly_wait(1.5)
+            try:
+                if len(drops)==0:
+                    normal(crn[1])
+                else:
+                    drop_mode(crn[1],drop[0])
+                break
+            except NoSuchElementException:
                 try:
-                    shit1=driver.find_element_by_xpath("//input[@value='"+crn11+" 120201']")
-                    driver.find_element_by_xpath("//input[@value='Register']").click()
-                    driver.implicitly_wait(7.5)
-                    find_drop(drop1)
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_id("crn_id1").send_keys(crn11)
-                    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                    break
+                    switch+=1
+                    driver.back()
+                    if i2==0:
+                        i2=find(xuhao2)
+                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
-                    try:
-                        switch+=1
-                        driver.back()
-                        if i2==0:
-                            i2=find(xuhao2)
-                        driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
-                    except NoSuchElementException:
-                        time.sleep(30)
-                        driver.close()
-                        unc1()
+                    time.sleep(30)
+                    driver.close()
+                    unc1()
         if switch%4==2:
             driver.implicitly_wait(1.5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='"+crn2+" 120201']")
-                driver.find_element_by_xpath("//input[@value='Register']").click()
-                driver.implicitly_wait(7.5)
-                find_drop(drop1)
-                driver.implicitly_wait(10)
-                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys(crn2)
-                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                if len(drops)==0:
+                    normal(crn[2])
+                else:
+                    drop_mode(crn[2],drop[0])
                 break
             except NoSuchElementException:
                 try:
@@ -175,15 +190,10 @@ def func1():
         if switch%4==3:
             driver.implicitly_wait(1.5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='"+crn3+" 120201']")
-                driver.find_element_by_xpath("//input[@value='Register']").click()
-                driver.implicitly_wait(7.5)
-                find_drop(drop1)
-                driver.implicitly_wait(10)
-                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys(crn3)
-                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                if len(drops)==0:
+                    normal(crn[3])
+                else:
+                    drop_mode(crn[3],drop[0])
                 break
             except NoSuchElementException:
                 try:
