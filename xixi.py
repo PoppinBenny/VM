@@ -131,6 +131,7 @@ def func1():
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 driver.implicitly_wait(7.5)
                 find_drop(31217)
+                find_drop(31252)
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
