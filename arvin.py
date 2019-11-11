@@ -140,7 +140,7 @@ def func1():
                 if len(drops)==0:
                     normal(crn[0])
                 else:
-                    drop_mode(crn[0],drop[0])
+                    drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
@@ -156,7 +156,7 @@ def func1():
                 if len(drops)==0:
                     normal(crn[1])
                 else:
-                    drop_mode(crn[1],drop[0])
+                    drop_mode(crn[1],drops[0])
                 break
             except NoSuchElementException:
                 try:
@@ -175,7 +175,7 @@ def func1():
                 if len(drops)==0:
                     normal(crn[2])
                 else:
-                    drop_mode(crn[2],drop[0])
+                    drop_mode(crn[2],drops[0])
                 break
             except NoSuchElementException:
                 try:
@@ -194,7 +194,7 @@ def func1():
                 if len(drops)==0:
                     normal(crn[3])
                 else:
-                    drop_mode(crn[3],drop[0])
+                    drop_mode(crn[3],drops[0])
                 break
             except NoSuchElementException:
                 try:
@@ -211,7 +211,7 @@ def func1():
                 if len(drops)==0:
                     normal(crn[4])
                 else:
-                    drop_mode(crn[4],drop[0])
+                    drop_mode(crn[4],drops[0])
                 break
             except NoSuchElementException:
                 try:
