@@ -70,7 +70,7 @@ def drop_mode(crn,drop):
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn)
-    driver.find_element_by_xpath("//input[@value='Submit Changes']")
+    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
 
 
 def func1():
