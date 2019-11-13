@@ -198,7 +198,7 @@ def func1():
         if switch%5==4:
             driver.implicitly_wait(1.5)
             try:
-                drop_mode(crn[4],'33494')
+                normal(crn[4])
                 break
             except NoSuchElementException:
                 try:
