@@ -9,13 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major1='ACCY'
-xuhao1='303'
-crn1='30276'
+major1='STAT'
+xuhao1='432'
+crn=['67119']
 
-account='honglai2'
-password='rHL86200759'
-n='3'
+drops=[] #要加引号
+
+account='xiaolin7'
+password='Ann!19980705'
+n='1'
 
 if gce:
     options = Options()
@@ -37,7 +39,7 @@ def find_drop(index):
                 break
             i+=1
     except NoSuchElementException:
-        print('Index does not exist')
+        print('Drop index does not exist')
         driver.quit()
 
 def find(A):
@@ -49,10 +51,26 @@ def find(A):
                 break
             i+=1
     except NoSuchElementException:
-        print('Index does not exist')
+        print('Course index does not exist')
         driver.quit()
-        
+
     return i
+
+def normal(crn):
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    shit1.click()
+    driver.find_element_by_xpath("//input[@value='Register']").click()
+
+def drop_mode(crn,drop):
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    driver.find_element_by_xpath("//input[@value='Register']").click()
+    driver.implicitly_wait(7.5)
+    find_drop(drop)
+    driver.implicitly_wait(10)
+    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+    driver.implicitly_wait(10)
+    driver.find_element_by_id("crn_id1").send_keys(crn)
+    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
 
 
 def func1():
@@ -73,6 +91,29 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
+
+    if len(drops)!=0:
+        for drop in drops:
+            driver.find_element_by_link_text("Add/Drop Classes").click()
+            driver.implicitly_wait(10)
+            driver.find_element_by_link_text("I Agree to the Above Statement").click()
+            driver.implicitly_wait(10)
+            driver.find_element_by_xpath("//input[@value='Submit']").click()
+            driver.implicitly_wait(10)
+            i=2
+            try:
+                while True:
+                    temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+                    if drop==temp:
+                        driver.back()
+                        driver.back()
+                        driver.back()
+                        break
+                    i+=1
+            except NoSuchElementException:
+                print('Drop index does not exist')
+                driver.quit()
+
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
@@ -92,9 +133,10 @@ def func1():
     while True:
             driver.implicitly_wait(6)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='"+crn1+" 120201']")
-                shit1.click()
-                driver.find_element_by_xpath("//input[@value='Register']").click()
+                if len(drops)==0:
+                    normal(crn[0])
+                else:
+                    drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
@@ -105,7 +147,6 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-
 
 
 func1()
