@@ -10,8 +10,8 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major1='STAT'
-xuhao1='425'
-crn1='50354'
+xuhao1='448'
+crn=['67124','67126']
 
 account='yuw5'
 password='Abc8055163'
@@ -89,16 +89,34 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
-            driver.implicitly_wait(6)
+        if switch%2==0:
+            driver.implicitly_wait(5.5)
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='"+crn1+" 120201']")
+                shit1=driver.find_element_by_xpath("//input[@value='"+crn[0]+" 120201']")
                 shit1.click()
                 driver.find_element_by_xpath("//input[@value='Register']").click()
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%2==1:
+            driver.implicitly_wait(0.5)
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='"+crn[1]+" 120201']")
+                shit1.click()
+                driver.find_element_by_xpath("//input[@value='Register']").click()
+                break
+            except NoSuchElementException:
+                try:
+                    print('no '+n)
+                    switch+=1
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
