@@ -10,8 +10,8 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major1='STAT'
-xuhao=['448','440','443']
-crn=['67124','67126','56929','70358']
+xuhao=['440','443']
+crn=['56929','70358']
 
 drops=[] #要加引号
 
@@ -129,14 +129,13 @@ def func1():
 
     i1=find(xuhao[0])
     i2=find(xuhao[1])
-    i3=find(xuhao[2])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
     while True:
-        if switch%4==0:
-            driver.implicitly_wait(2.5)
+        if switch%2==0:
+            driver.implicitly_wait(3)
             try:
                 normal(crn[0])
                 break
@@ -144,46 +143,16 @@ def func1():
                 try:
                     print('no '+n)
                     switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%4==1:
-            driver.implicitly_wait(0.5)
-            try:
-                normal(crn[1])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
                     driver.back()
-                    if i2==0:
-                        i2=find(xuhao2)
                     driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
-                    unc1()
-        if switch%4==2:
-            driver.implicitly_wait(1.5)
-            try:
-                normal(crn[2])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                    driver.back()
-                    if i3==0:
-                        i3=find(xuhao3)
-                    driver.find_element_by_xpath("//tbody/tr["+str(i3)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
                     func1()
-        if switch%4==3:
-            driver.implicitly_wait(1.5)
+        if switch%2==1:
+            driver.implicitly_wait(3)
             try:
-                normal(crn[3])
+                normal(crn[1])
                 break
             except NoSuchElementException:
                 try:
@@ -193,7 +162,7 @@ def func1():
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
-                    func1()
+                    unc1()
 
 
 func1()
