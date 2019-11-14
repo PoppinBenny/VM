@@ -135,7 +135,7 @@ def func1():
     switch=0
     while True:
         if switch%3==0:
-            driver.implicitly_wait(2)
+            driver.implicitly_wait(0.5)
             try:
                 drop_mode(crn[0],'67124')
                 break
@@ -150,7 +150,7 @@ def func1():
                     driver.close()
                     func1()
         if switch%3==1:
-            driver.implicitly_wait(2)
+            driver.implicitly_wait(2.5)
             try:
                 normal(crn[1])
                 break
