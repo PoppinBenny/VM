@@ -132,6 +132,7 @@ def func1():
 
     i1=find(xuhao1)
     i2=0
+    i3=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
