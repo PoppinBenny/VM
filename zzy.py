@@ -11,8 +11,7 @@ gce=True
 
 major1='ACCY'
 xuhao1='518'
-xuhao2='575'
-crn=['64808','64809','70106','70206','66492','66493']
+crn=['64808','64809']
 
 drops=[] #要加引号
 
@@ -128,14 +127,13 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao1)
-    i2=find(xuhao2)
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
     while True:
-        if switch%6==0:
-            driver.implicitly_wait(2.5)
+        if switch%2==0:
+            driver.implicitly_wait(5.5)
             try:
                 if len(drops)==0:
                     normal(crn[0])
@@ -150,75 +148,13 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%6==1:
+        if switch%2==1:
             driver.implicitly_wait(0.5)
             try:
                 if len(drops)==0:
                     normal(crn[1])
                 else:
                     drop_mode(crn[1],drops[0])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%6==2:
-            driver.implicitly_wait(2.5)
-            try:
-                if len(drops)==0:
-                    normal(crn[2])
-                else:
-                    drop_mode(crn[2],drops[0])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%6==3:
-            driver.implicitly_wait(0.1)
-            try:
-                if len(drops)==0:
-                    normal(crn[3])
-                else:
-                    drop_mode(crn[3],drops[0])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%6==4:
-            driver.implicitly_wait(0.1)
-            try:
-                if len(drops)==0:
-                    normal(crn[4])
-                else:
-                    drop_mode(crn[4],drops[0])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%6==5:
-            driver.implicitly_wait(0.1)
-            try:
-                if len(drops)==0:
-                    normal(crn[5])
-                else:
-                    drop_mode(crn[5],drops[0])
                 break
             except NoSuchElementException:
                 try:
