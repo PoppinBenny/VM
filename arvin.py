@@ -134,8 +134,8 @@ def func1():
 
     switch=0
     while True:
-        if switch%3==0:
-            driver.implicitly_wait(0.5)
+        if switch%2==0:
+            driver.implicitly_wait(3)
             try:
                 drop_mode(crn[0],'67124')
                 break
@@ -149,8 +149,8 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%3==1:
-            driver.implicitly_wait(2.5)
+        if switch%2==1:
+            driver.implicitly_wait(3)
             try:
                 drop_mode(crn[1],'36161')
                 break
@@ -159,25 +159,11 @@ def func1():
                     print('no '+n)
                     switch+=1
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i3)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%3==2:
-            driver.implicitly_wait(2)
-            try:
-                drop_mode(crn[2],'36161')
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                    driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
-                    unc1()
+                    func1()
 
 
 func1()
