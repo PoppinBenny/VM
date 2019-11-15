@@ -10,8 +10,8 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major1='STAT'
-xuhao=['448','440','426']
-crn=['67126','56929','36179']
+xuhao=['440','426']
+crn=['56929','36179']
 
 drops=[] #要加引号
 
@@ -132,32 +132,14 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
-        if switch%2==0:
-            driver.implicitly_wait(3)
+            driver.implicitly_wait(6)
             try:
-                drop_mode(crn[0],'67124')
+                drop_mode(crn[0],'36161')
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%2==1:
-            driver.implicitly_wait(3)
-            try:
-                drop_mode(crn[1],'36161')
-                break
-            except NoSuchElementException:
-                try:
-                    print('no '+n)
-                    switch+=1
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:

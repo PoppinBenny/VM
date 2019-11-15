@@ -10,9 +10,9 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major1='STAT'
-xuhao1='440'
-xuhao2='425'
-crn=['56929','50354']
+xuhao1='425'
+xuhao2='432'
+crn=['50354','67119']
 
 drops=[] #要加引号
 
