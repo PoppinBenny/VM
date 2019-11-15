@@ -127,8 +127,6 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao[0])
-    i2=find(xuhao[1])
-    i3=find(xuhao[2])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
