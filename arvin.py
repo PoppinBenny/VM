@@ -10,8 +10,8 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major1='STAT'
-xuhao=['448','440','443']
-crn=['67126','56929','70358']
+xuhao=['448','440','426']
+crn=['67126','56929','36179']
 
 drops=[] #要加引号
 
@@ -152,7 +152,7 @@ def func1():
         if switch%3==1:
             driver.implicitly_wait(2.5)
             try:
-                normal(crn[1])
+                drop_mode(crn[1],'36161')
                 break
             except NoSuchElementException:
                 try:
@@ -167,7 +167,7 @@ def func1():
         if switch%3==2:
             driver.implicitly_wait(2)
             try:
-                normal(crn[2])
+                drop_mode(crn[2],'36161')
                 break
             except NoSuchElementException:
                 try:
