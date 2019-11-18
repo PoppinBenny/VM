@@ -11,7 +11,7 @@ gce=True
 
 major1='DANC'
 xuhao1='100'
-crn=['63422','70302','63899','70303']
+crn=['70303']
 
 drops=['30891'] #要加引号
 
@@ -130,10 +130,8 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
-        if switch%4==0:
-            driver.implicitly_wait(5.5)
+            driver.implicitly_wait(6)
             try:
                 if len(drops)==0:
                     normal(crn[0])
@@ -142,53 +140,6 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no '+n)
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%4==1:
-            driver.implicitly_wait(0.1)
-            try:
-                if len(drops)==0:
-                    normal(crn[1])
-                else:
-                    drop_mode(crn[1],drops[0])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%4==2:
-            driver.implicitly_wait(0.1)
-            try:
-                if len(drops)==0:
-                    normal(crn[2])
-                else:
-                    drop_mode(crn[2],drops[0])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%4==3:
-            driver.implicitly_wait(0.1)
-            try:
-                if len(drops)==0:
-                    normal(crn[3])
-                else:
-                    drop_mode(crn[3],drops[0])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
