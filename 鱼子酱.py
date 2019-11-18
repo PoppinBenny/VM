@@ -87,10 +87,10 @@ def func1():
 
     i1=find(xuhao1)
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-    driver.implicitly_wait(10) #440 = 36, 412 = 24
+    driver.implicitly_wait(2) #440 = 36, 412 = 24
 
     while True:
-            driver.implicitly_wait(6)
+
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='"+crn1+" 120201']")
                 shit1.click()

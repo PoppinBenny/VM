@@ -46,7 +46,7 @@ def find(A):
     except NoSuchElementException:
         print('Index does not exist')
         driver.quit()
-        
+
     return i
 
 
@@ -82,10 +82,9 @@ def func1():
 
     i1=find(xuhao1)
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-    driver.implicitly_wait(10) #440 = 36, 412 = 24
+    driver.implicitly_wait(2) #440 = 36, 412 = 24
 
     while True:
-            driver.implicitly_wait(6)
             try:
                 shit1=driver.find_element_by_xpath("//input[@value='"+crn1+" 120201']")
                 driver.find_element_by_xpath("//input[@value='Register']").click()
@@ -100,6 +99,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     print('no 2')
+                    time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:

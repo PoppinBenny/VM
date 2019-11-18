@@ -130,12 +130,11 @@ def func1():
     i1=find(xuhao1)
     i2=find(xuhao2)
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-    driver.implicitly_wait(10) #440 = 36, 412 = 24
+    driver.implicitly_wait(2) #440 = 36, 412 = 24
 
     switch=0
     while True:
         if switch%3==0:
-            driver.implicitly_wait(2.5)
             try:
                 normal(crn[0])
                 break
@@ -148,13 +147,13 @@ def func1():
                     driver.close()
                     func1()
         if switch%3==1:
-            driver.implicitly_wait(0.5)
             try:
                 normal(crn[1])
                 break
             except NoSuchElementException:
                 try:
                     switch+=1
+                    time.sleep(3)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
@@ -162,13 +161,13 @@ def func1():
                     driver.close()
                     func1()
         if switch%3==2:
-            driver.implicitly_wait(3)
             try:
                 drop_mode(crn[2],drops[0])
                 break
             except NoSuchElementException:
                 try:
                     switch+=1
+                    time.sleep(3)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:

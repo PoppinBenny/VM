@@ -13,7 +13,7 @@ major1='DANC'
 xuhao1='100'
 crn=['70303']
 
-drops=['30891'] #要加引号
+drops=[] #要加引号
 
 account='sl88'
 password='LIUsyqwer04'
@@ -128,18 +128,16 @@ def func1():
 
     i1=find(xuhao1)
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-    driver.implicitly_wait(10) #440 = 36, 412 = 24
+    driver.implicitly_wait(2)
 
     while True:
-            driver.implicitly_wait(6)
             try:
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
+                normal(crn[0])
                 break
             except NoSuchElementException:
                 try:
+                    print('no '+n)
+                    time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
