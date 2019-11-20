@@ -127,7 +127,7 @@ def func1():
 
     while True:
             try:
-                drop_mode(crn[2],drops[0])
+                drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
