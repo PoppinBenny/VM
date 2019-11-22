@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major1='SPED'
-xuhao1='117'
-crn=['34501']
+major1='ECON'
+xuhao1='103'
+crn=['33286']
 
 drops=[] #要加引号
 
-account='yanxuj2'
-password='Jyx^543Qwer'
-n='1'
+account='anyuew2'
+password='330782200011160241Way'
+n='9'
 
 if gce:
     options = Options()
@@ -127,10 +127,9 @@ def func1():
 
     while True:
             try:
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
+                shit1=driver.find_element_by_xpath("//input[@value='33328 120201']")
+                shit1.click()
+                normal(crn[0])
                 break
             except NoSuchElementException:
                 try:
