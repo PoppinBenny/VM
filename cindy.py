@@ -11,8 +11,7 @@ gce=True
 
 major1='MATH'
 xuhao1='447'
-xuhao2='482'
-crn=['38030','64977']
+crn=['38030']
 
 drops=[] #要加引号
 
@@ -123,13 +122,10 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao1)
-    i2=find(xuhao2)
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
-        if switch%2==0:
             try:
                 if len(drops)==0:
                     normal(crn[0])
@@ -139,26 +135,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    time.sleep(3)
-                    switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%2==1:
-            try:
-                if len(drops)==0:
-                    normal(crn[1])
-                else:
-                    drop_mode(crn[1],drops[0])
-                break
-            except NoSuchElementException:
-                try:
-                    print('no '+n)
-                    time.sleep(3)
-                    switch+=1
+                    time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
