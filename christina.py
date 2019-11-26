@@ -11,7 +11,8 @@ gce=True
 
 major1='ESL'
 xuhao1='112'
-crn=['67514']
+xuhao2='117'
+crn=['67514','34501']
 
 drops=['69180'] #要加引号
 
@@ -122,22 +123,72 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao1)
+    i2=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
+        if switch%2==0:
             try:
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
+                drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    time.sleep(6)
+                    time.sleep(3)
+                    switch+=1
                     driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_name("p_term").find_element_by_xpath\
+                    ("//option[@value='120201']").click()
+                    driver.find_element_by_xpath("//input[@value='Submit']").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_xpath("//option[@value='SPED']").click()
+                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
+                    driver.implicitly_wait(10)
+                    if i2==0:
+                        i2=find(xuhao2)
+                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%2==1:
+            try:
+                normal(crn[1])
+                break
+            except NoSuchElementException:
+                try:
+                    print('no '+n)
+                    time.sleep(3)
+                    switch+=1
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_name("p_term").find_element_by_xpath\
+                    ("//option[@value='120201']").click()
+                    driver.find_element_by_xpath("//input[@value='Submit']").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_xpath("//option[@value='ESL']").click()
+                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
+                    driver.implicitly_wait(10)
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
