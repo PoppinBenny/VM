@@ -11,9 +11,9 @@ gce=True
 
 major1='ECON'
 xuhao1='103'
-crn=['33286']
+crn=['33328']
 
-drops=[] #要加引号
+drops=['33270'] #要加引号
 
 account='anyuew2'
 password='330782200011160241Way'
@@ -63,13 +63,16 @@ def normal(crn):
 
 def drop_mode(crn,drop):
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    shit2=driver.find_element_by_xpath("//input[@value='33286 120201']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
+    find_drop('33325')
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn)
+    driver.find_element_by_id("crn_id2").send_keys('33286')
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
 
 
@@ -127,9 +130,7 @@ def func1():
 
     while True:
             try:
-                shit1=driver.find_element_by_xpath("//input[@value='33328 120201']")
-                shit1.click()
-                normal(crn[0])
+                drop_mode(crn[0],drop[0])
                 break
             except NoSuchElementException:
                 try:
