@@ -9,14 +9,14 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major1='CS'
-xuhao1='173'
-crn=['51087','51089','65173']
+major1='AAS'
+xuhao1='100'
+crn=['50105']
 
 drops=[] #要加引号
 
-account='bs16'
-password='sbznb7SBZNB7'
+account='difeih2'
+password='Shirleyhuang0103'
 n='12'
 
 if gce:
@@ -125,45 +125,17 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
-        if switch%3==0:
             try:
-                shit=driver.find_element_by_xpath("//input[@value='50094 120201']")
-                shit.click()
-                normal(crn[0])
+                if len(drops)==0:
+                    normal(crn[0])
+                else:
+                    drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%3==1:
-            try:
-                shit=driver.find_element_by_xpath("//input[@value='50094 120201']")
-                shit.click()
-                normal(crn[1])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%3==2:
-            try:
-                shit=driver.find_element_by_xpath("//input[@value='39311 120201']")
-                shit.click()
-                normal(crn[2])
-                break
-            except NoSuchElementException:
-                try:
                     time.sleep(6)
-                    switch+=1
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
