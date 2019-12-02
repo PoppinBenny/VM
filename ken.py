@@ -11,7 +11,7 @@ gce=True
 
 major1='CS'
 xuhao1='173'
-crn=['51087','51089','50441']
+crn=['51087','51089','65173']
 
 drops=[] #要加引号
 
@@ -149,7 +149,6 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no '+n)
                     switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
@@ -157,13 +156,12 @@ def func1():
                     func1()
         if switch%3==2:
             try:
-                shit=driver.find_element_by_xpath("//input[@value='50094 120201']")
+                shit=driver.find_element_by_xpath("//input[@value='39311 120201']")
                 shit.click()
                 normal(crn[2])
                 break
             except NoSuchElementException:
                 try:
-                    print('no '+n)
                     time.sleep(6)
                     switch+=1
                     driver.back()

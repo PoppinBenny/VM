@@ -10,14 +10,16 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major1='STAT'
-xuhao=['440']
-crn=['56929']
+xuhao1='420'
+xuhao2='410'
+xuhao3='415'
+crn=['69351','36149','56173']
 
 drops=[] #要加引号
 
-account='yipinl2'
-password='Yp961227'
-n='8'
+account='tianyuc2'
+password='Dahuaidan1121!'
+n='11'
 
 if gce:
     options = Options()
@@ -71,12 +73,12 @@ def drop_mode(crn,drop):
     driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-    print(crn)
+
 
 def func1():
     driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM-HTTPS%3a%2f%2fwebprod%2eadmin%2euillinois%2eedu%2fssa%2fservlet%2fSelfServiceLogin%3fappName%3dedu%2euillinois%2eaits%2eSelfServiceLogin%26dad%3dBANPROD1')
     driver.implicitly_wait(7.5)
-    
+
     driver.find_element_by_id("netid").send_keys(account)
     driver.find_element_by_id("easpass").send_keys(password)
     driver.find_element_by_name("BTN_LOGIN").click()
@@ -121,19 +123,81 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    i1=find(xuhao[0])
+    i1=find(xuhao1)
+    i2=0
+    i3=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-    driver.implicitly_wait(2) #440 = 36, 412 = 24
+    driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
+        if switch%3==0:
             try:
-                drop_mode(crn[0],'36161')
+                normal(crn[0])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    time.sleep(6)
+                    switch+=1
                     driver.back()
+                    if i2==0:
+                        i2=find(xuhao2)
+                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%3==1:
+            try:
+                normal(crn[1])
+                break
+            except NoSuchElementException:
+                try:
+                    time.sleep(3)
+                    switch+=1
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_name("p_term").find_element_by_xpath\
+                    ("//option[@value='120201']").click()
+                    driver.find_element_by_xpath("//input[@value='Submit']").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_xpath("//option[@value='MATH']").click()
+                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
+                    driver.implicitly_wait(10)
+                    if i3==0:
+                        i3=find(xuhao3)
+                    driver.find_element_by_xpath("//tbody/tr["+str(i3)+"]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%3==2:
+            try:
+                shit1=driver.find_element_by_xpath("//input[@value='61542 120201']")
+                shit1.click()
+                normal(crn[2])
+                break
+            except NoSuchElementException:
+                try:
+                    time.sleep(3)
+                    switch+=1
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_name("p_term").find_element_by_xpath\
+                    ("//option[@value='120201']").click()
+                    driver.find_element_by_xpath("//input[@value='Submit']").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_xpath("//option[@value='STAT']").click()
+                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
+                    driver.implicitly_wait(10)
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
