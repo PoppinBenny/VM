@@ -165,7 +165,6 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no '+n)
                     time.sleep(3)
                     switch+=1
                     driver.back()
@@ -183,6 +182,7 @@ def func1():
                     driver.implicitly_wait(10)
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
+                    print('no '+n)
                     time.sleep(30)
                     driver.close()
                     func1()
