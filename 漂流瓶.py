@@ -131,6 +131,7 @@ def func1():
     while True:
         if switch%2==0:
             try:
+                driver.implicitly_wait(0.2)
                 if len(drops)==0:
                     normal(crn[0])
                 else:
@@ -149,6 +150,7 @@ def func1():
                     func1()
         if switch%2==1:
             try:
+                driver.implicitly_wait(0.2)
                 shit1=driver.find_element_by_xpath("//input[@value='"+crn[1]+" 120201']")
                 shit1.click()
                 normal(crn[2])

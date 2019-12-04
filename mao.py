@@ -127,6 +127,7 @@ def func1():
 
     while True:
             try:
+                driver.implicitly_wait(0.2)
                 if len(drops)==0:
                     normal(crn[0])
                 else:

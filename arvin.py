@@ -127,6 +127,7 @@ def func1():
 
     while True:
             try:
+                driver.implicitly_wait(0.2)
                 drop_mode(crn[0],'36161')
                 break
             except NoSuchElementException:

@@ -131,6 +131,7 @@ def func1():
     while True:
         if switch%2==0:
             try:
+                driver.implicitly_wait(0.2)
                 normal(crn[0])
                 break
             except NoSuchElementException:
@@ -160,6 +161,7 @@ def func1():
                     func1()
         if switch%2==1:
             try:
+                driver.implicitly_wait(0.2)
                 shit1=driver.find_element_by_xpath("//input[@value='61542 120201']")
                 shit1.click()
                 normal(crn[1])
