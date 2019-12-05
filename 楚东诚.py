@@ -129,6 +129,7 @@ def func1():
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
+    b=False
     while True:
         if switch%7==0:
             try:
