@@ -154,7 +154,7 @@ def func1():
                     driver.implicitly_wait(10)
                     if i2==0:
                         i2=find(xuhao2)
-                    driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
