@@ -18,7 +18,7 @@ disc=[61690,61692,61822]
 drops=[] #要加引号
 
 account='yimingc3'
-password='1197748241Dominator'
+password='1197748241Aidenchen'
 n='18'
 
 if gce:
