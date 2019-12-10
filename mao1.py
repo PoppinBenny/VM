@@ -13,10 +13,10 @@ major1='DANC'
 xuhao1='100'
 crn=['70302']
 
-drops=['40256'] #要加引号
+drops=['31805'] #要加引号
 
-account='weiyang7'
-password='Uiop78902019&'
+account='jinglun3'
+password='Gao!1028'
 n='10'
 
 if gce:
