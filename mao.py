@@ -8,9 +8,16 @@ import os,time
 from selenium.common.exceptions import TimeoutException
 
 gce=True
-major='ARTD'
-xuhao1='402'
-crn1='50477'
+
+major1='CS'
+xuhao1='173'
+crn=['51089']
+
+drops=[] #要加引号
+
+account='weiyang'
+password='Uiop78902019&'
+n='12'
 
 if gce:
     options = Options()
@@ -32,7 +39,7 @@ def find_drop(index):
                 break
             i+=1
     except NoSuchElementException:
-        print('Index does not exist')
+        print('Drop index does not exist')
         driver.quit()
 
 def find(A):
@@ -44,18 +51,38 @@ def find(A):
                 break
             i+=1
     except NoSuchElementException:
-        print('Index does not exist')
+        print('Course index does not exist')
         driver.quit()
 
     return i
+
+def normal(crn):
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    shit2=driver.find_element_by_xpath("//input[@value='50093 120201']")
+    shit1.click()
+    driver.find_element_by_xpath("//input[@value='Register']").click()
+
+def drop_mode(crn,drop):
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    shit2=driver.find_element_by_xpath("//input[@value='50093 120201']")
+    driver.find_element_by_xpath("//input[@value='Register']").click()
+    driver.implicitly_wait(7.5)
+    find_drop(drop)
+    find_drop('33325')
+    driver.implicitly_wait(10)
+    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+    driver.implicitly_wait(10)
+    driver.find_element_by_id("crn_id1").send_keys(crn)
+    driver.find_element_by_id("crn_id2").send_keys('33286')
+    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
 
 
 def func1():
     driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM-HTTPS%3a%2f%2fwebprod%2eadmin%2euillinois%2eedu%2fssa%2fservlet%2fSelfServiceLogin%3fappName%3dedu%2euillinois%2eaits%2eSelfServiceLogin%26dad%3dBANPROD1')
     driver.implicitly_wait(7.5)
 
-    driver.find_element_by_id("netid").send_keys('ningyuy2')
-    driver.find_element_by_id("easpass").send_keys("Di19980530!")
+    driver.find_element_by_id("netid").send_keys(account)
+    driver.find_element_by_id("easpass").send_keys(password)
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
@@ -63,6 +90,29 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
+
+    if len(drops)!=0:
+        for drop in drops:
+            driver.find_element_by_link_text("Add/Drop Classes").click()
+            driver.implicitly_wait(10)
+            driver.find_element_by_link_text("I Agree to the Above Statement").click()
+            driver.implicitly_wait(10)
+            driver.find_element_by_xpath("//input[@value='Submit']").click()
+            driver.implicitly_wait(10)
+            i=2
+            try:
+                while True:
+                    temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+                    if drop==temp:
+                        driver.back()
+                        driver.back()
+                        driver.back()
+                        break
+                    i+=1
+            except NoSuchElementException:
+                print('Drop index does not exist')
+                driver.quit()
+
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
@@ -71,30 +121,22 @@ def func1():
     ("//option[@value='120201']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='"+major+"']").click()
+    driver.find_element_by_xpath("//option[@value='"+major1+"']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
     i1=find(xuhao1)
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-    driver.implicitly_wait(2) #440 = 36, 412 = 24
+    driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='"+crn1+" 120201']")
-                driver.find_element_by_xpath("//input[@value='Register']").click()
-                driver.implicitly_wait(7.5)
-                find_drop(67168)
-                driver.implicitly_wait(10)
-                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-                driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys(crn1)
-                driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+                normal(crn[0])
                 break
             except NoSuchElementException:
                 try:
-                    print('no 2')
+                    print('no '+n)
                     time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
