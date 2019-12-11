@@ -15,7 +15,7 @@ crn=['51089']
 
 drops=[] #要加引号
 
-account='weiyang'
+account='weiyang7'
 password='Wwy0329&'
 n='12'
 
