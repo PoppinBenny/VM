@@ -131,7 +131,7 @@ def func1():
             try:
                 driver.implicitly_wait(0.2)
                 shit1=driver.find_element_by_xpath("//input[@value='33062 120201']")
-                driver.find_element_by_xpath("//input[@value='Register']").click()
+                shit1.click()
                 normal(crn[0])
                 break
             except NoSuchElementException:
@@ -146,7 +146,7 @@ def func1():
             try:
                 driver.implicitly_wait(0.2)
                 shit1=driver.find_element_by_xpath("//input[@value='33062 120201']")
-                driver.find_element_by_xpath("//input[@value='Register']").click()
+                shit1.click()
                 normal(crn[1])
                 break
             except NoSuchElementException:
