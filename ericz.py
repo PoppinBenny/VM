@@ -14,7 +14,7 @@ xuhao1='437'
 xuhao2='474'
 xuhao3='475'
 xuhao4='490'
-crn=['69366','68915','69334','64022','57409','70371','59202']
+crn=['69366','68915','69334','64022','57409','59202']
 
 drops=[] #要加引号
 
@@ -133,7 +133,7 @@ def func1():
 
     switch=0
     while True:
-        if switch%7==0:
+        if switch%6==0:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[0])
@@ -149,7 +149,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==1:
+        if switch%6==1:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[1])
@@ -164,7 +164,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==2:
+        if switch%6==2:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[2])
@@ -179,7 +179,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==3:
+        if switch%6==3:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[3])
@@ -191,7 +191,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==4:
+        if switch%6==4:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[4])
@@ -203,22 +203,10 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==5:
+        if switch%6==5:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[5])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%7==6:
-            try:
-                driver.implicitly_wait(0.2)
-                normal(crn[6])
                 break
             except NoSuchElementException:
                 try:
