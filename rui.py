@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major1='ECON'
-xuhao1='474'
-crn=['68915']
+major1='CS'
+xuhao1='173'
+crn=['61915','61916','65173','48265']
 
 drops=[] #要加引号
 
-account='jc25'
-password='741208CHEn'
-n='19'
+account='ruim2'
+password='MRqq7244033*'
+n='1'
 
 if gce:
     options = Options()
@@ -57,8 +57,10 @@ def find(A):
     return i
 
 def normal(crn):
-    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    shit1=driver.find_element_by_xpath("//input[@value='39311 120201']")
     shit1.click()
+    shit2=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    shit2.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
 
 def drop_mode(crn,drop):
@@ -125,18 +127,54 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
+        if switch%4==0:
             try:
                 driver.implicitly_wait(0.2)
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
+                normal(crn[0])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%4==1:
+            try:
+                driver.implicitly_wait(0.2)
+                normal(crn[1])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%4=2:
+            try:
+                driver.implicitly_wait(0.2)
+                normal(crn[2])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%4==3:
+            try:
+                driver.implicitly_wait(0.2)
+                normal(crn[3])
+                break
+            except NoSuchElementException:
+                try:
                     time.sleep(6)
+                    switch+=1
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
