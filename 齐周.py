@@ -9,13 +9,13 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major1=''
-xuhao1=''
-crn1=''
+major1='BADM'
+xuhao1='310'
+crn1='57199'
 
-account=''
-password=''
-n=''
+account='zhouqi2'
+password='Qasd1234'
+n='21'
 
 if gce:
     options = Options()
@@ -119,11 +119,11 @@ def func1():
                     ("//option[@value='120201']").click()
                     driver.find_element_by_xpath("//input[@value='Submit']").click()
                     driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='']").click()
+                    driver.find_element_by_xpath("//option[@value='ACCY']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
                     if i2==0:
-                        i2=find('')
+                        i2=find('200')
                     driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
@@ -139,7 +139,7 @@ def func1():
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 driver.implicitly_wait(10)
-                driver.find_element_by_id("crn_id1").send_keys('')
+                driver.find_element_by_id("crn_id1").send_keys('45418')
                 driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
                 break
             except NoSuchElementException:
