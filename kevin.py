@@ -9,14 +9,14 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major1='CS'
-xuhao1='421'
-crn=['31375']
+major1='FSHN'
+xuhao1='120'
+crn=['57561']
 
 drops=[] #要加引号
 
-account='zongqic2'
-password='Czq12#45'
+account='yiminw2'
+password='Wan2020!'
 n='2'
 
 if gce:
