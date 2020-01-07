@@ -13,12 +13,11 @@ major1='ECON'
 xuhao1='490'
 xuhao2='471'
 xuhao3='475'
-xuhao4='203'
-xuhao5='285'
-xuhao6='415'
-crn=['70371','65781','69335','33508','48596','64940']
+xuhao4='285'
+xuhao5='415'
+crn=['70371','65781','69335','48596','64940']
 
-drops=['33502'] #要加引号
+drops=[] #要加引号
 
 account='yinhu2'
 password='A65332211a'
@@ -129,15 +128,14 @@ def func1():
     i1=find(xuhao1)
     i2=find(xuhao2)
     i3=find(xuhao3)
-    i4=find(xuhao4)
+    i4=0
     i5=0
-    i6=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
     while True:
-        if switch%6==0:
+        if switch%5==0:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[0])
@@ -153,7 +151,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%6==1:
+        if switch%5==1:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[1])
@@ -167,24 +165,10 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%6==2:
+        if switch%5==2:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[2])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i4)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%6==3:
-            try:
-                driver.implicitly_wait(0.2)
-                drop_mode(crn[3],drops[0])
                 break
             except NoSuchElementException:
                 try:
@@ -202,6 +186,22 @@ def func1():
                     driver.find_element_by_xpath("//option[@value='MATH']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
+                    if i4==0:
+                        i4=find(xuhao4)
+                    driver.find_element_by_xpath("//tbody/tr["+str(i4)+"]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%5==3:
+            try:
+                driver.implicitly_wait(0.2)
+                normal(crn[3])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                    driver.back()
                     if i5==0:
                         i5=find(xuhao5)
                     driver.find_element_by_xpath("//tbody/tr["+str(i5)+"]/td/form/input[@value='View Sections']").click()
@@ -209,28 +209,12 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%6==4:
-            try:
-                driver.implicitly_wait(0.2)
-                normal(crn[4])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                    driver.back()
-                    if i6==0:
-                        i6=find(xuhao6)
-                    driver.find_element_by_xpath("//tbody/tr["+str(i6)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%6==5:
+        if switch%5==4:
             try:
                 driver.implicitly_wait(0.2)
                 shit1=driver.find_element_by_xpath("//input[@value='60548 120201']")
                 shit1.click()
-                normal(crn[5])
+                normal(crn[4])
                 break
             except NoSuchElementException:
                 try:
