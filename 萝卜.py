@@ -13,9 +13,8 @@ major1='ECON'
 xuhao1='490'
 xuhao2='471'
 xuhao3='475'
-xuhao4='285'
 xuhao5='415'
-crn=['70371','65781','69335','48596','64940']
+crn=['70371','65781','69335','64940']
 
 drops=[] #要加引号
 
@@ -129,13 +128,12 @@ def func1():
     i2=find(xuhao2)
     i3=find(xuhao3)
     i4=0
-    i5=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
     while True:
-        if switch%5==0:
+        if switch%4==0:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[0])
@@ -151,7 +149,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%5==1:
+        if switch%4==1:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[1])
@@ -165,7 +163,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%5==2:
+        if switch%4==2:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[2])
@@ -193,28 +191,12 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%5==3:
-            try:
-                driver.implicitly_wait(0.2)
-                normal(crn[3])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                    driver.back()
-                    if i5==0:
-                        i5=find(xuhao5)
-                    driver.find_element_by_xpath("//tbody/tr["+str(i5)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%5==4:
+        if switch%4==3:
             try:
                 driver.implicitly_wait(0.2)
                 shit1=driver.find_element_by_xpath("//input[@value='60548 120201']")
                 shit1.click()
-                normal(crn[4])
+                normal(crn[3])
                 break
             except NoSuchElementException:
                 try:
