@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major1='DANC'
-xuhao1='100'
-crn=['70303']
+major1='MATH'
+xuhao1='444'
+crn=['38021']
 
 drops=[] #要加引号
 
-account='mzhan21'
-password='Zmlzml1229&'
-n='1'
+account='kwang54'
+password='WOxihuan5'
+n='K'
 
 if gce:
     options = Options()
