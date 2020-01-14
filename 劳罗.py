@@ -17,7 +17,7 @@ drops=[] #要加引号
 
 account='xinyiw5'
 password='#Whjywkhj425asdfgh6338'
-n='23'
+n='23 劳'
 
 if gce:
     options = Options()

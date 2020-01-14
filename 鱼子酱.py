@@ -15,7 +15,7 @@ crn1='50477'
 
 account='yaox3'
 password='7758253Lisa'
-n='7'
+n='7 鱼子'
 
 if gce:
     options = Options()
