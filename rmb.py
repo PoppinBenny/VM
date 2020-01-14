@@ -17,8 +17,8 @@ crn=['33645','34501']
 drops=['70486'] #要加引号
 
 account='yiyangy2'
-password='Qq4020242190116'
-n='16'
+password='Wys6977370116'
+n='25'
 
 if gce:
     options = Options()
