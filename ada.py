@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major1='IS'
-xuhao1='590'
-crn=['67396','67973']
+major1='STAT'
+xuhao1='385'
+crn=['63553']
 
-drops=['67381'] #要加引号
+drops=[] #要加引号
 
-account='yaoxiao9'
-password='XY19960218*xy'
-n='24 ezio'
+account='yuangd2'
+password='Dya200014!'
+n='28 a'
 
 if gce:
     options = Options()
@@ -125,38 +125,24 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
-        if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                normal(crn[0])
+                if len(drops)==0:
+                    normal(crn[0])
+                else:
+                    drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%2==1:
-            try:
-                driver.implicitly_wait(0.2)
-                drop_mode(crn[1],drops[0])
-                break
-            except NoSuchElementException:
-                try:
                     time.sleep(6)
-                    switch+=1
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
-
-        
 
 
 func1()
