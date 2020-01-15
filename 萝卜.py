@@ -19,7 +19,7 @@ crn=['70371','65781','69335','64940']
 drops=[] #要加引号
 
 account='yinhu2'
-password='A65332211a'
+password='A44332211a'
 n='8 萝卜'
 
 if gce:
