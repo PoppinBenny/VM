@@ -11,10 +11,9 @@ gce=True
 
 major1='ECON'
 xuhao1='490'
-xuhao2='471'
-xuhao3='475'
-xuhao4='415'
-crn=['70371','65781','69335','64940']
+xuhao2='475'
+xuhao3='415'
+crn=['70371','69335','64940']
 
 drops=[] #要加引号
 
@@ -126,14 +125,13 @@ def func1():
 
     i1=find(xuhao1)
     i2=find(xuhao2)
-    i3=find(xuhao3)
-    i4=0
+    i3=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
     while True:
-        if switch%4==0:
+        if switch%3==0:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[0])
@@ -149,24 +147,10 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%4==1:
+        if switch%3==1:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[1])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i3)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%4==2:
-            try:
-                driver.implicitly_wait(0.2)
-                normal(crn[2])
                 break
             except NoSuchElementException:
                 try:
@@ -184,19 +168,19 @@ def func1():
                     driver.find_element_by_xpath("//option[@value='MATH']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
-                    if i4==0:
-                        i4=find(xuhao4)
-                    driver.find_element_by_xpath("//tbody/tr["+str(i4)+"]/td/form/input[@value='View Sections']").click()
+                    if i3==0:
+                        i3=find(xuhao3)
+                    driver.find_element_by_xpath("//tbody/tr["+str(i3)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%4==3:
+        if switch%3==2:
             try:
                 driver.implicitly_wait(0.2)
                 shit1=driver.find_element_by_xpath("//input[@value='60548 120201']")
                 shit1.click()
-                normal(crn[3])
+                normal(crn[2])
                 break
             except NoSuchElementException:
                 try:
