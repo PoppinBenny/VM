@@ -11,7 +11,9 @@ gce=True
 
 major1='ARTD'
 xuhao1='402'
-crn1='50477'
+crn=['50477','50478']
+
+drops=[] #要加引号
 
 account='yaox3'
 password='7758255Lisa'
@@ -37,7 +39,7 @@ def find_drop(index):
                 break
             i+=1
     except NoSuchElementException:
-        print('Index does not exist')
+        print('Drop index does not exist')
         driver.quit()
 
 def find(A):
@@ -49,10 +51,26 @@ def find(A):
                 break
             i+=1
     except NoSuchElementException:
-        print('Index does not exist')
+        print('Course index does not exist')
         driver.quit()
 
     return i
+
+def normal(crn):
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    shit1.click()
+    driver.find_element_by_xpath("//input[@value='Register']").click()
+
+def drop_mode(crn,drop):
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    driver.find_element_by_xpath("//input[@value='Register']").click()
+    driver.implicitly_wait(7.5)
+    find_drop(drop)
+    driver.implicitly_wait(10)
+    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+    driver.implicitly_wait(10)
+    driver.find_element_by_id("crn_id1").send_keys(crn)
+    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
 
 
 def func1():
@@ -68,6 +86,29 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
+
+    if len(drops)!=0:
+        for drop in drops:
+            driver.find_element_by_link_text("Add/Drop Classes").click()
+            driver.implicitly_wait(10)
+            driver.find_element_by_link_text("I Agree to the Above Statement").click()
+            driver.implicitly_wait(10)
+            driver.find_element_by_xpath("//input[@value='Submit']").click()
+            driver.implicitly_wait(10)
+            i=2
+            try:
+                while True:
+                    temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+                    if drop==temp:
+                        driver.back()
+                        driver.back()
+                        driver.back()
+                        break
+                    i+=1
+            except NoSuchElementException:
+                print('Drop index does not exist')
+                driver.quit()
+
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
@@ -82,26 +123,38 @@ def func1():
 
     i1=find(xuhao1)
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-    driver.implicitly_wait(2) #440 = 36, 412 = 24
+    driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
+        if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='"+crn1+" 120201']")
-                shit1.click()
-                driver.find_element_by_xpath("//input[@value='Register']").click()
+                normal(crn[0])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%2==1:
+            try:
+                driver.implicitly_wait(0.2)
+                normal(crn[1])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
                     time.sleep(6)
+                    switch+=1
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
-
 
 
 func1()
