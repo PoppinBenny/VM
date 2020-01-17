@@ -11,7 +11,7 @@ gce=True
 
 major1='CS'
 xuhao1='173'
-crn=['51089']
+crn=['48267']
 
 drops=[] #要加引号
 
@@ -58,7 +58,7 @@ def find(A):
 
 def normal(crn):
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
-    shit2=driver.find_element_by_xpath("//input[@value='50093 120201']")
+    shit2=driver.find_element_by_xpath("//input[@value='50094 120201']")
     shit1.click()
     shit2.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
