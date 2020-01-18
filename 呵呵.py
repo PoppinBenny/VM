@@ -9,11 +9,11 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major1='MACS'
-xuhao1='101'
-crn=['68884']
+major1='STAT'
+xuhao1='410'
+crn=['61861']
 
-drops=[] #要加引号
+drops=['63557'] #要加引号
 
 account='yunzhez2'
 password='0522Zyzray#'
@@ -128,10 +128,7 @@ def func1():
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
+                drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
