@@ -16,8 +16,8 @@ crn=['61877','56929']
 
 drops=[] #要加引号
 
-account='xinyiw5'
-password='#Whjywkhj425asdfgh6338'
+account='rongwei2'
+password='Zhurw9799339'
 n='30 银'
 
 if gce:
