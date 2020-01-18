@@ -16,7 +16,7 @@ crn=['65685']
 drops=[] #要加引号
 
 account='dalisu2'
-password='Sdl990716#'
+password='Sdl990716&'
 n='19 c'
 
 if gce:
