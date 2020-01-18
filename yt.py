@@ -14,7 +14,7 @@ xuhao1='120'
 xuhao2='100'
 crn=['57561','70303']
 
-drops=[] #要加引号
+drops=['32987'] #要加引号
 
 account='yd9'
 password='Cherry997068'
@@ -132,7 +132,7 @@ def func1():
         if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                normal(crn[0])
+                drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
