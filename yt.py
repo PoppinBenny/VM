@@ -148,7 +148,7 @@ def func1():
                     ("//option[@value='120201']").click()
                     driver.find_element_by_xpath("//input[@value='Submit']").click()
                     driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='DANCE']").click()
+                    driver.find_element_by_xpath("//option[@value='DANC']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
                     if i2==0:
@@ -178,7 +178,7 @@ def func1():
                     ("//option[@value='120201']").click()
                     driver.find_element_by_xpath("//input[@value='Submit']").click()
                     driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='ADV']").click()
+                    driver.find_element_by_xpath("//option[@value='FSHN']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
