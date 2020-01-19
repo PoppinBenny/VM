@@ -121,7 +121,7 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-     while True:
+    while True:
             try:
                 driver.implicitly_wait(0.2)
                 if len(drops)==0:
