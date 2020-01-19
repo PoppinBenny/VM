@@ -10,14 +10,14 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major1='CS'
-xuhao1='173'
-crn=['48267']
+xuhao1='498'
+crn=['66289']
 
 drops=[] #要加引号
 
-account='weiyang7'
-password='Wangwill0329!!!!'
-n='12 mao'
+account='fanhuiz2'
+password='Hz95515..'
+n='32 wxz'
 
 if gce:
     options = Options()
@@ -58,23 +58,18 @@ def find(A):
 
 def normal(crn):
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
-    shit2=driver.find_element_by_xpath("//input[@value='50094 120201']")
     shit1.click()
-    shit2.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
 
 def drop_mode(crn,drop):
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
-    shit2=driver.find_element_by_xpath("//input[@value='50093 120201']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
-    find_drop('33325')
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn)
-    driver.find_element_by_id("crn_id2").send_keys('33286')
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
 
 
@@ -133,7 +128,10 @@ def func1():
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                normal(crn[0])
+                if len(drops)==0:
+                    normal(crn[0])
+                else:
+                    drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
