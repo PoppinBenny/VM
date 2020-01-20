@@ -11,6 +11,7 @@ gce=True
 
 major1='DANC'
 xuhao1='100'
+xuhao2='34495'
 crn=['70303']
 
 drops=[] #要加引号
