@@ -63,6 +63,7 @@ def normal(crn):
 
 def drop_mode(crn,drop):
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    shit2=driver.find_element_by_xpath("//input[@value='65088 120201']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
@@ -70,6 +71,7 @@ def drop_mode(crn,drop):
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn)
+    driver.find_element_by_id("crn_id2").send_keys('65088')
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
 
 
