@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['ACCY']
-xuhao=['303']
-crn=['30276']
+major=['CS']
+xuhao=['498']
+crn=['61851']
 
 drops=[] #要加引号
 
-account='chuhan2'
-password='Huch390972'
-n='38 sunny'
+account='tianrui5'
+password='Xtr2019!'
+n='53 19'
 
 if gce:
     options = Options()
@@ -92,7 +92,7 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-
+    
     if len(drops)==0:
         try:
             i=2
