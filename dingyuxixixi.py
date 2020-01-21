@@ -16,7 +16,7 @@ crn=['70358']
 drops=['50354'] #要加引号
 
 account='yuxid2'
-password='Ximi1990815'
+password='Ximi19990815'
 n='13 ding'
 
 if gce:
