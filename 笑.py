@@ -9,16 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major1='CS'
-xuhao1='421'
-xuhao2='444'
-crn=['31375','70920']
+major1='STAT'
+xuhao1='420'
+crn=['69351','36153','46320','63561']
 
 drops=[] #要加引号
 
-account='jchen300'
-password='Adiddas163.'
-n='41 橙'
+account='ningd2'
+password='Psyc16121997'
+n='44 笑'
 
 if gce:
     options = Options()
@@ -123,13 +122,12 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao1)
-    i2=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
     while True:
-        if switch%2==0:
+        if switch%4==0:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[0])
@@ -138,48 +136,46 @@ def func1():
                 try:
                     print('no '+n)
                     switch+=1
-                    driver.back()
-                    driver.back()
-                    driver.back()
-                    driver.back()
-                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_name("p_term").find_element_by_xpath\
-                    ("//option[@value='120201']").click()
-                    driver.find_element_by_xpath("//input[@value='Submit']").click()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='MATH']").click()
-                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
-                    driver.implicitly_wait(10)
-                    if i2==0:
-                        i2=find(xuhao2)
-                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%2==1:
+        if switch%4==1:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[1])
                 break
             except NoSuchElementException:
                 try:
+                    print('no '+n)
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%4==2:
+            try:
+                driver.implicitly_wait(0.2)
+                normal(crn[2])
+                break
+            except NoSuchElementException:
+                try:
+                    print('no '+n)
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%4==3:
+            try:
+                driver.implicitly_wait(0.2)
+                normal(crn[3])
+                break
+            except NoSuchElementException:
+                try:
                     switch+=1
                     time.sleep(6)
                     driver.back()
-                    driver.back()
-                    driver.back()
-                    driver.back()
-                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_name("p_term").find_element_by_xpath\
-                    ("//option[@value='120201']").click()
-                    driver.find_element_by_xpath("//input[@value='Submit']").click()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='CS']").click()
-                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
-                    driver.implicitly_wait(10)
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
