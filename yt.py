@@ -9,9 +9,8 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major1='DANC'
-xuhao1='100'
-xuhao2='117'
+major=['DANC']
+xuhao=['100','117']
 crn=['70303','34495']
 
 drops=[] #要加引号
@@ -87,15 +86,40 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
+    driver.find_element_by_link_text("Add/Drop Classes").click()
+    driver.implicitly_wait(10)
+    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+    driver.implicitly_wait(10)
+    driver.find_element_by_xpath("//input[@value='Submit']").click()
+    driver.implicitly_wait(10)
+
+    if len(drops)==0:
+        try:
+            i=2
+            repeat=False
+            while True:
+                c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
+                nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
+                for m in major:
+                    if repeat==True:
+                        break
+                    for x in xuhao:
+                        if m==c and x==nu:
+                            repeat=True
+                            break
+                if repeat==True:
+                    print(c+nu+' already existed '+n)
+                    driver.quit()
+                    break
+                i+=1
+        except NoSuchElementException:
+            driver.back()
+            driver.back()
+            driver.back()
+
 
     if len(drops)!=0:
         for drop in drops:
-            driver.find_element_by_link_text("Add/Drop Classes").click()
-            driver.implicitly_wait(10)
-            driver.find_element_by_link_text("I Agree to the Above Statement").click()
-            driver.implicitly_wait(10)
-            driver.find_element_by_xpath("//input[@value='Submit']").click()
-            driver.implicitly_wait(10)
             i=2
             try:
                 while True:
@@ -118,11 +142,11 @@ def func1():
     ("//option[@value='120201']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='"+major1+"']").click()
+    driver.find_element_by_xpath("//option[@value='"+major[0]+"']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    i1=find(xuhao1)
+    i1=find(xuhao[0])
     i2=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
@@ -152,7 +176,7 @@ def func1():
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
                     if i2==0:
-                        i2=find(xuhao2)
+                        i2=find(xuhao[1])
                     driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)

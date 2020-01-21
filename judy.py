@@ -9,8 +9,8 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major1='ECON'
-xuhao1='490'
+major=['ECON']
+xuhao=['490']
 crn=['57365']
 
 drops=[] #要加引号
@@ -89,12 +89,6 @@ def func1():
 
     if len(drops)!=0:
         for drop in drops:
-            driver.find_element_by_link_text("Add/Drop Classes").click()
-            driver.implicitly_wait(10)
-            driver.find_element_by_link_text("I Agree to the Above Statement").click()
-            driver.implicitly_wait(10)
-            driver.find_element_by_xpath("//input[@value='Submit']").click()
-            driver.implicitly_wait(10)
             i=2
             try:
                 while True:
@@ -117,11 +111,11 @@ def func1():
     ("//option[@value='120201']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='"+major1+"']").click()
+    driver.find_element_by_xpath("//option[@value='"+major[0]+"']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    i1=find(xuhao1)
+    i1=find(xuhao[0])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
