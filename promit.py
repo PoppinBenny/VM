@@ -93,7 +93,6 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
     
-    i1=find(xuhao[0])
     if len(drops)==0:
         try:
             i=2

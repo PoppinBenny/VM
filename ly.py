@@ -93,7 +93,6 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
     
-    i1=find(xuhao[0])
     if len(drops)==0:
         try:
             i=2
@@ -225,12 +224,23 @@ def func1():
                     switch+=1
                     time.sleep(6)
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_name("p_term").find_element_by_xpath\
+                    ("//option[@value='120201']").click()
+                    driver.find_element_by_xpath("//input[@value='Submit']").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_xpath("//option[@value='STAT']").click()
+                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_xpath("//tbody/tr["+str(i)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
-
 
 func1()
 
