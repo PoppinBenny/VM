@@ -11,13 +11,13 @@ gce=True
 
 major1='ACCY'
 xuhao1='410'
-crn=['61733']
+crn=['61759',' 60045']
 
 drops=[] #要加引号
 
-account='maolinw2'
-password='Shengx1008'
-n='22 漂流'
+account='yanqing2'
+password='LIu.13834601606'
+n='46 谨'
 
 if gce:
     options = Options()
@@ -125,7 +125,6 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
             try:
                 driver.implicitly_wait(0.2)
