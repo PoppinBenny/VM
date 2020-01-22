@@ -13,6 +13,8 @@ major=course.split()[0]
 index=course.split()[1]
 
 gce=True
+register=0
+limit=5
 
 if gce:
     options = Options()

@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['JOUR']
-xuhao=['250','340']
-crn=['51007','61589']
+major=['CS']
+xuhao=['411','498']
+crn=['31355','61850']
 
 drops=[] #要加引号
 
-account='tianbin2'
-password='Ctb9910188888'
-n='31 陈fat'
+account='wxiao5'
+password='20091996MMc'
+n='62 crystal'
 register=0
 limit=5
 
@@ -227,6 +227,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
+
 
 
 func1()

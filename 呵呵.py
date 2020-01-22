@@ -18,6 +18,8 @@ drops=['63461'] #要加引号
 account='yunzhez2'
 password='0522Zyzray#'
 n='27 呵'
+register=0
+limit=5
 
 if gce:
     options = Options()
@@ -57,11 +59,30 @@ def find(A):
     return i
 
 def normal(crn):
+    global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
     shit1.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
+    driver.implicitly_wait(7.5)
+    i=2
+    try:
+        while True:
+            number=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+            if crn==number:
+                print('Course selected')
+                driver.quit()
+            i+=1
+    except NoSuchElementException:
+        print('Failed to add '+crn+' '+n)
+        register+=1
+        if register>=limit:
+            print('Too many requests for '+n)
+            driver.quit()
+        driver.back()
+    raise NoSuchElementException
 
 def drop_mode(crn,drop):
+    global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
     shit2=driver.find_element_by_xpath("//input[@value='65088 120201']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
@@ -73,6 +94,29 @@ def drop_mode(crn,drop):
     driver.find_element_by_id("crn_id1").send_keys(crn)
     driver.find_element_by_id("crn_id2").send_keys('65088')
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+    driver.implicitly_wait(10)
+    i=2
+    try:
+        while True:
+            number=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+            if crn==number:
+                print('Course selected')
+                driver.quit()
+            i+=1
+    except NoSuchElementException:
+        print('Failed to add '+crn+' '+n)
+        driver.find_element_by_id("crn_id1").send_keys(drop)
+        driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+        driver.implicitly_wait(10)
+        register+=1
+        if register>=limit:
+            print('Too many requests for '+n)
+            driver.quit()
+        driver.back()
+        driver.back()
+        driver.back()
+        driver.back()
+    raise NoSuchElementException
 
 
 def func1():
@@ -173,6 +217,19 @@ def func1():
                 try:
                     switch+=1
                     print('no '+n)
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%2==1:
+            try:
+                driver.implicitly_wait(0.2)
+                drop_mode(crn[1],drops[0])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
                     time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()

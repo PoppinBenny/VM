@@ -19,6 +19,9 @@ account='zh13'
 password='JackHeHarvard2020'
 n='16 何'
 register=0
+limit=5
+register=0
+limit=5
 
 if gce:
     options = Options()
@@ -74,7 +77,7 @@ def normal(crn):
     except NoSuchElementException:
         print('Failed to add '+crn+' '+n)
         register+=1
-        if register>=5:
+        if register>=limit:
             print('Too many requests for '+n)
             driver.quit()
         driver.back()
@@ -106,7 +109,7 @@ def drop_mode(crn,drop):
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
         driver.implicitly_wait(10)
         register+=1
-        if register>=5:
+        if register>=limit:
             print('Too many requests for '+n)
             driver.quit()
         driver.back()
