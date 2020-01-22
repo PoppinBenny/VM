@@ -20,8 +20,6 @@ password='JackHeHarvard2020'
 n='16 何'
 register=0
 limit=5
-register=0
-limit=5
 
 if gce:
     options = Options()
@@ -195,7 +193,7 @@ def func1():
     i1=find(xuhao[0])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
-    
+
     while True:
             try:
                 driver.implicitly_wait(0.2)
