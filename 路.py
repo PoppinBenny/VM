@@ -222,7 +222,7 @@ def func1():
                     time.sleep(6)
                     switch+=1
                     driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(ii)+"]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()

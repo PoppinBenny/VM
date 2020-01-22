@@ -216,7 +216,6 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no '+n)
                     switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
@@ -229,7 +228,6 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    print('no '+n)
                     switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
