@@ -19,7 +19,7 @@ account='bs16'
 password='SBZ77sbz77'
 n='49 ken'
 register=0
-limit=5
+limit=10
 
 if gce:
     options = Options()

@@ -19,7 +19,7 @@ account='ningd2'
 password='Psyc16121997'
 n='44 笑'
 register=0
-limit=5
+limit=8
 
 if gce:
     options = Options()

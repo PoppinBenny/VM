@@ -19,7 +19,7 @@ account='yil7'
 password='Aipp2831'
 n='52 ly'
 register=0
-limit=5
+limit=8
 
 if gce:
     options = Options()
@@ -136,7 +136,7 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    
+
     if len(drops)==0:
         try:
             i=2

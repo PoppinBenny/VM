@@ -19,7 +19,7 @@ account='sf6'
 password='Zrq683280!!!!!'
 n='14 李'
 register=0
-limit=5
+limit=8
 
 if gce:
     options = Options()
