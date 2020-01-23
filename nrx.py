@@ -10,10 +10,10 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major=['CS']
-xuhao=['498']
-crn=['61851']
+xuhao=['411']
+crn=['31352']
 
-drops=[] #要加引号
+drops=['63461'] #要加引号
 
 account='rni4'
 password='Nixin110828'
