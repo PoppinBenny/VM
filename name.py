@@ -9,11 +9,11 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['CS']
-xuhao=['411']
-crn=['31352']
+major=['STAT']
+xuhao=['420']
+crn=['36153']
 
-drops=['31423'] #要加引号
+drops=['61737'] #要加引号
 
 account='hanzes2'
 password='sunJ998m7ko'

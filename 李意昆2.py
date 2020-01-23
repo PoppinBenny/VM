@@ -9,9 +9,9 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['CS']
-xuhao=['233']
-crn=['61690','61691','61692','61695','61696','61822','61823']
+major=['CS','CHEM']
+xuhao=['233','360']
+crn=['61690','61691','61692','61695','61696','61822','61823','59243']
 
 drops=[] #要加引号
 
@@ -193,12 +193,13 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao[0])
+    i2=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
     while True:
-        if switch%7==0:
+        if switch%8==0:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[0])
@@ -211,7 +212,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==1:
+        if switch%8==1:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[1])
@@ -223,7 +224,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==2:
+        if switch%8==2:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[2])
@@ -235,7 +236,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==3:
+        if switch%8==3:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[3])
@@ -247,7 +248,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==4:
+        if switch%8==4:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[3])
@@ -259,7 +260,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==5:
+        if switch%8==5:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[5])
@@ -271,16 +272,55 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%7==6:
+        if switch%8==6:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[6])
                 break
             except NoSuchElementException:
                 try:
-                    time.sleep(6)
                     switch+=1
                     driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_name("p_term").find_element_by_xpath\
+                    ("//option[@value='120201']").click()
+                    driver.find_element_by_xpath("//input[@value='Submit']").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_xpath("//option[@value='CHEM']").click()
+                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
+                    driver.implicitly_wait(10)
+                    if i2==0:
+                        i2=find(xuhao[1])
+                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%8==7:
+            try:
+                driver.implicitly_wait(0.2)
+                normal(crn[7])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_name("p_term").find_element_by_xpath\
+                    ("//option[@value='120201']").click()
+                    driver.find_element_by_xpath("//input[@value='Submit']").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_xpath("//option[@value='CS']").click()
+                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
+                    driver.implicitly_wait(10)
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)

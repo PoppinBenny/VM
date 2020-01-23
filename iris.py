@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['JOUR']
-xuhao=['250','340']
-crn=['51007','61589']
+major=['ECON']
+xuhao=['420']
+crn=['33602','33597']
 
 drops=[] #要加引号
 
-account='tianbin2'
-password='Ctb9910188888'
-n='31 陈fat'
+account='jzhao71'
+password='Jiahiuzha0131'
+n='91 iris'
 register=0
 limit=5
 
@@ -191,7 +191,6 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao[0])
-    i2=find(xuhao[1])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
@@ -205,9 +204,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
+                    swich+=1
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
@@ -219,7 +216,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    switch+=1
+                    swich+=1
                     time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
