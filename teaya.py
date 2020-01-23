@@ -13,11 +13,11 @@ major=['STAT']
 xuhao=['385']
 crn=['63553']
 
-drops=['65788'] #要加引号
+drops=['32983'] #要加引号
 
 account='wenyaw2'
 password='appLy2017!'
-n='79 eaya'
+n='79 teaya'
 register=0
 limit=5
 
