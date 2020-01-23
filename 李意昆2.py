@@ -9,9 +9,9 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['CS','CHEM']
-xuhao=['233','360']
-crn=['61690','61691','61692','61695','61696','61822','61823','59243']
+major=['CS']
+xuhao=['233']
+crn=['61690','61691','61692','61695','61696','61822','61823']
 
 drops=[] #要加引号
 
