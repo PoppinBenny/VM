@@ -204,7 +204,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    swich+=1
+                    switch+=1
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
@@ -216,7 +216,7 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    swich+=1
+                    switch+=1
                     time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
