@@ -88,8 +88,6 @@ def drop_mode(crn,drop):
     driver.implicitly_wait(7.5)
     find_drop(drop)
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-    driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
@@ -110,7 +108,6 @@ def drop_mode(crn,drop):
         if register>=limit:
             print('Too many requests for '+n)
             driver.quit()
-        driver.back()
         driver.back()
         driver.back()
         driver.back()
