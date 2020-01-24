@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['MATH']
-xuhao=['482']
-crn=['64977']
+major=['ECON']
+xuhao=['103']
+crn=['33328']
 
-drops=['38092'] #要加引号
+drops=['33270'] #要加引号
 
-account='yuqingx3'
-password='Xuxu990628!'
-n='84 芹菜'
+account='zimingl3'
+password='123321Sbt!'
+n='110 xl'
 register=0
 limit=5
 
@@ -197,7 +197,10 @@ def func1():
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                drop_mode(crn[0],drops[0])
+                if len(drops)==0:
+                    normal(crn[0])
+                else:
+                    drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:

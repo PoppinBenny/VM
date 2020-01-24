@@ -9,15 +9,17 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['MATH']
-xuhao=['482']
-crn=['64977']
+major=['PHYS']
+xuhao=['214']
+lec=['38329','38330']
+lab=['38431','58992','38494','38434','38501','38513','38505']
+disc=['59008','38332','38334','47382','51345','38425','38362','59010','38342','38343','51339']
 
-drops=['38092'] #要加引号
+drops=[] #要加引号
 
-account='yuqingx3'
-password='Xuxu990628!'
-n='84 芹菜'
+account='fangziy2'
+password='zfyUS990130'
+n='108 啥'
 register=0
 limit=5
 
@@ -61,7 +63,6 @@ def find(A):
 def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
-    shit1.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     i=2
@@ -194,21 +195,39 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
+    b=False
     while True:
-            try:
-                driver.implicitly_wait(0.2)
-                drop_mode(crn[0],drops[0])
-                break
-            except NoSuchElementException:
-                try:
-                    print('no '+n)
-                    time.sleep(6)
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
+        print('no '+n)
+        for i in lab:
+            for j in disc:
+                for k in lec:
+                driver.implicitly_wait(0.05)
+                    try:
+                        str1="//input[@value='"+str(k)+" 120201']"
+                        str2="//input[@value='"+str(i)+" 120201']"
+                        str3="//input[@value='"+str(j)+" 120201']"
+                        shit1=driver.find_element_by_xpath(str1)
+                        shit2=driver.find_element_by_xpath(str2)
+                        shit3=driver.find_element_by_xpath(str3)
+                        shit1.click()
+                        shit2.click()
+                        shit3.click()
+                        driver.find_element_by_xpath("//input[@value='Register']").click()
+                        b=True
+                    except NoSuchElementException:
+                        try:
+                            switch+=1
+                            if switch==154:
+                                switch=0
+                                driver.back()
+                                driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
+                        except NoSuchElementException:
+                            time.sleep(30)
+                            driver.close()
+                            func1()
+        if b==True:
+            break
 
 
 func1()

@@ -13,7 +13,7 @@ major=['CS']
 xuhao=['374']
 crn=['65089','65096']
 
-drops=['63461'] #要加引号
+drops=['36195'] #要加引号
 
 account='yunzhez2'
 password='0522Zyzray#'
@@ -200,17 +200,7 @@ def func1():
     while True:
         if switch%2==0:
             try:
-                drop_mode(crn[0],drops[0])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%2==1:
-            try:
+                driver.implicitly_wait(0.2)
                 drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:

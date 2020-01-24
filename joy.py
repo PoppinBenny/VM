@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['MATH']
-xuhao=['482']
-crn=['64977']
+major=['ACCY']
+xuhao=['202']
+crn=['30138']
 
-drops=['38092'] #要加引号
+drops=['30140'] #要加引号
 
-account='yuqingx3'
-password='Xuxu990628!'
-n='84 芹菜'
+account='junyi3'
+password='Cptbtptp3'
+n='109 joy'
 register=0
 limit=5
 
@@ -62,6 +62,8 @@ def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
     shit1.click()
+    shit1=driver.find_element_by_xpath("//input[@value='30119 120201']")
+    shit1.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     i=2
@@ -84,13 +86,16 @@ def normal(crn):
 def drop_mode(crn,drop):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    shit2=driver.find_element_by_xpath("//input[@value='30119 120201']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
+    find_drop(30120)
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn)
+    driver.find_element_by_id("crn_id2").send_keys('30119')
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     i=2
@@ -104,6 +109,7 @@ def drop_mode(crn,drop):
     except NoSuchElementException:
         print('Failed to add '+crn+' '+n)
         driver.find_element_by_id("crn_id1").send_keys(drop)
+        driver.find_element_by_id("crn_id2").send_keys('30120')
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
         driver.implicitly_wait(10)
         register+=1
@@ -197,7 +203,10 @@ def func1():
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                drop_mode(crn[0],drops[0])
+                if len(drops)==0:
+                    normal(crn[0])
+                else:
+                    drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:

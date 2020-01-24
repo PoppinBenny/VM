@@ -186,11 +186,11 @@ def func1():
     ("//option[@value='120201']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='"+major[0]+"']").click()
+    driver.find_element_by_xpath("//option[@value='"+major[1]+"']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    i1=find(xuhao[0])
+    i1=find(xuhao[1])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
