@@ -196,7 +196,7 @@ def func1():
 
     switch=0
     while True:
-        if switch%2==0:
+        if switch%4==0:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[0])
@@ -208,10 +208,34 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%2==1:
+        if switch%4==1:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[1])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%4==2:
+            try:
+                driver.implicitly_wait(0.2)
+                normal(crn[2])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%4==3:
+            try:
+                driver.implicitly_wait(0.2)
+                normal(crn[3])
                 break
             except NoSuchElementException:
                 try:

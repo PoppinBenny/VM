@@ -59,13 +59,6 @@ def find(A):
     return i
 
 def normal(crn):
-    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
-    shit2=driver.find_element_by_xpath("//input[@value='50094 120201']")
-    shit1.click()
-    shit2.click()
-    driver.find_element_by_xpath("//input[@value='Register']").click()
-
-def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
     shit2=driver.find_element_by_xpath("//input[@value='50094 120201']")
