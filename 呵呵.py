@@ -205,7 +205,6 @@ def func1():
                 break
             except NoSuchElementException:
                 try:
-                    switch+=1
                     print('no '+n)
                     switch+=1
                 except NoSuchElementException:
