@@ -197,7 +197,7 @@ def func1():
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                drop_mode(crn[0],drops[0])
+                normal(crn[0])
                 break
             except NoSuchElementException:
                 try:
