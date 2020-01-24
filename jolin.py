@@ -13,7 +13,7 @@ major=['STAT']
 xuhao=['433']
 crn=['70528']
 
-drops=[] #要加引号
+drops=['36179'] #要加引号
 
 account='linz4'
 password='Zl19720305#'
@@ -197,7 +197,7 @@ def func1():
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                normal(crn[0])
+                drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
