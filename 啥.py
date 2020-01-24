@@ -202,7 +202,7 @@ def func1():
         for i in lab:
             for j in disc:
                 for k in lec:
-                driver.implicitly_wait(0.05)
+                    driver.implicitly_wait(0.05)
                     try:
                         str1="//input[@value='"+str(k)+" 120201']"
                         str2="//input[@value='"+str(i)+" 120201']"
