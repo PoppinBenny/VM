@@ -9,7 +9,7 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['CS']
+major=['STAT']
 xuhao=['410','440']
 crn=['61861','63557','56929']
 
