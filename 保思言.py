@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['SPED','ECON']
-xuhao=['117','437']
-crn=['34501','69366']
+major=['STAT']
+xuhao=['440']
+crn=['56929']
 
-drops=['60004'] #要加引号
+drops=[] #要加引号
 
-account='yisic2'
-password='Zsb990628'
-n='60 amber'
+account='siyanb2'
+password='Sdxx040206...'
+n='123 保斯言'
 register=0
 limit=5
 
@@ -186,20 +186,21 @@ def func1():
     ("//option[@value='120201']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='"+major[1]+"']").click()
+    driver.find_element_by_xpath("//option[@value='"+major[0]+"']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
 
-    i1=find(xuhao[1])
-    i2=0
+    i1=find(xuhao[0])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                drop_mode(crn[1],drops[0])
+                if len(drops)==0:
+                    normal(crn[0])
+                else:
+                    drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
@@ -211,7 +212,6 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-
 
 
 func1()
