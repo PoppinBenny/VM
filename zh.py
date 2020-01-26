@@ -11,13 +11,13 @@ gce=True
 
 major=['CS']
 xuhao=['233']
-crn=['61690','61820','61821','61693','61694','61695','61823','61696']
+crn=['61690','61820','61693','61694','61696','61823']
 
 drops=[] #要加引号
 
-account='yikunl2'
-password='Ysu981121'
-n='20 李2'
+account='hanhuiz2'
+password='Xuesheng2019'
+n='117 zh'
 register=0
 limit=14
 
@@ -60,7 +60,7 @@ def find(A):
 
 def normal(crn):
     global register
-    shit1=driver.find_element_by_xpath("//input[@value='61827 120201']")
+    shit1=driver.find_element_by_xpath("//input[@value='61689 120201']")
     shit1.click()
     shit2=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
     shit2.click()
@@ -198,7 +198,7 @@ def func1():
 
     switch=0
     while True:
-        if switch%8==0:
+        if switch%6==0:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[0])
@@ -211,7 +211,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%8==1:
+        if switch%6==1:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[1])
@@ -223,7 +223,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%8==2:
+        if switch%6==2:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[2])
@@ -235,7 +235,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%8==3:
+        if switch%6==3:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[3])
@@ -247,7 +247,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%8==4:
+        if switch%6==4:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[4])
@@ -259,34 +259,10 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%8==5:
+        if switch%6==5:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[5])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%8==6:
-            try:
-                driver.implicitly_wait(0.2)
-                normal(crn[6])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%8==7:
-            try:
-                driver.implicitly_wait(0.2)
-                normal(crn[7])
                 break
             except NoSuchElementException:
                 try:
