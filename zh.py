@@ -16,7 +16,7 @@ crn=['61690','61820','61693','61694','61696','61823']
 drops=[] #要加引号
 
 account='hanhuiz2'
-password='Xuesheng2019'
+password='Xuesheng2019#'
 n='117 zh'
 register=0
 limit=14
