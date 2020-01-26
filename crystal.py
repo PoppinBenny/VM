@@ -13,7 +13,7 @@ major=['CS']
 xuhao=['411']
 crn=['31355']
 
-drops=[] #要加引号
+drops=['70131'] #要加引号
 
 account='wxiao5'
 password='20091996MMc'
