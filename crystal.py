@@ -13,13 +13,7 @@ major=['CS']
 xuhao=['411']
 crn=['31355']
 
-<<<<<<< .mine
 drops=['67373'] #要加引号
-||||||| .r1265
-drops=['70131'] #要加引号
-=======
-drops=[] #要加引号
->>>>>>> .r1278
 
 account='wxiao5'
 password='20091996MMc'
