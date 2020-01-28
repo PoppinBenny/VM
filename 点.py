@@ -198,7 +198,7 @@ def func1():
 
     switch=0
     while True:
-        if switch6==0:
+        if switch%6==0:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[0])
@@ -227,7 +227,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch6==1:
+        if switch%6==1:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[1])
@@ -239,7 +239,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch6==2:
+        if switch%6==2:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[2])
@@ -255,7 +255,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch6==3:
+        if switch%6==3:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[3])
@@ -267,7 +267,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch6==4:
+        if switch%6==4:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[4])
@@ -279,7 +279,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch6==5:
+        if switch%6==5:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[5])
