@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['STAT']
-xuhao=['440']
-crn=['56929']
+major=['ECON']
+xuhao=['302']
+crn=['33527']
 
-drops=['70959'] #要加引号
+drops=[] #要加引号
 
-account='zhiliny2'
-password='Love584326990105'
-n='124 richard2'
+account='xuanqiw2'
+password='Wyq010322!'
+n='141 john'
 register=0
 limit=5
 
@@ -62,6 +62,8 @@ def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
     shit1.click()
+    shit2=driver.find_element_by_xpath("//input[@value='57752 120201']")
+    shit2.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     i=2
@@ -194,11 +196,10 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                drop_mode(crn[0],drops[0])
+                normal(crn[0])
                 break
             except NoSuchElementException:
                 try:
@@ -210,7 +211,6 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-
 
 
 func1()

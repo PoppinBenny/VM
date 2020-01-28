@@ -13,7 +13,7 @@ major=['SPED']
 xuhao=['117']
 crn=['34495']
 
-drops=[] #要加引号
+drops=['62079'] #要加引号
 
 account='yifan14'
 password='Dbyz0527!'
@@ -87,6 +87,7 @@ def drop_mode(crn,drop):
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
+    find_drop('62189')
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
@@ -104,6 +105,7 @@ def drop_mode(crn,drop):
     except NoSuchElementException:
         print('Failed to add '+crn+' '+n)
         driver.find_element_by_id("crn_id1").send_keys(drop)
+        driver.find_element_by_id("crn_id2").send_keys('62189')
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
         driver.implicitly_wait(10)
         register+=1
@@ -197,10 +199,7 @@ def func1():
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
+                drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:

@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['STAT']
-xuhao=['440']
-crn=['56929']
+major=['ACCY']
+xuhao=['202']
+crn=['30119']
 
-drops=['70959'] #要加引号
+drops=['30120'] #要加引号
 
-account='zhiliny2'
-password='Love584326990105'
-n='124 richard2'
+account='manyul2'
+password='Lmy710716'
+n='131 laura'
 register=0
 limit=5
 
@@ -194,7 +194,6 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
             try:
                 driver.implicitly_wait(0.2)
@@ -210,7 +209,6 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-
 
 
 func1()
