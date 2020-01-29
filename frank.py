@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['ART']
-xuhao=['102']
-crn=['62772']
+major=['CS']
+xuhao=['498']
+crn=['65685']
 
-drops=['44662'] #要加引号
+drops=[] #要加引号
 
-account='mingw3'
-password='Cielisthebestgirl71'
-n='101 ciel'
+account='cf7'
+password='Yuqixue0824'
+n='153 frank'
 register=0
 limit=5
 
@@ -84,7 +84,6 @@ def normal(crn):
 def drop_mode(crn,drop):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
-    shit1=driver.find_element_by_xpath("//input[@value='66568 120201']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
@@ -92,7 +91,6 @@ def drop_mode(crn,drop):
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn)
-    driver.find_element_by_id("crn_id2").send_keys('66568')
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     i=2
@@ -195,7 +193,7 @@ def func1():
     i1=find(xuhao[0])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
-
+    
     while True:
             try:
                 driver.implicitly_wait(0.2)
@@ -214,6 +212,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
+
 
 
 func1()
