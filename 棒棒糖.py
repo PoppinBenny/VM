@@ -16,7 +16,7 @@ crn=['50105']
 drops=[] #要加引号
 
 account='yanxuj2'
-password='Jyx^543Qwe'
+password='Jyx^543jkl'
 n='112 棒棒糖'
 register=0
 limit=5
