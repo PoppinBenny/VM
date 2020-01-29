@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['ECON']
-xuhao=['474','490']
-crn=['68915','64022']
+major=['STAT']
+xuhao=['433']
+crn=['70527']
 
 drops=[] #要加引号
 
-account='zf13'
-password='Wcy980211'
-n='139 范致远'
+account='peijunx2'
+password='2020yhqLa'
+n='151 peggy'
 register=0
 limit=5
 
@@ -130,6 +130,37 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
+    driver.find_element_by_link_text("Add/Drop Classes").click()
+    driver.implicitly_wait(10)
+    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+    driver.implicitly_wait(10)
+    driver.find_element_by_xpath("//input[@value='Submit']").click()
+    driver.implicitly_wait(10)
+
+    if len(drops)==0:
+        try:
+            i=2
+            repeat=False
+            while True:
+                c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
+                nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
+                for m in major:
+                    if repeat==True:
+                        break
+                    for x in xuhao:
+                        if m==c and x==nu:
+                            repeat=True
+                            break
+                if repeat==True:
+                    print(c+nu+' already existed '+n)
+                    driver.quit()
+                    break
+                i+=1
+        except NoSuchElementException:
+            driver.back()
+            driver.back()
+            driver.back()
+
 
     if len(drops)!=0:
         for drop in drops:
@@ -160,35 +191,20 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao[0])
-    i2=find(xuhao[1])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
-        if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                normal(crn[0])
+                if len(drops)==0:
+                    normal(crn[0])
+                else:
+                    drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%2==1:
-            try:
-                driver.implicitly_wait(0.2)
-                normal(crn[1])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
                     time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
