@@ -16,7 +16,7 @@ crn=['31352']
 drops=[] #要加引号
 
 account='chenhan2'
-password='XCH19970510xch^'
+password='XCH19970510xch'
 n='149 pure'
 register=0
 limit=5
