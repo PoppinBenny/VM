@@ -15,9 +15,9 @@ crn=['31352']
 
 drops=[] #要加引号
 
-account='mianli2'
-password='Tea0227Ted!'
-n='103 李冕'
+account='chenhan2'
+password='XCH19970510xch^'
+n='149 pure'
 register=0
 limit=5
 
@@ -193,7 +193,7 @@ def func1():
     i1=find(xuhao[0])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
-
+    
     while True:
             try:
                 driver.implicitly_wait(0.2)
@@ -212,6 +212,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
+
 
 
 func1()
