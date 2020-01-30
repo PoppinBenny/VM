@@ -11,7 +11,7 @@ gce=True
 
 major=['ACCY']
 xuhao=['303']
-crn=['30267']
+crn=['30267','30276']
 
 drops=['30274'] #要加引号
 
@@ -84,7 +84,6 @@ def normal(crn):
 def drop_mode(crn,drop):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
-    shit2=driver.find_element_by_xpath("//input[@value='30276 120201']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
@@ -92,7 +91,6 @@ def drop_mode(crn,drop):
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn)
-    driver.find_element_by_id("crn_id2").send_keys('30276')
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     i=2
@@ -196,18 +194,29 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
+        if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
+                drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    time.sleep(6)
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%2==1:
+            try:
+                driver.implicitly_wait(0.2)
+                drop_mode(crn[1],drops[0])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
