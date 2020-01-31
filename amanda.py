@@ -11,7 +11,7 @@ gce=True
 
 major=['ACCY']
 xuhao=['303']
-crn=['30276']
+crn=['30276','30267']
 
 drops=['30274'] #要加引号
 
@@ -194,7 +194,9 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
+        if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
                 if len(drops)==0:
@@ -205,6 +207,22 @@ def func1():
             except NoSuchElementException:
                 try:
                     print('no '+n)
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%2==1:
+            try:
+                driver.implicitly_wait(0.2)
+                if len(drops)==0:
+                    normal(crn[1])
+                else:
+                    drop_mode(crn[1],drops[0])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
                     time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()

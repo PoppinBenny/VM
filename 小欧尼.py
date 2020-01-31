@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['ACCY','ECON']
-xuhao=['304','448']
-crn=['30291','68923']
+major=['ANSC']
+xuhao=['207']
+crn=['50323','50324']
 
-drops=['30288'] #要加引号
+drops=[] #要加引号
 
-account='ziyuew2'
-password='WzY1990!'
-n='128 土堆'
+account='mzhan21'
+password='Zmlzml1229$'
+n='158 小欧尼'
 register=0
 limit=5
 
@@ -62,6 +62,8 @@ def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
     shit1.click()
+    shit2=driver.find_element_by_xpath("//input[@value='50313 120201']")
+    shit2.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     i=2
@@ -87,7 +89,6 @@ def drop_mode(crn,drop):
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
-    find_drop('31220')
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
@@ -105,7 +106,6 @@ def drop_mode(crn,drop):
     except NoSuchElementException:
         print('Failed to add '+crn+' '+n)
         driver.find_element_by_id("crn_id1").send_keys(drop)
-        driver.find_element_by_id("crn_id2").send_keys('31220')
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
         driver.implicitly_wait(10)
         register+=1
@@ -193,7 +193,6 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao[0])
-    i2=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
@@ -202,28 +201,15 @@ def func1():
         if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                drop_mode(crn[0],drops[0])
+                if len(drops)==0:
+                    normal(crn[0])
+                else:
+                    drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
                     switch+=1
-                    driver.back()
-                    driver.back()
-                    driver.back()
-                    driver.back()
-                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_name("p_term").find_element_by_xpath\
-                    ("//option[@value='120201']").click()
-                    driver.find_element_by_xpath("//input[@value='Submit']").click()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='ECON']").click()
-                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
-                    driver.implicitly_wait(10)
-                    if i2==0:
-                        i2=find(xuhao[1])
-                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
@@ -231,25 +217,16 @@ def func1():
         if switch%2==1:
             try:
                 driver.implicitly_wait(0.2)
-                normal(crn[1])
+                if len(drops)==0:
+                    normal(crn[1])
+                else:
+                    drop_mode(crn[1],drops[0])
                 break
             except NoSuchElementException:
                 try:
                     switch+=1
                     time.sleep(6)
                     driver.back()
-                    driver.back()
-                    driver.back()
-                    driver.back()
-                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_name("p_term").find_element_by_xpath\
-                    ("//option[@value='120201']").click()
-                    driver.find_element_by_xpath("//input[@value='Submit']").click()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='ACCY']").click()
-                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
-                    driver.implicitly_wait(10)
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)

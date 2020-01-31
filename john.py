@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['ACCY','ECON']
-xuhao=['304','448']
-crn=['30291','68923']
+major=['CPSC','CHLH']
+xuhao=['131','206']
+crn=['60004','31167']
 
-drops=['30288'] #要加引号
+drops=['57810'] #要加引号
 
-account='ziyuew2'
-password='WzY1990!'
-n='128 土堆'
+account='xuanqiw2'
+password='Wyq010322!'
+n='159 john'
 register=0
 limit=5
 
@@ -202,7 +202,7 @@ def func1():
         if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                drop_mode(crn[0],drops[0])
+                normal(crn[0])
                 break
             except NoSuchElementException:
                 try:
@@ -218,7 +218,7 @@ def func1():
                     ("//option[@value='120201']").click()
                     driver.find_element_by_xpath("//input[@value='Submit']").click()
                     driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='ECON']").click()
+                    driver.find_element_by_xpath("//option[@value='CHLH']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
                     if i2==0:
@@ -231,7 +231,7 @@ def func1():
         if switch%2==1:
             try:
                 driver.implicitly_wait(0.2)
-                normal(crn[1])
+                drop_mode(crn[1],drops[0])
                 break
             except NoSuchElementException:
                 try:
@@ -247,7 +247,7 @@ def func1():
                     ("//option[@value='120201']").click()
                     driver.find_element_by_xpath("//input[@value='Submit']").click()
                     driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='ACCY']").click()
+                    driver.find_element_by_xpath("//option[@value='CPSC']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
