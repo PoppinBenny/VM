@@ -169,14 +169,14 @@ def func1():
                 while True:
                     temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
                     if drop==temp:
-                        driver.back()
-                        driver.back()
-                        driver.back()
                         break
                     i+=1
             except NoSuchElementException:
-                print('Drop index does not exist')
+                print(drop+'Drop index does not exist')
                 driver.quit()
+        driver.back()
+        driver.back()
+        driver.back()
 
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
