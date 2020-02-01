@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['REL']
-xuhao=['110']
-crn=['66774']
+major=['CS']
+xuhao=['173']
+crn=['65173','61916','48265','61915','50442','51087','51089']
 
-drops=['66751'] #要加引号
+drops=[] #要加引号
 
-account='anyuew2'
-password='001116Way12345678'
-n='94 turbulence'
+account='rtao6'
+password='Trn85165292!!'
+n='160 jerry'
 register=0
 limit=5
 
@@ -194,14 +194,103 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
+        if switch%7==0:
             try:
                 driver.implicitly_wait(0.2)
-                drop_mode(crn[0],drops[0])
+                shit1=driver.find_element_by_xpath("//input[@value='39311 120201']")
+                shit1.click()
+                normal(crn[0])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%7==1:
+            try:
+                driver.implicitly_wait(0.2)
+                shit1=driver.find_element_by_xpath("//input[@value='39311 120201']")
+                shit1.click()
+                normal(crn[1])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%7==2:
+            try:
+                driver.implicitly_wait(0.2)
+                shit1=driver.find_element_by_xpath("//input[@value='39311 120201']")
+                shit1.click()
+                normal(crn[2])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%7==3:
+            try:
+                driver.implicitly_wait(0.2)
+                shit1=driver.find_element_by_xpath("//input[@value='39311 120201']")
+                shit1.click()
+                normal(crn[3])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%7==4:
+            try:
+                driver.implicitly_wait(0.2)
+                shit1=driver.find_element_by_xpath("//input[@value='50094 120201']")
+                shit1.click()
+                normal(crn[4])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%7==5:
+            try:
+                driver.implicitly_wait(0.2)
+                shit1=driver.find_element_by_xpath("//input[@value='50094 120201']")
+                shit1.click()
+                normal(crn[5])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%7==6:
+            try:
+                driver.implicitly_wait(0.2)
+                shit1=driver.find_element_by_xpath("//input[@value='50094 120201']")
+                shit1.click()
+                normal(crn[6])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
                     time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
@@ -209,6 +298,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
+
 
 
 func1()
