@@ -138,7 +138,13 @@ def func1():
     driver.implicitly_wait(10)
 
     if len(drops)==0:
-        try:
+            i=2
+            try:
+                while True:
+                    temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+                    print(temp)
+                    i+=1
+        '''try:
             i=2
             repeat=False
             while True:
@@ -156,6 +162,7 @@ def func1():
                     driver.quit()
                     break
                 i+=1
+                '''
         except NoSuchElementException:
             driver.back()
             driver.back()
