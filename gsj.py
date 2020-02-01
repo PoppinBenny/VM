@@ -140,6 +140,7 @@ def func1():
     if len(drops)==0:
         i=2
         try:
+            print(' ')
             while True:
                 c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
                 nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
