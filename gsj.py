@@ -141,8 +141,10 @@ def func1():
         i=2
         try:
             while True:
+                c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
+                nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
                 temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
-                print(temp)
+                print(c,nu,temp)
                 i+=1
         except NoSuchElementException:
             driver.back()
