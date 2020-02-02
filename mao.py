@@ -84,18 +84,40 @@ def normal(crn):
     raise NoSuchElementException
 
 def drop_mode(crn,drop):
+    global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
-    shit2=driver.find_element_by_xpath("//input[@value='50093 120201']")
+    shit2=driver.find_element_by_xpath("//input[@value='50094 120201']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
-    find_drop('33325')
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn)
-    driver.find_element_by_id("crn_id2").send_keys('33286')
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+    driver.implicitly_wait(10)
+    i=2
+    try:
+        while True:
+            number=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+            if crn==number:
+                print('Course selected')
+                driver.quit()
+            i+=1
+    except NoSuchElementException:
+        print('Failed to add '+crn+' '+n)
+        driver.find_element_by_id("crn_id1").send_keys(drop)
+        driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+        driver.implicitly_wait(10)
+        register+=1
+        if register>=limit:
+            print('Too many requests for '+n)
+            driver.quit()
+        driver.back()
+        driver.back()
+        driver.back()
+        driver.back()
+    raise NoSuchElementException
 
 
 def func1():
