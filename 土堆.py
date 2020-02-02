@@ -16,7 +16,7 @@ crn=['30291']
 drops=['30288'] #要加引号
 
 account='ziyuew2'
-password='WzY1990!'
+password='WzY1989!'
 n='128 土堆'
 register=0
 limit=5
