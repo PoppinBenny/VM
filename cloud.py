@@ -245,7 +245,7 @@ def func1():
         if switch%2==1:
             try:
                 driver.implicitly_wait(0.2)
-                drop_mode(crn[1],drops[1])
+                drop_mode(crn[1],drops[0])
                 break
             except NoSuchElementException:
                 try:
