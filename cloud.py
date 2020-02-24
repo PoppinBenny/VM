@@ -17,7 +17,7 @@ drops=['70179'] #要加引号
 
 account='nayund2'
 password='DNYabc981026'
-n='2 cloud'
+n='3 cloud'
 register=0
 limit=5
 
