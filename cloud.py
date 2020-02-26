@@ -13,7 +13,7 @@ major=['PHIL','GEOG']
 xuhao=['102','101']
 crn=['66739','33253'] 
 
-drops=['70179'] #要加引号
+drops=[] #要加引号
 
 account='nayund2'
 password='DNYabc981026'
@@ -144,32 +144,15 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
 
-    current=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/\
-            table[2]/tbody/tr[1]/td[2]").text))
-    maximum=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table\
-            [2]/tbody/tr[4]/td[2]").text))
-    if maximum-current<3 and len(drops)==0:
-        print(n,"has insufficient credits. Current:",current,"Maximum:",maximum)
-        driver.quit()
-
     if len(drops)==0:
+        i=2
         try:
-            i=2
-            repeat=False
+            print(' ')
             while True:
                 c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
                 nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
-                for m in major:
-                    if repeat==True:
-                        break
-                    for x in xuhao:
-                        if m==c and x==nu:
-                            repeat=True
-                            break
-                if repeat==True:
-                    print(c+nu+' already existed '+n)
-                    driver.quit()
-                    break
+                temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+                print(c,nu,temp)
                 i+=1
         except NoSuchElementException:
             driver.back()
