@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['SPED']
-xuhao=['117']
-crn=['34501']
+major=['CLCV']
+xuhao=['120']
+crn=['70179'] 
 
 drops=[] #要加引号
 
-account='yuyangc3'
-password='CYy990625'
-n='4 B'
+account='yanxuj2'
+password='Jyx^543jyx'
+n='8 棒'
 register=0
 limit=5
 
@@ -58,6 +58,11 @@ def find(A):
 
     return i
 
+def print_error():
+    status=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[2]/td[1]").text
+    crn=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[2]/td[2]").text
+    print(crn,status)
+
 def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
@@ -74,6 +79,7 @@ def normal(crn):
             i+=1
     except NoSuchElementException:
         print('Failed to add '+crn+' '+n)
+        print_error()
         register+=1
         if register>=limit:
             print('Too many requests for '+n)
@@ -103,6 +109,7 @@ def drop_mode(crn,drop):
             i+=1
     except NoSuchElementException:
         print('Failed to add '+crn+' '+n)
+        print_error()
         driver.find_element_by_id("crn_id1").send_keys(drop)
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
         driver.implicitly_wait(10)
@@ -137,6 +144,14 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
 
+    current=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/\
+            table[2]/tbody/tr[1]/td[2]").text))
+    maximum=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table\
+            [2]/tbody/tr[4]/td[2]").text))
+    if maximum-current<3 and len(drops)==0:
+        print(n,"has insufficient credits. Current:",current,"Maximum:",maximum)
+        driver.quit()
+
     if len(drops)==0:
         try:
             i=2
@@ -169,14 +184,14 @@ def func1():
                 while True:
                     temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
                     if drop==temp:
-                        driver.back()
-                        driver.back()
-                        driver.back()
                         break
                     i+=1
             except NoSuchElementException:
                 print('Drop index does not exist')
                 driver.quit()
+        driver.back()
+        driver.back()
+        driver.back()
 
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
