@@ -144,10 +144,8 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
 
-    current=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/\
-            table[2]/tbody/tr[1]/td[2]").text))
-    maximum=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table\
-            [2]/tbody/tr[4]/td[2]").text))
+    current=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table[2]/tbody/tr[1]/td[2]").text))
+    maximum=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table[2]/tbody/tr[4]/td[2]").text))
     if maximum-current<3 and len(drops)==0:
         print(n,"has insufficient credits. Current:",current,"Maximum:",maximum)
         driver.quit()
