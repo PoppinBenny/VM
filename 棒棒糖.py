@@ -16,7 +16,7 @@ crn=['70179']
 drops=[] #要加引号
 
 account='yanxuj2'
-password='Jyx^543jyx'
+password='Jyx^543yxj'
 n='8 棒'
 register=0
 limit=5
