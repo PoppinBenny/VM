@@ -13,7 +13,7 @@ major=['AAS']
 xuhao=['201']
 crn=['66638'] 
 
-drops=[] #要加引号
+drops=['65088'] #要加引号
 
 account='yunzhez2'
 password='0522Zyzray.'
@@ -93,6 +93,7 @@ def drop_mode(crn,drop):
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
+    find_drop('65096')
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
@@ -111,6 +112,7 @@ def drop_mode(crn,drop):
         print('Failed to add '+crn+' '+n)
         print_error()
         driver.find_element_by_id("crn_id1").send_keys(drop)
+        driver.find_element_by_id("crn_id2").send_keys('65096')
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
         driver.implicitly_wait(10)
         register+=1
