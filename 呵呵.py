@@ -37,9 +37,9 @@ def find_drop(index):
         while True:
             number=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
             print(number)
-            #if str(index)==number:
+            if str(index)==number:
                 #driver.find_element_by_xpath("//*[@id='action_id"+str(i-1)+"']/option[@value='DW']").click()
-                #break
+                break
             i+=1
     except NoSuchElementException:
         print('Drop index does not exist')
