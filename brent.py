@@ -197,15 +197,11 @@ def func1():
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
+                normal(crn[0])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:

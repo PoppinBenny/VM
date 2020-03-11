@@ -134,85 +134,12 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
     driver.implicitly_wait(10)
+    driver.find_element_by_xpath("//*[@id='term_id']/option[3]").click()
+    driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
 
-    if len(drops)==0:
-        try:
-            i=2
-            repeat=False
-            while True:
-                c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
-                nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
-                for m in major:
-                    if repeat==True:
-                        break
-                    for x in xuhao:
-                        if m==c and x==nu:
-                            repeat=True
-                            break
-                if repeat==True:
-                    print(c+nu+' already existed '+n)
-                    driver.quit()
-                    break
-                i+=1
-        except NoSuchElementException:
-            driver.back()
-            driver.back()
-            driver.back()
-
-
-    if len(drops)!=0:
-        for drop in drops:
-            i=2
-            try:
-                while True:
-                    temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
-                    if drop==temp:
-                        driver.back()
-                        driver.back()
-                        driver.back()
-                        break
-                    i+=1
-            except NoSuchElementException:
-                print('Drop index does not exist')
-                driver.quit()
-
-    driver.find_element_by_link_text("Look-up or Select Classes").click()
-    driver.implicitly_wait(10)
-    driver.find_element_by_link_text("I Agree to the Above Statement").click()
-    driver.implicitly_wait(10)
-    driver.find_element_by_name("p_term").find_element_by_xpath\
-    ("//option[@value='120201']").click()
-    driver.find_element_by_xpath("//input[@value='Submit']").click()
-    driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//option[@value='"+major[0]+"']").click()
-    driver.find_element_by_xpath("//input[@value='Course Search']").click()
-    driver.implicitly_wait(10)
-
-    i1=find(xuhao[0])
-    driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-    driver.implicitly_wait(10) #440 = 36, 412 = 24
-
-    while True:
-            try:
-                driver.implicitly_wait(0.2)
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
-                break
-            except NoSuchElementException:
-                try:
-                    print('no '+n)
-                    time.sleep(6)
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-
+    find_drop('34501')
 
 func1()
 
