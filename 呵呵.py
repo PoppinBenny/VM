@@ -9,9 +9,9 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['AAS']
-xuhao=['201']
-crn=['66638'] 
+major=['ABE']
+xuhao=['226']
+crn=['57086'] 
 
 drops=['65088'] #要加引号
 
@@ -39,7 +39,7 @@ def find_drop(index):
             print(number)
             if str(index)==number:
                 print(111)
-                driver.find_element_by_xpath("//*[@id='action_id"+str(i-1)+"']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//*[@id='action_id"+str(i-1)+"']/option[@value='DW']")
                 print(222)
                 break
             i+=1
