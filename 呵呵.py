@@ -39,13 +39,15 @@ def find_drop(index):
             print(number)
             if str(index)==number:
                 print(111)
-                driver.find_element_by_xpath("//*[@id='action_id"+str(i-1)+"']/option[@value='DW']")
+                driver.find_element_by_xpath("//*[@id='action_id"+str(i-1)+"']/option[2]")
                 print(222)
                 break
             i+=1
     except NoSuchElementException:
+        print('没找到')
         print('Drop index does not exist')
         driver.quit()
+        print('sb')
 
 def find(A):
     i=3
