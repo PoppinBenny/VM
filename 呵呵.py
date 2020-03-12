@@ -9,9 +9,9 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['ABE']
-xuhao=['226']
-crn=['57086'] 
+major=['AAS']
+xuhao=['201']
+crn=['66638'] 
 
 drops=['65088'] #要加引号
 
@@ -36,11 +36,8 @@ def find_drop(index):
     try:
         while True:
             number=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
-            print(number)
             if str(index)==number:
-                print(111)
                 driver.find_element_by_xpath("//*[@id='action_id"+str(i-1)+"']/option[2]")
-                print(222)
                 break
             i+=1
     except NoSuchElementException:
