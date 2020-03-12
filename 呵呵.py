@@ -44,10 +44,8 @@ def find_drop(index):
                 break
             i+=1
     except NoSuchElementException:
-        print('没找到')
         print('Drop index does not exist')
         driver.quit()
-        print('sb')
 
 def find(A):
     i=3
