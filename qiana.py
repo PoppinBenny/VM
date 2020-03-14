@@ -13,11 +13,11 @@ major=['SPED']
 xuhao=['117']
 crn=['34501']
 
-drops=[] #要加引号
+drops=['69297'] #要加引号
 
-account='ziyuew2'
-password='WzY1986!'
-n='6 土堆'
+account='qianw3'
+password='Wq2011435433'
+n='9 Qia'
 register=0
 limit=5
 
