@@ -16,7 +16,7 @@ crn=['60004']
 drops=['59549'] #要加引号
 
 account='mzhan21'
-password='Zmlzml1229$'
+password='Zmlzml1229:'
 n='158 小'
 register=0
 limit=5
