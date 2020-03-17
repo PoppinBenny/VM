@@ -103,7 +103,9 @@ def drop_mode(crn,drop):
     try:
         while True:
             number=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
-            print(number)
+            c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
+            nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
+            print(c,nu,number)
             if crn==number:
                 print('Course selected')
                 driver.quit()
