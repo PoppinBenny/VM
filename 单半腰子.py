@@ -15,9 +15,9 @@ crn=['34501']
 
 drops=[] #要加引号
 
-account='xinghan3'
-password='Gxh!2030'
-n='7 mj'
+account='yifan14'
+password='Dbyz0527!'
+n='17 单'
 register=0
 limit=5
 
@@ -37,7 +37,7 @@ def find_drop(index):
         while True:
             number=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
             if str(index)==number:
-                driver.find_element_by_xpath("//*[@id='action_id"+str(i-1)+"']/option[@value='DW']").click()
+                driver.find_element_by_xpath("//*[@id='action_id"+str(i-1)+"']/option[2]").click()
                 break
             i+=1
     except NoSuchElementException:
@@ -58,6 +58,11 @@ def find(A):
 
     return i
 
+def print_error():
+    status=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[2]/td[1]").text
+    crn=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[2]/td[2]").text
+    print(crn,status)
+
 def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
@@ -68,12 +73,16 @@ def normal(crn):
     try:
         while True:
             number=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+            c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
+            nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
+            print(c,nu,number)
             if crn==number:
                 print('Course selected')
                 driver.quit()
             i+=1
     except NoSuchElementException:
         print('Failed to add '+crn+' '+n)
+        print_error()
         register+=1
         if register>=limit:
             print('Too many requests for '+n)
@@ -97,12 +106,16 @@ def drop_mode(crn,drop):
     try:
         while True:
             number=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+            c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
+            nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
+            print(c,nu,number)
             if crn==number:
                 print('Course selected')
                 driver.quit()
             i+=1
     except NoSuchElementException:
         print('Failed to add '+crn+' '+n)
+        print_error()
         driver.find_element_by_id("crn_id1").send_keys(drop)
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
         driver.implicitly_wait(10)
@@ -134,24 +147,34 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
     driver.implicitly_wait(10)
+    driver.find_element_by_xpath("//*[@id='term_id']/option[3]").click()
+    driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
 
     if len(drops)==0:
-        i=2
         try:
-            print(' ')
+            i=2
+            repeat=False
             while True:
                 c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
                 nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
-                temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
-                print(c,nu,temp)
+                for m in major:
+                    if repeat==True:
+                        break
+                    for x in xuhao:
+                        if m==c and x==nu:
+                            repeat=True
+                            break
+                if repeat==True:
+                    print(c+nu+' already existed '+n)
+                    driver.quit()
+                    break
                 i+=1
         except NoSuchElementException:
             driver.back()
             driver.back()
             driver.back()
-
 
     if len(drops)!=0:
         for drop in drops:
@@ -160,14 +183,14 @@ def func1():
                 while True:
                     temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
                     if drop==temp:
-                        driver.back()
-                        driver.back()
-                        driver.back()
                         break
                     i+=1
             except NoSuchElementException:
                 print('Drop index does not exist')
                 driver.quit()
+        driver.back()
+        driver.back()
+        driver.back()
 
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
