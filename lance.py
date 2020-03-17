@@ -13,11 +13,11 @@ major=['SPED']
 xuhao=['117']
 crn=['34501']
 
-drops=['69297'] #要加引号
+drops=[] #要加引号
 
-account='qianw3'
-password='Wq2011435433'
-n='9 Qia'
+account='xijiay2'
+password='Yf399995'
+n='16 l'
 register=0
 limit=5
 
@@ -73,6 +73,9 @@ def normal(crn):
     try:
         while True:
             number=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+            c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
+            nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
+            print(c,nu,number)
             if crn==number:
                 print('Course selected')
                 driver.quit()
