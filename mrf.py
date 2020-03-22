@@ -17,7 +17,7 @@ drops=[] #要加引号
 
 account='yulinf2'
 password='0914Ted!'
-n='15 F myq'
+n='10 F'
 register=0
 limit=5
 
@@ -68,6 +68,9 @@ def normal(crn):
     try:
         while True:
             number=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+            c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
+            nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
+            print(c,nu,number)
             if crn==number:
                 print('Course selected')
                 driver.quit()
