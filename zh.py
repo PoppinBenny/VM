@@ -149,32 +149,6 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
 
-    if len(drops)==0:
-        try:
-            i=2
-            repeat=False
-            while True:
-                c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
-                nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
-                for m in major:
-                    if repeat==True:
-                        break
-                    for x in xuhao:
-                        if m==c and x==nu:
-                            repeat=True
-                            break
-                if repeat==True:
-                    print(c+nu+' already existed '+n)
-                    driver.quit()
-                    break
-                i+=1
-        except NoSuchElementException:
-            driver.back()
-            driver.back()
-            driver.back()
-
-
-
     if len(drops)!=0:
         for drop in drops:
             i=2
