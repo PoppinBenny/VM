@@ -77,6 +77,7 @@ def normal(crn):
             i+=1
     except NoSuchElementException:
         print('Failed to add '+crn+' '+n)
+        print_error()
         register+=1
         if register>=limit:
             print('Too many requests for '+n)
