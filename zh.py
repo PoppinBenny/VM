@@ -9,9 +9,9 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['AFRO','PS','SPED']
-xuhao=['100','201','117']
-crn=['46379','38765','38764','34501']
+major=['AFRO','SPED']
+xuhao=['100','117']
+crn=['46379','38764','34501']
 
 drops=[] #要加引号
 
@@ -200,7 +200,7 @@ def func1():
 
     switch=0
     while True:
-        if switch%4==0:
+        if switch%3==0:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[0])
@@ -228,20 +228,8 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%4==1:
-            try:
-                driver.implicitly_wait(0.2)
-                normal(crn[1])
-                break
-            except NoSuchElementException:
-                try:
-                    print('no '+n)
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%4==2:
+
+        if switch%3==1:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[2])
@@ -269,7 +257,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%4==3:
+        if switch%3==2:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[3])
