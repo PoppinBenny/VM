@@ -9,9 +9,9 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['AFRO','PS','CPSC']
-xuhao=['100','201','131']
-crn=['46379','38765','38764','60004']
+major=['AFRO','PS','SPED']
+xuhao=['100','201','117']
+crn=['46379','38765','38764','34501']
 
 drops=[] #要加引号
 
@@ -270,7 +270,7 @@ def func1():
                     ("//option[@value='120201']").click()
                     driver.find_element_by_xpath("//input[@value='Submit']").click()
                     driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='CPSC']").click()
+                    driver.find_element_by_xpath("//option[@value='SPED']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
                     if i3==0:
