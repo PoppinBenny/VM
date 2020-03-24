@@ -282,6 +282,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     switch+=1
+                    print('no '+n)
                     time.sleep(6)
                     driver.back()
                     driver.back()
