@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['CPSC']
-xuhao=['131']
-crn=['60004']
+major=['']
+xuhao=['']
+crn=[''] 
 
 drops=[] #要加引号
 
-account='miaowen5'
-password='Abcd123456'
-n='19 miaos'
+account=''
+password=''
+n=''
 register=0
 limit=5
 
@@ -152,6 +152,14 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
 
+    current=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/\
+            table[2]/tbody/tr[1]/td[2]").text))
+    maximum=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table\
+            [2]/tbody/tr[4]/td[2]").text))
+    if maximum-current<3 and len(drops)==0:
+        print(n,"has insufficient credits. Current:",current,"Maximum:",maximum)
+        driver.quit()
+
     if len(drops)==0:
         try:
             i=2
@@ -175,6 +183,7 @@ def func1():
             driver.back()
             driver.back()
             driver.back()
+
 
     if len(drops)!=0:
         for drop in drops:
