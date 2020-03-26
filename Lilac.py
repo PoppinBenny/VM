@@ -333,7 +333,7 @@ def func1():
         if switch%9==6:
             try:
                 driver.implicitly_wait(0.2)
-                    normal(crn[6])
+                normal(crn[6])
                 break
             except NoSuchElementException:
                 try:
