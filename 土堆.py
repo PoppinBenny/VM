@@ -15,9 +15,9 @@ crn=['70303','63899']
 
 drops=[] #要加引号
 
-account='nanni2'
-password='Wje0820.'
-n='10 橙'
+account='ziyuew2'
+password='WzY1986!'
+n='10 土堆'
 register=0
 limit=5
 
