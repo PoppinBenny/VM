@@ -16,7 +16,7 @@ crn=['61087']
 drops=['66827'] #要加引号
 
 account='danming2'
-password='Wdm963119'
+password='Karywdm9264'
 n='4 猫'
 register=0
 limit=5
