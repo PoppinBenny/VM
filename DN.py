@@ -66,7 +66,7 @@ def print_error():
 
 def normal(crn):
     global register
-    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120205']")
     shit1.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
@@ -93,7 +93,7 @@ def normal(crn):
 
 def drop_mode(crn,drop):
     global register
-    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120205']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
@@ -148,7 +148,7 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//*[@id='term_id']/option[1]").click()
+    driver.find_element_by_xpath("//*[@id='term_id']/option[2]").click()
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
@@ -223,7 +223,7 @@ def func1():
         if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='36797 120208']")
+                shit1=driver.find_element_by_xpath("//input[@value='36797 120205']")
                 shit1.click()
                 normal(crn[0])
                 break
@@ -237,7 +237,7 @@ def func1():
         if switch%2==1:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='37287 120208']")
+                shit1=driver.find_element_by_xpath("//input[@value='37287 120205']")
                 shit1.click()
                 normal(crn[1])
                 break
