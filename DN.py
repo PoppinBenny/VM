@@ -9,15 +9,16 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['ECON']
-xuhao=['475']
-crn=['70826'] 
+major=['CS']
+xuhao=['173']
+crn=['36796','40518'] 
 
 drops=[] #要加引号
 
-account='yuchenz9'
-password='Zouzouzou211318-'
-n='6 -'
+account='ql17'
+password='Qian889478
+'
+n='9 DN'
 register=0
 limit=5
 
@@ -217,17 +218,33 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
+        if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
+                shit1=driver.find_element_by_xpath("//input[@value='36797 120208']")
+                shit1.click()
+                normal(crn[0])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%2==1:
+            try:
+                driver.implicitly_wait(0.2)
+                shit1=driver.find_element_by_xpath("//input[@value='37287 120208']")
+                shit1.click()
+                normal(crn[1])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
+                    switch+=1
                     time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()

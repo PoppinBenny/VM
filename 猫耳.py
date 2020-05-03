@@ -65,7 +65,7 @@ def print_error():
 
 def normal(crn):
     global register
-    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
     shit1.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
@@ -92,7 +92,7 @@ def normal(crn):
 
 def drop_mode(crn,drop):
     global register
-    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120201']")
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
