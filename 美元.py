@@ -257,7 +257,6 @@ def func1():
             except NoSuchElementException:
                 try:
                     switch+=1
-                    driver.implicitly_wait(10)
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
