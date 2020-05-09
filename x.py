@@ -228,6 +228,7 @@ def func1():
             for x1 in crn1:
                 driver.implicitly_wait(0.25)
                 try:
+                    print('BUS')
                     normal(str(x1))
                 except NoSuchElementException:
                     try:
@@ -269,6 +270,7 @@ def func1():
         if switch==10:
             driver.implicitly_wait(0.25)
             try:
+                print('BADM')
                 shit1=driver.find_element_by_xpath("//input[@value='71353 120208']")
                 shit1.click()
                 normal(str(crn2[1]))
@@ -300,6 +302,7 @@ def func1():
             for x3 in crn3:
                 driver.implicitly_wait(0.25)
                 try:
+                    print('ACCY')
                     shit1=driver.find_element_by_xpath("//input[@value='36549 120208']")
                     shit1.click()
                     normal(str(x3))
