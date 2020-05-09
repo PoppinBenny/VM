@@ -296,7 +296,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch>1=1 and switch<=21:
+        if switch>=11 and switch<=21:
             for x3 in crn3:
                 driver.implicitly_wait(0.25)
                 try:
