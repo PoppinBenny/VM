@@ -10,8 +10,8 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major=['STAT']
-xuhao=['448','425']
-crn=['70253','70250','52528','62207','63341'] 
+xuhao=['448']
+crn=['70253','70250'] 
 
 drops=[] #要加引号
 
@@ -214,13 +214,12 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao[0])
-    i2=find(xuhao[1])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
     while True:
-        if switch%5==0:
+        if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[0])
@@ -233,51 +232,10 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%5==1:
+        if switch%2==1:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[1])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                    driver.back()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%5==2:
-            try:
-                driver.implicitly_wait(0.2)
-                normal(crn[2])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                    driver.implicitly_wait(10)
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%5==3:
-            try:
-                driver.implicitly_wait(0.2)
-                normal(crn[3])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                    driver.implicitly_wait(10)
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%5==4:
-            try:
-                driver.implicitly_wait(0.2)
-                normal(crn[4])
                 break
             except NoSuchElementException:
                 try:
