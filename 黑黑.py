@@ -200,7 +200,7 @@ def func1():
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
     driver.implicitly_wait(10)
     driver.find_element_by_name("p_term").find_element_by_xpath\
-    ("//option[@value='120208']").click()
+    ("//option[@value='120205']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//option[@value='"+major[0]+"']").click()
@@ -211,33 +211,17 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
-        if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='36797 120205']")
-                shit1.click()
-                normal(crn[0])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%2==1:
-            try:
-                driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='37287 120205']")
-                shit1.click()
-                normal(crn[1])
+                if len(drops)==0:
+                    normal(crn[0])
+                else:
+                    drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    switch+=1
                     time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
@@ -245,6 +229,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
+
 
 
 func1()
