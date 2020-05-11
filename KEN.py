@@ -151,7 +151,7 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-
+    
     if len(drops)==0:
         try:
             i=2
