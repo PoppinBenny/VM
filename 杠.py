@@ -17,7 +17,7 @@ drops=[] #要加引号
 
 account='yuchenz9'
 password='Zouzouzou211318-'
-n='6 -'
+n='---'
 register=0
 limit=5
 

@@ -15,9 +15,9 @@ crn=['36796','40518']
 
 drops=[] #要加引号
 
-account='zehao3'
-password='Shenqing2020##'
-n='9 山'
+account='yiranle2'
+password=' Tmzc20000218.'
+n='Erin'
 register=0
 limit=5
 
@@ -214,8 +214,8 @@ def func1():
         if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                shit=driver.find_element_by_xpath("//input[@value='36797 120205']")
-                shit.click()
+                shit1=driver.find_element_by_xpath("//input[@value='36797 120205']")
+                shit1.click()
                 normal(crn[0])
                 break
             except NoSuchElementException:
@@ -228,8 +228,8 @@ def func1():
         if switch%2==1:
             try:
                 driver.implicitly_wait(0.2)
-                shit=driver.find_element_by_xpath("//input[@value='37287 120205']")
-                shit.click()
+                shit1=driver.find_element_by_xpath("//input[@value='37287 120205']")
+                shit1.click()
                 normal(crn[1])
                 break
             except NoSuchElementException:
