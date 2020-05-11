@@ -10,14 +10,14 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major=['CS']
-xuhao=['225']
-crn=['35947','62139'] 
+xuhao=['412']
+crn=['43357'] 
 
 drops=[] #要加引号
 
-account='weiyang7'
-password='Wangwill0329!!!!'
-n='w'
+account='lf4'
+password='Summer2020'
+n='帅'
 register=0
 limit=5
 
@@ -67,8 +67,6 @@ def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
     shit1.click()
-    shit2=driver.find_element_by_xpath("//input[@value='35917 120208']")
-    shit2.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     i=2
