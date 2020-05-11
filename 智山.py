@@ -67,6 +67,8 @@ def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
     shit1.click()
+    shit2=driver.find_element_by_xpath("//input[@value='65184 120208']")
+    shit2.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     i=2
@@ -151,7 +153,7 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
-
+    
     if len(drops)==0:
         try:
             i=2
@@ -214,8 +216,6 @@ def func1():
         if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='65184 120208']")
-                shit1.click()
                 normal(crn[0])
                 break
             except NoSuchElementException:
@@ -228,8 +228,6 @@ def func1():
         if switch%2==1:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='65184 120208']")
-                shit1.click()
                 normal(crn[1])
                 break
             except NoSuchElementException:
