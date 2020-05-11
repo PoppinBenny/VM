@@ -216,7 +216,6 @@ def func1():
 
     switch=0
     while True:
-        print(switch)
         if switch>=0 and switch<=9:
             for x1 in crn1:
                 driver.implicitly_wait(0.25)
