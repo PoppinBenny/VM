@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['ART']
-xuhao=['103']
-crn=['70728'] 
+major=['CS']
+xuhao=['225']
+crn=['35917','35919'] 
 
 drops=[] #要加引号
 
-account='jingx7'
-password='630301Xj!'
-n='$$'
+account='weixia3'
+password='123Music0206+'
+n='cafe'
 register=0
 limit=5
 
@@ -62,7 +62,7 @@ def print_error():
     status=driver.find_element_by_xpath("/html/body/div[3]/form/table[2]/tbody/tr[2]/td[1]").text
     crn=driver.find_element_by_xpath("/html/body/div[3]/form/table[2]/tbody/tr[2]/td[2]").text
     print(crn,status)
-
+    
 def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
@@ -152,14 +152,6 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
 
-    current=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/\
-            table[2]/tbody/tr[1]/td[2]").text))
-    maximum=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table\
-            [2]/tbody/tr[4]/td[2]").text))
-    if maximum-current<3 and len(drops)==0:
-        print(n,"has insufficient credits. Current:",current,"Maximum:",maximum)
-        driver.quit()
-
     if len(drops)==0:
         try:
             i=2
@@ -217,17 +209,33 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
+        if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
+                shit1=driver.find_element_by_xpath("//input[@value='65184 120208']")
+                shit1.click()
+                normal(crn[0])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%2==1:
+            try:
+                driver.implicitly_wait(0.2)
+                shit1=driver.find_element_by_xpath("//input[@value='65184 120208']")
+                shit1.click()
+                normal(crn[1])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
+                    switch+=1
                     time.sleep(6)
                     driver.back()
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
@@ -235,6 +243,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
+
 
 
 func1()
