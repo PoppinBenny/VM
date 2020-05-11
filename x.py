@@ -236,7 +236,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     switch+=1
-                    if switch==11:
+                    if switch==2:
                         driver.back()
                         driver.back()
                         driver.back()
