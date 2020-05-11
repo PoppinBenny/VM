@@ -215,8 +215,8 @@ def func1():
         if switch%3==0:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='36797 120205']")
-                shit1.click()
+                shit=driver.find_element_by_xpath("//input[@value='36797 120205']")
+                shit.click()
                 normal(crn[0])
                 break
             except NoSuchElementException:
@@ -230,8 +230,8 @@ def func1():
         if switch%3==1:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='37287 120205']")
-                shit1.click()
+                shit=driver.find_element_by_xpath("//input[@value='37287 120205']")
+                shit.click()
                 normal(crn[1])
                 break
             except NoSuchElementException:
@@ -260,8 +260,8 @@ def func1():
         if switch%3==2:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='30460 120205']")
-                shit1.click()
+                shit=driver.find_element_by_xpath("//input[@value='30460 120205']")
+                shit.click()
                 normal(crn[2])
                 break
             except NoSuchElementException:
