@@ -253,8 +253,6 @@ def func1():
                     driver.close()
                     func1()
 
-
-
 func1()
 
 print('Course selected')
