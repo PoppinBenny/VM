@@ -59,10 +59,10 @@ def find(A):
     return i
 
 def print_error():
-    status=driver.find_element_by_xpath("/html/body/div[3]/form/table[2]/tbody/tr[2]/td[1]").text
-    crn=driver.find_element_by_xpath("/html/body/div[3]/form/table[2]/tbody/tr[2]/td[2]").text
+    status=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[2]/td[1]").text
+    crn=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[2]/td[2]").text
     print(crn,status)
-
+    
 def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
