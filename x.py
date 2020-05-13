@@ -228,7 +228,7 @@ def func1():
                 except NoSuchElementException:
                     try:
                         switch+=1
-                        if switch==12:
+                        if switch==8:
                             print('no '+n)
                             switch=0
                             time.sleep(6)
