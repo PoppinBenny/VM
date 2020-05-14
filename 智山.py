@@ -16,7 +16,7 @@ crn=['63733','64513']
 drops=[] #要加引号
 
 account='zehao3'
-password='Shenqing2020\\\\'
+password='Shenqing2020||'
 n='山'
 register=0
 limit=5
