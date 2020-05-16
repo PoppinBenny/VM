@@ -76,6 +76,9 @@ def normal(crn):
             c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
             nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
             print(c,nu,number)
+            if crn==number:
+                print('Course selected')
+                driver.quit()
             i+=1
     except NoSuchElementException:
         print('Failed to add '+crn+' '+n)
@@ -149,10 +152,97 @@ def func1():
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
 
-    find_drop('37287')
-    find_drop('40518')
+    if len(drops)==0:
+        try:
+            i=2
+            repeat=False
+            while True:
+                c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
+                nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
+                for m in major:
+                    if repeat==True:
+                        break
+                    for x in xuhao:
+                        if m==c and x==nu:
+                            repeat=True
+                            break
+                if repeat==True:
+                    print(c+nu+' already existed '+n)
+                    driver.quit()
+                    break
+                i+=1
+        except NoSuchElementException:
+            driver.back()
+            driver.back()
+            driver.back()
+
+
+    if len(drops)!=0:
+        for drop in drops:
+            i=2
+            try:
+                while True:
+                    temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
+                    if drop==temp:
+                        break
+                    i+=1
+            except NoSuchElementException:
+                print('Drop index does not exist')
+                driver.quit()
+        driver.back()
+        driver.back()
+        driver.back()
+
+    driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+    driver.implicitly_wait(10)
+    driver.find_element_by_name("p_term").find_element_by_xpath\
+    ("//option[@value='120205']").click()
+    driver.find_element_by_xpath("//input[@value='Submit']").click()
+    driver.implicitly_wait(10)
+    driver.find_element_by_xpath("//option[@value='"+major[0]+"']").click()
+    driver.find_element_by_xpath("//input[@value='Course Search']").click()
+    driver.implicitly_wait(10)
+
+    i1=find(xuhao[0])
+    driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
+    driver.implicitly_wait(10) #440 = 36, 412 = 24
+
+    switch=0
+    while True:
+        if switch%2==0:
+            try:
+                driver.implicitly_wait(0.2)
+                shit1=driver.find_element_by_xpath("//input[@value='36797 120205']")
+                shit1.click()
+                normal(crn[0])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%2==1:
+            try:
+                driver.implicitly_wait(0.2)
+                shit1=driver.find_element_by_xpath("//input[@value='37287 120205']")
+                shit1.click()
+                normal(crn[1])
+                break
+            except NoSuchElementException:
+                try:
+                    print('no '+n)
+                    switch+=1
+                    time.sleep(6)
+                    driver.back()
+                    driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
 
 
 func1()
