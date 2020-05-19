@@ -16,7 +16,7 @@ crn=['68785','63159']
 drops=['70666','63160'] #要加引号
 
 account='linxian2'
-password='Clx#2017'
+password='Clx%2017'
 n='XI'
 register=0
 limit=5
