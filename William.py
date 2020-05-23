@@ -16,9 +16,9 @@ lec=['36549','71328']
 
 drops=[] #要加引号
 
-account=''
-password=''
-n=''
+account='wenxing3'
+password='Li3suswa1021'
+n='william'
 register=0
 limit=5
 
@@ -60,9 +60,15 @@ def find(A):
     return i
 
 def print_error():
-    status=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[2]/td[1]").text
-    crn=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[2]/td[2]").text
-    print(crn,status)
+    i=2
+    try:
+        while True:
+            status=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr["+str(i)+"]/td[1]").text
+            crn=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr["+str(i)+"]/td[2]").text
+            print(crn,status)
+            i+=1
+    except NoSuchElementException:
+        print('try again')
 
 def normal(crn1,crn2=''):
     global register
