@@ -220,7 +220,7 @@ def func1():
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='65053 120208']")
+                shit1=driver.find_element_by_xpath("//input[@value='35950 120208']")
                 shit1.click()
                 normal(crn[0])
                 break

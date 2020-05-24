@@ -16,7 +16,7 @@ crn=['36796','40518']
 drops=[] #要加引号
 
 account='yg15'
-password='xianzhanG8'
+password='Xianzhang1'
 n='pe'
 register=0
 limit=5
