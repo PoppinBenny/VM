@@ -88,7 +88,7 @@ def normal(crn1,crn2=''):
             c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
             nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
             print(c,nu,number)
-            if crn==number:
+            if crn1==number:
                 print('Course selected')
                 driver.quit()
             i+=1
