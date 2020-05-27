@@ -9,12 +9,12 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['BADM','BADM','ACCY']
-xuhao=['210','275','202']
+major=['BADM','ACCY']
+xuhao=['275','202']
 disc=['36556','36568','36574','71331','71332']
 lec=['36549','71328']
 
-drops=[] #要加引号
+drops=['37367','37386'] #要加引号
 
 account='wenxing3'
 password='Li3suswa102!'
@@ -102,16 +102,21 @@ def normal(crn1,crn2=''):
         driver.back()
     raise NoSuchElementException
 
-def drop_mode(crn,drop):
+def drop_mode(crn1,drop1,drop2,crn2=''):
     global register
-    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn1+" 120208']")
+    if crn2!='':
+        shit2=driver.find_element_by_xpath("//input[@value='"+crn2+" 120208']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
-    find_drop(drop)
+    find_drop(drop1)
+    find_drop(drop2)
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_id("crn_id1").send_keys(crn)
+    driver.find_element_by_id("crn_id1").send_keys(crn1)
+    if crn2!='':
+        driver.find_element_by_id("crn_id2").send_keys(crn2)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     i=2
@@ -128,7 +133,8 @@ def drop_mode(crn,drop):
     except NoSuchElementException:
         print('Failed to add '+crn+' '+n)
         print_error()
-        driver.find_element_by_id("crn_id1").send_keys(drop)
+        driver.find_element_by_id("crn_id1").send_keys(drop1)
+        driver.find_element_by_id("crn_id2").send_keys(drop2)
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
         driver.implicitly_wait(10)
         register+=1
@@ -226,8 +232,7 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao[0])
-    i2=find(xuhao[1])
-    i3=0
+    i2=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
@@ -236,22 +241,7 @@ def func1():
         if switch==0:
             try:
                 driver.implicitly_wait(0.2)
-                normal('69974','72979')
-                break
-            except NoSuchElementException:
-                try:
-                    print('no '+n)
-                    switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch==1:
-            try:
-                driver.implicitly_wait(0.2)
-                normal('72841')
+                drop_mode('72841','37367','37386')
                 break
             except NoSuchElementException:
                 try:
@@ -269,23 +259,23 @@ def func1():
                     driver.find_element_by_xpath("//option[@value='ACCY']").click()
                     driver.find_element_by_xpath("//input[@value='Course Search']").click()
                     driver.implicitly_wait(10)
-                    if i3==0:
-                        i3=find(xuhao[2])
-                    driver.find_element_by_xpath("//tbody/tr["+str(i3)+"]/td/form/input[@value='View Sections']").click()
+                    if i2==0:
+                        i2=find(xuhao[1])
+                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch>=2:
+        if switch>=1:
             for x in lec:
                 for y in disc:
                     driver.implicitly_wait(0.25)
                     try:
-                        normal(x,y)
+                        drop_mode(x,'37367','37386',y)
                     except NoSuchElementException:
                         try:
                             switch+=1
-                            if switch==12:
+                            if switch==11:
                                 print('no '+n)
                                 switch=0
                                 time.sleep(6)
