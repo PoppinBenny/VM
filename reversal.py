@@ -225,6 +225,7 @@ def func1():
                 except NoSuchElementException:
                     try:
                         switch+=1
+                        print('no '+n)
                         if switch==36:
                             switch=0
                             driver.back()
