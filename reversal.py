@@ -229,6 +229,7 @@ def func1():
                         if switch==36:
                             switch=0
                             driver.back()
+                            time.sleep(6)
                             driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                     except NoSuchElementException:
                         time.sleep(30)
