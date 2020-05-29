@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['ECON']
-xuhao=['475']
-crn=['70826'] 
+major=['ACCY']
+xuhao=['451']
+crn=['63161'] 
 
-drops=[] #要加引号
+drops=['63163'] #要加引号
 
-account='yuchenz9'
-password='Zouzouzou211318-'
-n='---'
+account='xinhuic2'
+password='Cxm990901'
+n='慧'
 register=0
 limit=5
 
@@ -59,10 +59,16 @@ def find(A):
     return i
 
 def print_error():
-    status=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[2]/td[1]").text
-    crn=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[2]/td[2]").text
-    print(crn,status)
-
+    i=2
+    try:
+        while True:
+            status=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr["+str(i)+"]/td[1]").text
+            crn=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr["+str(i)+"]/td[2]").text
+            print(crn,status)
+            i+=1
+    except NoSuchElementException:
+        print('try again')
+        
 def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
