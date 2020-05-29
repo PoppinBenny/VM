@@ -17,7 +17,7 @@ lab=[30279,30280,30281,39135,40751,40776]
 drops=[] #要加引号
 
 account='tyin3'
-password='Yintian241B'
+password='Yintian241A'
 n='reversal'
 register=0
 limit=5
