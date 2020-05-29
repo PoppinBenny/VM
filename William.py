@@ -9,12 +9,12 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['BADM','ACCY']
-xuhao=['275','202']
+major=['ACCY']
+xuhao=['202']
 disc=['36556','36568','36574','71331','71332']
 lec=['36549','71328']
 
-drops=['37367','37386'] #要加引号
+drops=['70306','72934'] #要加引号
 
 account='wenxing3'
 password='Wil3suswa1021'
@@ -232,71 +232,25 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao[0])
-    i2=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    switch=0
     while True:
-        if switch==0:
-            try:
-                driver.implicitly_wait(0.2)
-                drop_mode('72841','37367','37386')
-                break
-            except NoSuchElementException:
+        for x in lec:
+            for y in disc:
+                driver.implicitly_wait(0.25)
                 try:
-                    switch+=1
+                    drop_mode(x,drops[0],drops[1],y)
+                except NoSuchElementException:
+                try:
+                    print('no '+n)
+                    time.sleep(6)
                     driver.back()
-                    driver.back()
-                    driver.back()
-                    driver.back()
-                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_name("p_term").find_element_by_xpath\
-                    ("//option[@value='120208']").click()
-                    driver.find_element_by_xpath("//input[@value='Submit']").click()
-                    driver.implicitly_wait(10)
-                    driver.find_element_by_xpath("//option[@value='ACCY']").click()
-                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
-                    driver.implicitly_wait(10)
-                    if i2==0:
-                        i2=find(xuhao[1])
-                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
+                    driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch>=1:
-            for x in lec:
-                for y in disc:
-                    driver.implicitly_wait(0.25)
-                    try:
-                        drop_mode(x,'37367','37386',y)
-                    except NoSuchElementException:
-                        try:
-                            switch+=1
-                            if switch==11:
-                                print('no '+n)
-                                switch=0
-                                time.sleep(6)
-                                driver.back()
-                                driver.back()
-                                driver.back()
-                                driver.back()
-                                driver.find_element_by_link_text("I Agree to the Above Statement").click()
-                                driver.implicitly_wait(10)
-                                driver.find_element_by_name("p_term").find_element_by_xpath\
-                                ("//option[@value='120208']").click()
-                                driver.find_element_by_xpath("//input[@value='Submit']").click()
-                                driver.implicitly_wait(10)
-                                driver.find_element_by_xpath("//option[@value='BADM']").click()
-                                driver.find_element_by_xpath("//input[@value='Course Search']").click()
-                                driver.implicitly_wait(10)
-                                driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-                        except NoSuchElementException:
-                            time.sleep(30)
-                            driver.close()
-                            func1()
 
 
 func1()
