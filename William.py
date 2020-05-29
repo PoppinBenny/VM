@@ -102,11 +102,10 @@ def normal(crn1,crn2=''):
         driver.back()
     raise NoSuchElementException
 
-def drop_mode(crn1,drop1,drop2,crn2=''):
+def drop_mode(crn1,drop1,drop2,crn2):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn1+" 120208']")
-    if crn2!='':
-        shit2=driver.find_element_by_xpath("//input[@value='"+crn2+" 120208']")
+    shit2=driver.find_element_by_xpath("//input[@value='"+crn2+" 120208']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop1)
@@ -115,8 +114,7 @@ def drop_mode(crn1,drop1,drop2,crn2=''):
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn1)
-    if crn2!='':
-        driver.find_element_by_id("crn_id2").send_keys(crn2)
+    driver.find_element_by_id("crn_id2").send_keys(crn2)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     i=2
@@ -242,15 +240,15 @@ def func1():
                 try:
                     drop_mode(x,drops[0],drops[1],y)
                 except NoSuchElementException:
-                try:
-                    print('no '+n)
-                    time.sleep(6)
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
+                    try:
+                        print('no '+n)
+                        time.sleep(6)
+                        driver.back()
+                        driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
+                    except NoSuchElementException:
+                        time.sleep(30)
+                        driver.close()
+                        func1()
 
 
 func1()
