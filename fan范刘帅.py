@@ -16,7 +16,7 @@ crn=['35919']
 drops=[] #要加引号
 
 account='lf4'
-password='Summer2020'
+password='Amumu1998'
 n='帅'
 register=0
 limit=5
