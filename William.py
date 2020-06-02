@@ -17,7 +17,7 @@ lec=['36549','71328']
 drops=['70306','72934'] #要加引号
 
 account='wenxing3'
-password='Wil3suswa1021'
+password='Wen3suswa1021'
 n='william'
 register=0
 limit=5
