@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['CS']
-xuhao=['498']
-crn=['71075'] 
+major=['MCB','PHYS']
+xuhao=['317','102']
+crn=['40304','30239'] 
 
 drops=[] #要加引号
 
-account='mqiu3'
-password='Qmc987654'
-n='JA'
+account='jiaxinw4'
+password='Wjx2017!'
+n='drug'
 register=0
 limit=5
 
@@ -71,7 +71,7 @@ def print_error():
         
 def normal(crn):
     global register
-    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120205']")
     shit1.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
@@ -98,7 +98,7 @@ def normal(crn):
 
 def drop_mode(crn,drop):
     global register
-    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
+    shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120205']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
@@ -153,7 +153,7 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//*[@id='term_id']/option[1]").click()
+    driver.find_element_by_xpath("//*[@id='term_id']/option[2]").click()
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
@@ -212,7 +212,7 @@ def func1():
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
     driver.implicitly_wait(10)
     driver.find_element_by_name("p_term").find_element_by_xpath\
-    ("//option[@value='120208']").click()
+    ("//option[@value='120205']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//option[@value='"+major[0]+"']").click()
@@ -220,22 +220,67 @@ def func1():
     driver.implicitly_wait(10)
 
     i1=find(xuhao[0])
+    i2=0
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
+        if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
+                normal(crn[0])
                 break
             except NoSuchElementException:
                 try:
                     print('no '+n)
-                    time.sleep(6)
+                    switch+=1
                     driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_name("p_term").find_element_by_xpath\
+                    ("//option[@value='120205']").click()
+                    driver.find_element_by_xpath("//input[@value='Submit']").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_xpath("//option[@value='"+major[1]+"']").click()
+                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
+                    driver.implicitly_wait(10)
+                    if i2==0:
+                        i2=find(xuhao[1])
+                    driver.find_element_by_xpath("//tbody/tr["+str(i2)+"]/td/form/input[@value='View Sections']").click()
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%2==1:
+            try:
+                driver.implicitly_wait(0.2)
+                shit1=driver.find_element_by_xpath("//input[@value='30252 120208']")
+                shit1.click()
+                shit2=driver.find_element_by_xpath("//input[@value='30247 120208']")
+                shit2.click()
+                normal(crn[1])
+                break
+            except NoSuchElementException:
+                try:
+                    time.sleep(6)
+                    switch+=1
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.back()
+                    driver.find_element_by_link_text("I Agree to the Above Statement").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_name("p_term").find_element_by_xpath\
+                    ("//option[@value='120205']").click()
+                    driver.find_element_by_xpath("//input[@value='Submit']").click()
+                    driver.implicitly_wait(10)
+                    driver.find_element_by_xpath("//option[@value='"+major[0]+"']").click()
+                    driver.find_element_by_xpath("//input[@value='Course Search']").click()
+                    driver.implicitly_wait(10)
                     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
                 except NoSuchElementException:
                     time.sleep(30)
