@@ -231,7 +231,7 @@ def func1():
 
     switch=0
     while True:
-            for x in x1:
+            for x in x3:
                 driver.implicitly_wait(0.25)
                 try:
                     normal(x)
