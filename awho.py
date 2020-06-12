@@ -11,7 +11,7 @@ gce=True
 
 major=['CS']
 xuhao=['225']
-crn=['35919'] 
+crn=['35917'] 
 
 drops=[] #要加引号
 
@@ -68,11 +68,13 @@ def print_error():
             i+=1
     except NoSuchElementException:
         print('try again')
-
+        
 def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
     shit1.click()
+    shit2=driver.find_element_by_xpath("//input[@value='63737 120208']")
+    shit2.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     i=2
@@ -226,9 +228,10 @@ def func1():
     while True:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='35950 120208']")
-                shit1.click()
-                normal(crn[0])
+                if len(drops)==0:
+                    normal(crn[0])
+                else:
+                    drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
@@ -240,6 +243,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
+
 
 func1()
 
