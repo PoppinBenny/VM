@@ -68,7 +68,7 @@ def print_error():
             i+=1
     except NoSuchElementException:
         print('try again')
-
+        
 def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
@@ -225,10 +225,6 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
-    i1=find(xuhao[0])
-    driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
-    driver.implicitly_wait(10) #440 = 36, 412 = 24
-
     while True:
             try:
                 driver.implicitly_wait(0.2)
@@ -247,6 +243,8 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
+
+
 func1()
 
 print('Course selected')
