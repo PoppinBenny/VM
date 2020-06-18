@@ -13,7 +13,7 @@ major=['CS']
 xuhao=['374']
 crn=['66452','66447','66446'] 
 
-drops=[] #要加引号
+drops=['66445'] #要加引号
 
 account='ziyue5'
 password='Cleandir20202019'
@@ -95,13 +95,16 @@ def normal(crn):
 def drop_mode(crn,drop):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
+    shit2=driver.find_element_by_xpath("//input[@value='70641 120208']")
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
+    find_drop('66455')
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn)
+    driver.find_element_by_id("crn_id2").send_keys('70641')
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     i=2
