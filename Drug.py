@@ -250,9 +250,9 @@ def func1():
         if switch%2==1:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='30252 120208']")
+                shit1=driver.find_element_by_xpath("//input[@value='30252 120205']")
                 shit1.click()
-                shit2=driver.find_element_by_xpath("//input[@value='30247 120208']")
+                shit2=driver.find_element_by_xpath("//input[@value='30247 120205']")
                 shit2.click()
                 normal(crn[1])
                 break
