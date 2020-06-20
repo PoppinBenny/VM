@@ -15,9 +15,9 @@ crn=['35919','35917']
 
 drops=[] #要加引号
 
-account='lf4'
-password='Amumu1998'
-n='帅'
+account='ruiyug2'
+password='Guo991122!'
+n='ellison'
 register=0
 limit=5
 
@@ -73,7 +73,7 @@ def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
     shit1.click()
-    shit2=driver.find_element_by_xpath("//input[@value='35950 120208']")
+    shit2=driver.find_element_by_xpath("//input[@value='35944 120208']")
     shit2.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)

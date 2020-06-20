@@ -73,7 +73,7 @@ def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
     shit1.click()
-    shit2=driver.find_element_by_xpath("//input[@value='63737 120208']")
+    shit2=driver.find_element_by_xpath("//input[@value='35959 120208']")
     shit2.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
@@ -85,7 +85,7 @@ def normal(crn):
             nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
             print(c,nu,number)
             if crn==number:
-                print('Course selected')
+                print('Course selected'+n)
                 driver.quit()
             i+=1
     except NoSuchElementException:
