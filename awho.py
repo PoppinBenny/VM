@@ -10,8 +10,8 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major=['CS']
-xuhao=['225']
-crn=['35917'] 
+xuhao=['233']
+crn=['64513'] 
 
 drops=[] #要加引号
 
@@ -73,7 +73,7 @@ def normal(crn):
     global register
     shit1=driver.find_element_by_xpath("//input[@value='"+crn+" 120208']")
     shit1.click()
-    shit2=driver.find_element_by_xpath("//input[@value='35959 120208']")
+    shit2=driver.find_element_by_xpath("//input[@value='63737 120208']")
     shit2.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
