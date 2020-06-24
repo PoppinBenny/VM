@@ -86,6 +86,7 @@ def normal(crn):
             print(c,nu,number)
             if crn==number:
                 print('Course selected'+n)
+                driver.get('https://www.youtube.com/watch?v=9793cuoNpQ0')
                 driver.quit()
             i+=1
     except NoSuchElementException:
