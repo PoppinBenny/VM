@@ -16,7 +16,7 @@ crn=['41841','71432']
 drops=['63619'] #要加引号
 
 account='yuchend4'
-password='Dyc123456789!'
+password='Dyc1234567890!'
 n='yc'
 register=0
 limit=5
