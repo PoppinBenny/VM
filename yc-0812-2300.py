@@ -59,9 +59,15 @@ def find(A):
     return i
 
 def print_error():
-    status=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[2]/td[1]").text
-    crn=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[2]/td[2]").text
-    print(crn,status)
+    i=2
+    try:
+        while True:
+            status=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr["+str(i)+"]/td[1]").text
+            crn=driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr["+str(i)+"]/td[2]").text
+            print(crn,status)
+            i+=1
+    except NoSuchElementException:
+        print('try again')
 
 def normal(crn):
     global register
@@ -230,6 +236,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     print('no '+n)
+                    time.sleep(6)
                     switch+=1
                     driver.back()
                     driver.back()
