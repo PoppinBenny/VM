@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['ECON']
-xuhao=['460']
-crn=['70812'] 
+major=['STAT']
+xuhao=['440']
+crn=['60184'] 
 
 drops=[] #要加引号
 
-account='yinhu2'
-password='A5544332211a'
-n='萝卜'
+account='zz23'
+password='Zzy0819!!!!'
+n='zzy'
 register=0
 limit=5
 
@@ -177,6 +177,7 @@ def func1():
                 print(c,nu,temp)
                 i+=1
         except NoSuchElementException:
+            print(n)
             driver.back()
             driver.back()
             driver.back()
