@@ -16,7 +16,7 @@ crn=['60184']
 drops=[] #要加引号
 
 account='jingx7'
-password='630301Xj!'
+password='638341Xj'
 n='美元'
 register=0
 limit=5
