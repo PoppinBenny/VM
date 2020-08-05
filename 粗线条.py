@@ -234,7 +234,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     switch+=1
-                    except NoSuchElementException:
+                except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
@@ -246,7 +246,7 @@ def func1():
             except NoSuchElementException:
                 try:
                     switch+=1
-                    except NoSuchElementException:
+                except NoSuchElementException:
                     time.sleep(30)
                     driver.close()
                     func1()
