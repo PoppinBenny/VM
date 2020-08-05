@@ -10,14 +10,14 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major=['STAT']
-xuhao=['448']
-crn=['70253'] 
+xuhao=['385']
+crn=['41841'] 
 
 drops=[] #要加引号
 
-account='zz23'
-password='Zzy0819!!!!'
-n='zzy'
+account='yinhu2'
+password='A5544332211a'
+n='萝卜'
 register=0
 limit=5
 
