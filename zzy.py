@@ -11,7 +11,7 @@ gce=True
 
 major=['STAT']
 xuhao=['385']
-crn=['41841'] 
+crn=['70215'] 
 
 drops=[] #要加引号
 
