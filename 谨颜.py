@@ -250,7 +250,7 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%==2:
+        if switch%3==2:
             try:
                 driver.implicitly_wait(0.2)
                 normal(crn[2])
