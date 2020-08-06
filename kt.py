@@ -9,15 +9,15 @@ from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['STAT']
-xuhao=['385']
-crn=['70215'] 
+major=['']
+xuhao=['']
+crn=[''] 
 
 drops=[] #要加引号
 
-account='yinhu2'
-password='A5544332211a'
-n='萝卜'
+account=''
+password=''
+n=''
 register=0
 limit=5
 
