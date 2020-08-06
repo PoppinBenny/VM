@@ -125,6 +125,7 @@ def drop_mode(crn,drop):
         print('Failed to add '+crn+' '+n)
         print_error()
         driver.find_element_by_id("crn_id1").send_keys(drop)
+        driver.find_element_by_id("crn_id2").send_keys('63160')
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
         driver.implicitly_wait(10)
         register+=1
