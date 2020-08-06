@@ -10,10 +10,10 @@ from selenium.common.exceptions import TimeoutException
 gce=True
 
 major=['ACCY']
-xuhao=['451']
-crn=['74606'] 
+xuhao=['570','451']
+crn=['74657','74606'] 
 
-drops=['63160'] #要加引号
+drops=['68785','63160'] #要加引号
 
 account='linxian2'
 password='Clx#2018'
@@ -102,10 +102,12 @@ def drop_mode(crn,drop):
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
     find_drop(drop)
+    find_drop('63160')
     driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     driver.find_element_by_id("crn_id1").send_keys(crn)
+    driver.find_element_by_id("crn_id2").send_keys('74606')
     driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
     driver.implicitly_wait(10)
     i=2
@@ -149,64 +151,6 @@ def func1():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_link_text("Add/Drop Classes").click()
-    driver.implicitly_wait(10)
-    driver.find_element_by_link_text("I Agree to the Above Statement").click()
-    driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//*[@id='term_id']/option[1]").click()
-    driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//input[@value='Submit']").click()
-    driver.implicitly_wait(10)
-
-    current=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/\
-            table[2]/tbody/tr[1]/td[2]").text))
-    maximum=int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table\
-            [2]/tbody/tr[4]/td[2]").text))
-    if maximum-current<3 and len(drops)==0:
-        print(n,"has insufficient credits. Current:",current,"Maximum:",maximum)
-        driver.quit()
-
-    if len(drops)==0:
-        try:
-            i=2
-            repeat=False
-            while True:
-                c=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[4]").text
-                nu=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[5]").text
-                for m in major:
-                    if repeat==True:
-                        break
-                    for x in xuhao:
-                        if m==c and x==nu:
-                            repeat=True
-                            break
-                if repeat==True:
-                    print(c+nu+' already existed '+n)
-                    driver.quit()
-                    break
-                i+=1
-        except NoSuchElementException:
-            driver.back()
-            driver.back()
-            driver.back()
-
-
-    if len(drops)!=0:
-        for drop in drops:
-            i=2
-            try:
-                while True:
-                    temp=driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr["+str(i)+"]/td[3]").text
-                    if drop==temp:
-                        break
-                    i+=1
-            except NoSuchElementException:
-                print('Drop index does not exist')
-                driver.quit()
-        driver.back()
-        driver.back()
-        driver.back()
-
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
