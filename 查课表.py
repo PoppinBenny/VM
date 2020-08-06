@@ -15,9 +15,9 @@ crn=['60184']
 
 drops=[] #要加引号
 
-account='zz23'
-password='Zzy0819!!!!'
-n='zzy'
+account='kwang54'
+password='WOxihuan11'
+n='keren'
 register=0
 limit=5
 
@@ -137,6 +137,7 @@ def drop_mode(crn,drop):
 
 
 def func1():
+    print ("Time: %s " % time.asctime(time.localtime()))
     driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM-HTTPS%3a%2f%2fwebprod%2eadmin%2euillinois%2eedu%2fssa%2fservlet%2fSelfServiceLogin%3fappName%3dedu%2euillinois%2eaits%2eSelfServiceLogin%26dad%3dBANPROD1')
     driver.implicitly_wait(7.5)
 
