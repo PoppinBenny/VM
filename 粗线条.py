@@ -18,7 +18,7 @@ crn=['73859','72467','73858','37796']
 drops=['43030'] #要加引号
 
 account='Bowenhu2'
-password='Luo814222?'
+password='Luo814222*'
 n='粗线条'
 register=0
 limit=5
