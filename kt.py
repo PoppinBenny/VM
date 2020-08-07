@@ -12,8 +12,8 @@ from selenium.common.exceptions import TimeoutException
 gce=True
  
 major=['JOUR']
-xuhao=['220','340','425']
-crn=['70192','62996','31843'] 
+xuhao=['340','425']
+crn=['62996','31843'] 
 
 drops=[] #要加引号
 
@@ -223,17 +223,14 @@ def func1():
 
     i1=find(xuhao[0])
     i2=find(xuhao[1])
-    i3=find(xuhao[2])
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
     switch=0
     while True:
-        if switch%3==0:
+        if switch%2==0:
             try:
                 driver.implicitly_wait(0.2)
-                shit1=driver.find_element_by_xpath("//input[@value='70190 120208']")
-                shit1.click()
                 normal(crn[0])
                 break
             except NoSuchElementException:
@@ -245,26 +242,12 @@ def func1():
                     time.sleep(30)
                     driver.close()
                     func1()
-        if switch%3==1:
-            try:
-                driver.implicitly_wait(0.2)
-                normal(crn[1])
-                break
-            except NoSuchElementException:
-                try:
-                    switch+=1
-                    driver.back()
-                    driver.find_element_by_xpath("//tbody/tr["+str(i3)+"]/td/form/input[@value='View Sections']").click()
-                except NoSuchElementException:
-                    time.sleep(30)
-                    driver.close()
-                    func1()
-        if switch%3==2:
+        if switch%2==1:
             try:
                 driver.implicitly_wait(0.2)
                 shit2=driver.find_element_by_xpath("//input[@value='31793 120208']")
                 shit2.click()
-                normal(crn[2])
+                normal(crn[1])
                 break
             except NoSuchElementException:
                 try:
