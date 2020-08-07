@@ -310,6 +310,7 @@ def func1():
                     func1()
 
 func1()
-print(n)
+
 print('Course selected')
+print(n+account)
 print(datetime.datetime.now(pytz.timezone('America/Chicago')))
