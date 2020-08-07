@@ -5,6 +5,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
 import os,time
+import datetime
+import pytz
 from selenium.common.exceptions import TimeoutException
 
 gce=True
@@ -278,4 +280,6 @@ def func1():
 
 func1()
 
+print(n)
 print('Course selected')
+print(datetime.datetime.now(pytz.timezone('America/Chicago')))
