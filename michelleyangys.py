@@ -326,4 +326,4 @@ func1()
 
 print('Course selected')
 print(n+account)
-print(datetime.datetime.now(pytz.timezone('America/Chicago')))
+print('Time in Chicago, IL, USA:'datetime.datetime.now(pytz.timezone('America/Chicago')))
