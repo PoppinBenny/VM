@@ -5,19 +5,21 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
 import os,time
+import datetime
+import pytz
 from selenium.common.exceptions import TimeoutException
 
 gce=True
 
-major=['ACCY']
-xuhao=['451']
-crn=['63161'] 
+major=['BADM']
+xuhao=['449']
+crn=['37890','37888','37889'] 
 
-drops=['63163'] #要加引号
+drops=['31423'] #要加引号
 
-account='xinhuic2'
-password='Yhy731101'
-n='慧'
+account='ningyuh2'
+password='502456017Ann>'
+n='Ann'
 register=0
 limit=5
 
@@ -223,16 +225,40 @@ def func1():
     driver.find_element_by_xpath("//tbody/tr["+str(i1)+"]/td/form/input[@value='View Sections']").click()
     driver.implicitly_wait(10) #440 = 36, 412 = 24
 
+    switch=0
     while True:
+        if switch%3==0:
             try:
                 driver.implicitly_wait(0.2)
-                if len(drops)==0:
-                    normal(crn[0])
-                else:
-                    drop_mode(crn[0],drops[0])
+                drop_mode(crn[0],drops[0])
                 break
             except NoSuchElementException:
                 try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%3==1:
+            try:
+                driver.implicitly_wait(0.2)
+                drop_mode(crn[1],drops[0])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
+                except NoSuchElementException:
+                    time.sleep(30)
+                    driver.close()
+                    func1()
+        if switch%3==2:
+            try:
+                driver.implicitly_wait(0.2)
+                drop_mode(crn[2],drops[0])
+                break
+            except NoSuchElementException:
+                try:
+                    switch+=1
                     print('no '+n)
                     time.sleep(6)
                     driver.back()
@@ -242,7 +268,8 @@ def func1():
                     driver.close()
                     func1()
 
-
 func1()
 
 print('Course selected')
+print(n+account)
+print('Time in Chicago, IL, USA:'+datetime.datetime.now(pytz.timezone('America/Chicago')))
