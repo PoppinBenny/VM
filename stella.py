@@ -8,7 +8,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 
-gce = 0
+gce = 1
 
 # 打开crn数据库
 with open('Fall2020 crn数据.json') as fp:
