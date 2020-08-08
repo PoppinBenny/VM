@@ -101,7 +101,7 @@ def next_crn():
     course = data[str(crn[crn_counter])]
     major = course.split()[0]
     xuhao = course.split()[1]
-    if previous_xuhao != xuhao:
+    if previous_xuhao != xuhao or crn_counter==0:
         driver.back()
         time.sleep(6.0/(len(xuhao_position.values())))
         if previous_major != major:
