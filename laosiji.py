@@ -139,105 +139,73 @@ def print_error():
         print('try again')
 
 
-def normal(target_crn):
-    """正常选"""
+def select(target_crn, drop=[]):
+    """选课并确认是否选上"""
     global register
     # 搜所有目标crn
-    target_crn = str(target_crn)
-    shit = driver.find_element_by_xpath("//input[@value='" + target_crn + " " + semester_number + "']")
-    target_elements = [shit]
+    shit = driver.find_element_by_xpath("//input[@value='" + str(target_crn) + " " + semester_number + "']")
+    target_crns = [str(target_crn)]  # 存一下本循环需要的所有crn
+    target_elements = [shit]  # 存一下crn对应的网页元素
     if target_crn in crn_together:
         for together in crn_together[target_crn]:
             shit = driver.find_element_by_xpath("//input[@value='" + str(together) + " " + semester_number + "']")
             target_elements.append(shit)
-    print(os.path.basename(sys.argv[0]),'found',target_crn)
-    for e in target_elements:
-        e.click()
-    driver.find_element_by_xpath("//input[@value='Register']").click()
-    driver.implicitly_wait(7.5)
-    # 复查目标crn是否选上
-    i = 2
-    try:
-        while True:
-            number = driver.find_element_by_xpath(
-                "//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[3]").text
-            c = driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[4]").text
-            nu = driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[5]").text
-            print(c, nu, number)
-            if target_crn == number:
-                print('Time in Chicago, IL, USA:', datetime.datetime.now(pytz.timezone('America/Chicago')))
-                print('Course selected')
-                driver.quit()
-            i += 1
-    except NoSuchElementException:
-        print('Failed to add ' + target_crn + ' ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
-              datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
-        print_error()
-        register += 1
-        if register >= limit:
-            print('Too many requests for ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
-                  datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
-            driver.quit()
-        driver.back()
-    raise NoSuchElementException
-
-
-def drop_mode(target_crn, drop):
-    """drop模式"""
-    global register
-    # 搜所有目标crn
-    target_crn = str(target_crn)
-    shit = driver.find_element_by_xpath("//input[@value='" + target_crn + " " + semester_number + "']")
-    target_crns = [target_crn]
-    if target_crn in crn_together:
-        for together in crn_together[target_crn]:
-            shit = driver.find_element_by_xpath("//input[@value='" + str(together) + " " + semester_number + "']")
             target_crns.append(str(together))
-    print(os.path.basename(sys.argv[0]), 'found', target_crn)
+    target_crn = str(target_crn)
+    print(os.path.basename(sys.argv[0]),'found',target_crn)
+
+    # 如果没有drop则挨个click直接选课
+    if not drop:
+        for e in target_elements:
+            e.click()
     driver.find_element_by_xpath("//input[@value='Register']").click()
     driver.implicitly_wait(7.5)
-    # drop课
-    for i in range(len(drop)):
-        find_drop(str(drop[i]))
-    driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-    driver.implicitly_wait(10)
-    # 注册目标crn
-    for i in range(len(target_crns)):
-        driver.find_element_by_id("crn_id"+str(i+1)).send_keys(target_crns[i])
-    driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-    driver.implicitly_wait(10)
-    # 复查目标crn是否选上
-    i = 2
-    try:
-        while True:
-            number = driver.find_element_by_xpath(
-                "//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[3]").text
-            c = driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[4]").text
-            nu = driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[5]").text
-            print(c, nu, number)
-            if target_crn == number:
-                print('Time in Chicago, IL, USA:', datetime.datetime.now(pytz.timezone('America/Chicago')))
-                print('Course selected')
-                driver.quit()
-            i += 1
-    except NoSuchElementException:
-        print('Failed to add ' + target_crn + ' ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
-              datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
-        print_error()
-        # 如果没有选上则加回drop掉的crn
+
+    # 如果有drop
+    if drop:
+        # drop课
         for i in range(len(drop)):
-            driver.find_element_by_id("crn_id" + str(i + 1)).send_keys(str(drop[i]))
+            find_drop(str(drop[i]))
+        driver.implicitly_wait(10)
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
         driver.implicitly_wait(10)
+        # 注册目标crn
+        for i in range(len(target_crns)):
+            driver.find_element_by_id("crn_id" + str(i + 1)).send_keys(target_crns[i])
+        driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+        driver.implicitly_wait(10)
+
+    # 复查目标crn是否选上
+    i = 2
+    try:
+        while True:
+            number = driver.find_element_by_xpath(
+                "//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[3]").text
+            c = driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[4]").text
+            nu = driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[5]").text
+            print(c, nu, number)  # 打课表
+            if target_crn == number:
+                print('Time in Chicago, IL, USA:', datetime.datetime.now(pytz.timezone('America/Chicago')))
+                print('Course selected')
+                driver.quit()
+            i += 1
+    except NoSuchElementException:
+        print('Failed to add ' + target_crn + ' ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
+              datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
+        print_error()
         register += 1
         if register >= limit:
             print('Too many requests for ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
                   datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
             driver.quit()
-        driver.back()
-        driver.back()
-        driver.back()
+        # 如果有drop，但是没选上，加回一开始drop的crn
+        if drop:
+            for i in range(len(drop)):
+                driver.find_element_by_id("crn_id" + str(i + 1)).send_keys(str(drop[i]))
+            driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
+            driver.back()
+            driver.back()
+            driver.back()
         driver.back()
     raise NoSuchElementException
 
@@ -345,9 +313,9 @@ def main():
             driver.implicitly_wait(0.2)
             target = crn[crn_counter]
             if target not in drops:
-                normal(target)
+                select(target)
             else:
-                drop_mode(target, drops[target])
+                select(target, drops[target])
             break
         except NoSuchElementException:
             try:
