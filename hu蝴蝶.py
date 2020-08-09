@@ -29,7 +29,7 @@ semester_number = '120208'  # 学期序列号
 
 # 账号密码
 account = 'yimingz6'
-password = 'Nihao0816aa'
+password = 'Aabb57117513!'
 
 # 计数器
 register = 0
