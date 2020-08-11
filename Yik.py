@@ -273,11 +273,6 @@ def main():
     if not new_login:
         driver.get('https://ui2web1.apps.uillinois.edu/BANPROD1/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu')
 
-    driver.find_element_by_id("netid").send_keys(account)
-    driver.find_element_by_id("easpass").send_keys(password)
-    driver.find_element_by_name("BTN_LOGIN").click()
-    driver.implicitly_wait(10)
-
     driver.find_element_by_link_text("Registration & Records").click()
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()

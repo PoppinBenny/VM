@@ -8,7 +8,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 
-gce = 1
+gce = 0
 
 major = ['STAT']  # 专业
 xuhao = ['430']  # 序号
@@ -232,21 +232,16 @@ def main():
         driver.implicitly_wait(7.5)
         driver.find_element_by_id("netid").send_keys(account)
         driver.find_element_by_id("easpass").send_keys(password)
-        driver.find_element_by_name("BTN_LOGIN").click()
+        #driver.find_element_by_name("BTN_LOGIN").click()
         driver.implicitly_wait(10)
     if not new_login:
         driver.get('https://ui2web1.apps.uillinois.edu/BANPROD1/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu')
-
-    driver.find_element_by_id("netid").send_keys(account)
-    driver.find_element_by_id("easpass").send_keys(password)
-    driver.find_element_by_name("BTN_LOGIN").click()
-    driver.implicitly_wait(10)
 
     driver.find_element_by_link_text("Registration & Records").click()
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
-    '''
+
     driver.find_element_by_link_text("Add/Drop Classes").click()
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
@@ -305,7 +300,7 @@ def main():
         driver.back()
         driver.back()
         driver.back()
-'''
+
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
