@@ -36,14 +36,29 @@ print_counter_limit = print_counter  # 2.n分钟*10*6秒之后报告一次还在
 crn_counter = 0  # 3.下一个crn的计数器
 previous_course = ''
 
+driver_data = {}
 # 是否在gce上面run
-if gce == 1:
-    options = Options()
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
-else:
-    driver = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
+with open('urlid.json', 'r') as fp2:
+    driver_data = json.load(fp2)
+
+file = os.path.basename(sys.argv[0])
+with open('urlid.json', 'w') as fp2:
+    if file not in driver_data:
+        if gce == 1:
+            options = Options()
+            options.add_argument('--headless')
+            options.add_argument('--no-sandbox')
+            driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
+        else:
+            driver = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
+        driver_data[file] = [driver.command_executor._url, driver.session_id]
+    else:
+        driver = webdriver.Remote(command_executor=driver_data[file][0],
+                                  desired_capabilities={})
+        driver.session_id = driver_data[file][1]
+    json.dump(driver_data, fp2)
+
+print(driver.command_executor._url, driver.session_id)
 
 
 def find_drop(index):
@@ -211,17 +226,19 @@ def select(target_crn, drop=None):
 def main():
     """主程序"""
     global previous_course
-    driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
-               '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
-               '%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM'
-               '-HTTPS%3a%2f%2fwebprod%2eadmin%2euillinois%2eedu%2fssa%2fservlet%2fSelfServiceLogin%3fappName%3dedu'
-               '%2euillinois%2eaits%2eSelfServiceLogin%26dad%3dBANPROD1 ')
-    driver.implicitly_wait(7.5)
-
-    driver.find_element_by_id("netid").send_keys(account)
-    driver.find_element_by_id("easpass").send_keys(password)
-    driver.find_element_by_name("BTN_LOGIN").click()
-    driver.implicitly_wait(10)
+    if file not in driver_data:
+        driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
+                   '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
+                   '%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM'
+                   '-HTTPS%3a%2f%2fwebprod%2eadmin%2euillinois%2eedu%2fssa%2fservlet%2fSelfServiceLogin%3fappName%3dedu'
+                   '%2euillinois%2eaits%2eSelfServiceLogin%26dad%3dBANPROD1 ')
+        driver.implicitly_wait(7.5)
+        driver.find_element_by_id("netid").send_keys(account)
+        driver.find_element_by_id("easpass").send_keys(password)
+        driver.find_element_by_name("BTN_LOGIN").click()
+        driver.implicitly_wait(10)
+    if file in driver_data:
+        driver.get('https://ui2web1.apps.uillinois.edu/BANPROD1/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu')
 
     driver.find_element_by_link_text("Registration & Records").click()
     driver.implicitly_wait(10)
