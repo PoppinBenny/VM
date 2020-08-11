@@ -8,7 +8,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 
-gce = 0
+gce = 1
 
 major = ['STAT']  # 专业
 xuhao = ['430']  # 序号
