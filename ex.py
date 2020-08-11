@@ -42,8 +42,9 @@ with open('urlid.json', 'r') as fp2:
     driver_data = json.load(fp2)
 
 file = os.path.basename(sys.argv[0])
+new_login = file not in driver_data
 with open('urlid.json', 'w') as fp2:
-    if file not in driver_data:
+    if new_login:
         if gce == 1:
             options = Options()
             options.add_argument('--headless')
@@ -226,7 +227,7 @@ def select(target_crn, drop=None):
 def main():
     """主程序"""
     global previous_course
-    if file not in driver_data:
+    if new_login:
         driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
                    '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
                    '%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM'
@@ -237,7 +238,7 @@ def main():
         driver.find_element_by_id("easpass").send_keys(password)
         driver.find_element_by_name("BTN_LOGIN").click()
         driver.implicitly_wait(10)
-    if file in driver_data:
+    if not new_login:
         driver.get('https://ui2web1.apps.uillinois.edu/BANPROD1/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu')
 
 
