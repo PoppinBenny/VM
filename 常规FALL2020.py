@@ -8,13 +8,13 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 
-gce = 1
+gce = 0
 
 # 打开crn数据库
 with open('Fall2020 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = []
+crn = [67249]
 crn_together = {
     # crn[]: [],
 }  # 一个crn可能有的lab和discussion
@@ -25,8 +25,8 @@ xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120208'  # 学期序列号
 
 # 账号密码
-account = 'kwang54'
-password = 'WOxihuan12'
+account = 'shijies3'
+password = 'Ssj45678'
 
 # 计数器
 register = 0
@@ -263,47 +263,32 @@ def main():
         driver.quit()
     # 如果没有drop的课,检查重复的课
     if len(drops.values()) == 0:
-        try:
-            i = 2
-            repeat = False
-            while True:
-                c = driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[4]").text
-                nu = driver.find_element_by_xpath(
-                    "//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[5]").text
-                for cr in crn:
-                    m = data[str(cr)].split()[0]
-                    x = data[str(cr)].split()[1]
-                    if repeat:
-                        break
-                    if m == c and x == nu:
-                        repeat = True
-                        break
-                if repeat:
-                    print(c + nu + ' already existed ' + os.path.basename(sys.argv[0]))
-                    driver.quit()
-                    break
-                i += 1
-        except NoSuchElementException:
-            driver.back()
-            driver.back()
-            driver.back()
+        cs = driver.find_elements_by_xpath(
+            "//html/body/div[3]/form/table[1]/tbody/tr/td[4]")
+        nus = driver.find_elements_by_xpath(
+            "//html/body/div[3]/form/table[1]/tbody/tr/td[5]")
+        temp = []
+        for i in range(len(cs)):
+            temp.append(cs[i].text + ' ' + nus[i].text)
+        want_courses = [data[str(cr)] for cr in crn]
+        if any(elem in temp for elem in want_courses):
+            print(temp, want_courses)
+            print('Repeated courses')
+            driver.quit()
+
     # 如果有drop的课,检查是否在在课表内
     if len(drops.values()) != 0:
-        for drop in drops.values():
-            i = 2
-            try:
-                while True:
-                    temp = driver.find_element_by_xpath(
-                        "//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[3]").text
-                    if str(drop[0]) == temp:
-                        break
-                    i += 1
-            except NoSuchElementException:
-                print('Drop index does not exist')
-                driver.quit()
-        driver.back()
-        driver.back()
-        driver.back()
+        temp = driver.find_elements_by_xpath(
+            "//html/body/div[3]/form/table[1]/tbody/tr/td[3]")
+        d = [str(drop[0]) for drop in drops.values()]
+        c = [t.text for t in temp]
+        if not all(elem in c for elem in d):
+            print(d, c)
+            print('Drop index does not exist')
+            driver.quit()
+    driver.back()
+    driver.back()
+    driver.back()
 
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
