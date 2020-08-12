@@ -36,15 +36,30 @@ print_counter_limit = print_counter  # 2.n分钟*10*6秒之后报告一次还在
 crn_counter = 0  # 3.下一个crn的计数器
 previous_course = ''
 
-
+driver_data = {}
 # 是否在gce上面run
-if gce == 1:
-    options = Options()
-    options.add_argument('--headless')
-    options.add_argument('--no-sandbox')
-    driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
-else:
-    driver = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
+with open('urlid.json', 'r') as fp2:
+    driver_data = json.load(fp2)
+
+file = os.path.basename(sys.argv[0])
+new_login = file not in driver_data
+with open('urlid.json', 'w') as fp2:
+    if new_login:
+        if gce == 1:
+            options = Options()
+            options.add_argument('--headless')
+            options.add_argument('--no-sandbox')
+            driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
+        else:
+            driver = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
+        driver_data[file] = [driver.command_executor._url, driver.session_id]
+    else:
+        driver = webdriver.Remote(command_executor=driver_data[file][0],
+                                  desired_capabilities={})
+        driver.session_id = driver_data[file][1]
+    json.dump(driver_data, fp2)
+
+print(driver.command_executor._url, driver.session_id)
 
 
 def find_drop(index):
