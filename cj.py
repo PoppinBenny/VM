@@ -252,8 +252,8 @@ def main():
     if new_login:
         driver.find_element_by_xpath("//*[@id='term_id']/option[1]").click()
         driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//input[@value='Submit']").click()
-    driver.implicitly_wait(10)
+        driver.find_element_by_xpath("//input[@value='Submit']").click()
+        driver.implicitly_wait(10)
 
     current = int(float(driver.find_element_by_xpath("/html/body/div[3]/form/\
             table[2]/tbody/tr[1]/td[2]").text))
