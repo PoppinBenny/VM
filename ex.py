@@ -26,7 +26,7 @@ semester_number = '120208'  # 学期序列号
 
 # 账号密码
 account = 'hz23'
-password = 'Zhj2018??????'
+password = 'Zhj2018#'
 
 # 计数器
 register = 0
