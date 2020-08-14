@@ -14,19 +14,19 @@ gce = 1
 with open('Fall2020 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [36768]
+crn = [29670]
 crn_together = {
-    crn[0]: [36779]
+    # crn[]: [],
 }  # 一个crn可能有的lab和discussion
 drops = {
-    crn[0]: [62729]
+    crn[0]: [36477, 36516],
 }  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120208'  # 学期序列号
 
 # 账号密码
-account = 'honglai2'
-password = 'RhL86200759!'
+account = 'chenjie3'
+password = 'xCj000114!'
 
 # 计数器
 register = 0
@@ -34,8 +34,7 @@ limit = 5  # 1.失败register的次数上限
 print_counter = 5 * 10
 print_counter_limit = print_counter  # 2.n分钟*10*6秒之后报告一次还在运行
 crn_counter = 0  # 3.下一个crn的计数器
-previous_major = ''
-previous_xuhao = ''
+previous_course = ''
 
 driver_data = {}
 # 是否在gce上面run
@@ -100,10 +99,8 @@ def next_crn():
     global print_counter
     global crn_counter
     global xuhao_position
-    global previous_major
-    global previous_xuhao
+    global previous_course
 
-    print_counter += 1
     if print_counter >= print_counter_limit:
         print_counter = 0
         print('no ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
@@ -115,17 +112,20 @@ def next_crn():
     course = data[str(crn[crn_counter])]
     major = course.split()[0]
     xuhao = course.split()[1]
-    if previous_xuhao != xuhao or crn_counter==0:
+    # 当下一个crn的课不同，或crn遍历一遍之后，需要退出去重新找section
+    if previous_course != course or crn_counter == 0:
+        print_counter += 1
+        time.sleep(6.0 / (len(xuhao_position.values())))
         driver.back()
-        time.sleep(6.0/(len(xuhao_position.values())))
+        previous_major = previous_course.split()[0]
         if previous_major != major:
             driver.back()
             driver.back()
             driver.back()
             driver.find_element_by_link_text("I Agree to the Above Statement").click()
             driver.implicitly_wait(10)
-            driver.find_element_by_name("p_term").find_element_by_xpath \
-                ("//option[@value='" + semester_number + "']").click()
+            driver.find_element_by_name("p_term").find_element_by_xpath(
+                "//option[@value='" + semester_number + "']").click()
             driver.find_element_by_xpath("//input[@value='Submit']").click()
             driver.implicitly_wait(10)
             driver.find_element_by_xpath("//option[@value='" + major + "']").click()
@@ -135,8 +135,7 @@ def next_crn():
             xuhao_position[course] = find(xuhao)
         driver.find_element_by_xpath(
             "//tbody/tr[" + str(xuhao_position[course]) + "]/td/form/input[@value='View Sections']").click()
-    previous_major = major
-    previous_xuhao = xuhao
+    previous_course = course
 
 
 def print_error():
@@ -145,16 +144,18 @@ def print_error():
     try:
         while True:
             status = driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[" + str(i) + "]/td[1]").text
-            crn = driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[" + str(i) + "]/td[2]").text
-            print(crn, status)
+            c = driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[" + str(i) + "]/td[2]").text
+            print(c, status)
             i += 1
     except NoSuchElementException:
         print('try again')
 
 
-def select(target_crn, drop=[]):
+def select(target_crn, drop=None):
     """选课并确认是否选上"""
     global register
+    if drop is None:
+        drop = []
     # 搜所有目标crn
     shit = driver.find_element_by_xpath("//input[@value='" + str(target_crn) + " " + semester_number + "']")
     target_crns = [str(target_crn)]  # 存一下本循环需要的所有crn
@@ -165,7 +166,7 @@ def select(target_crn, drop=[]):
             target_elements.append(shit)
             target_crns.append(str(together))
     target_crn = str(target_crn)
-    print(os.path.basename(sys.argv[0]),'found',target_crn)
+    print(os.path.basename(sys.argv[0]), 'found', target_crn)
 
     # 如果没有drop则挨个click直接选课
     if not drop:
@@ -225,6 +226,7 @@ def select(target_crn, drop=[]):
 
 def main():
     """主程序"""
+    global previous_course
     if new_login:
         driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
                    '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
@@ -256,7 +258,7 @@ def main():
             table[2]/tbody/tr[1]/td[2]").text))
     maximum = int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table\
             [2]/tbody/tr[4]/td[2]").text))
-    if maximum - current < 3 and len(drops) == 0:
+    if maximum - current < 3 and len(drops.values()) == 0:
         print(os.path.basename(sys.argv[0]), "has insufficient credits. Current:", current, "Maximum:", maximum)
         driver.quit()
     # 如果没有drop的课,检查重复的课
@@ -292,17 +294,18 @@ def main():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_name("p_term").find_element_by_xpath \
-        ("//option[@value='" + semester_number + "']").click()
+    driver.find_element_by_name("p_term").find_element_by_xpath(
+        "//option[@value='" + semester_number + "']").click()
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
+
     course = data[str(crn[crn_counter])]
+    previous_course = course
     m = course.split()[0]
     c = course.split()[1]
     driver.find_element_by_xpath("//option[@value='" + m + "']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
-
     xuhao_position[course] = find(c)
     driver.find_element_by_xpath(
         "//tbody/tr[" + str(xuhao_position[course]) + "]/td/form/input[@value='View Sections']").click()
