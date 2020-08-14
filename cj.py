@@ -249,8 +249,9 @@ def main():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("I Agree to the Above Statement").click()
     driver.implicitly_wait(10)
-    driver.find_element_by_xpath("//*[@id='term_id']/option[1]").click()
-    driver.implicitly_wait(10)
+    if new_login:
+        driver.find_element_by_xpath("//*[@id='term_id']/option[1]").click()
+        driver.implicitly_wait(10)
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
 
