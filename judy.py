@@ -16,7 +16,7 @@ with open('Fall2020 crn数据.json') as fp:
 
 crn = [46976]
 crn_together = {
-    # crn[]: [],
+    crn[0]: [70221],
 }  # 一个crn可能有的lab和discussion
 drops = {
     # crn[]: [],
