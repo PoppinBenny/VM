@@ -149,6 +149,7 @@ def func1():
     driver.implicitly_wait(10)
 
     driver.find_element_by_link_text("Registration & Records").click()
+    new_login = False
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)

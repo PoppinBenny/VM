@@ -274,6 +274,7 @@ def main():
         driver.get('https://ui2web1.apps.uillinois.edu/BANPROD1/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu')
 
     driver.find_element_by_link_text("Registration & Records").click()
+    new_login = False
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
@@ -357,7 +358,6 @@ def main():
                 next_crn()
             except NoSuchElementException:
                 time.sleep(30)
-                driver.close()
                 main()
 
 

@@ -228,6 +228,7 @@ def select(target_crn, drop=None):
 def main():
     """主程序"""
     global previous_course
+    global new_login
     if new_login:
         driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
                    '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
@@ -243,6 +244,7 @@ def main():
         driver.get('https://ui2web1.apps.uillinois.edu/BANPROD1/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu')
 
     driver.find_element_by_link_text("Registration & Records").click()
+    new_login = False
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
@@ -327,7 +329,6 @@ def main():
                 next_crn()
             except NoSuchElementException:
                 time.sleep(30)
-                driver.close()
                 main()
 
 

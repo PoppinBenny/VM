@@ -225,19 +225,23 @@ def select(target_crn, drop=[]):
 def main():
     """主程序"""
     global previous_course
-    driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
-               '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
-               '%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM'
-               '-HTTPS%3a%2f%2fwebprod%2eadmin%2euillinois%2eedu%2fssa%2fservlet%2fSelfServiceLogin%3fappName%3dedu'
-               '%2euillinois%2eaits%2eSelfServiceLogin%26dad%3dBANPROD1 ')
-    driver.implicitly_wait(7.5)
-
-    driver.find_element_by_id("netid").send_keys(account)
-    driver.find_element_by_id("easpass").send_keys(password)
-    driver.find_element_by_name("BTN_LOGIN").click()
-    driver.implicitly_wait(10)
+    global new_login
+    if new_login:
+        driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
+                   '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
+                   '%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM'
+                   '-HTTPS%3a%2f%2fwebprod%2eadmin%2euillinois%2eedu%2fssa%2fservlet%2fSelfServiceLogin%3fappName%3dedu'
+                   '%2euillinois%2eaits%2eSelfServiceLogin%26dad%3dBANPROD1 ')
+        driver.implicitly_wait(7.5)
+        driver.find_element_by_id("netid").send_keys(account)
+        driver.find_element_by_id("easpass").send_keys(password)
+        driver.find_element_by_name("BTN_LOGIN").click()
+        driver.implicitly_wait(10)
+    if not new_login:
+        driver.get('https://ui2web1.apps.uillinois.edu/BANPROD1/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu')
 
     driver.find_element_by_link_text("Registration & Records").click()
+    new_login = False
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
@@ -322,7 +326,6 @@ def main():
                 next_crn()
             except NoSuchElementException:
                 time.sleep(30)
-                driver.close()
                 main()
 
 
