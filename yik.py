@@ -14,19 +14,21 @@ gce = 1
 with open('Fall2020 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [32132]
+crn = [65613, 63341, 62207]
 crn_together = {
     # crn[]: [],
 }  # 一个crn可能有的lab和discussion
 drops = {
-    # crn[]: [],
+    crn[0]: [32676],
+    crn[1]: [32676],
+    crn[2]: [32676],
 }  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120208'  # 学期序列号
 
 # 账号密码
-account = 'tq4'
-password = 'Qyyy960518'
+account = 'yangyiy2'
+password = 'Yt200010134'
 
 # 计数器
 register = 0
@@ -290,7 +292,6 @@ def main():
     driver.find_element_by_link_text("Registration & Records").click()
     new_login = False
     driver.implicitly_wait(10)
-    new_login = False
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
     if new_login:
