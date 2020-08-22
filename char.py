@@ -14,7 +14,7 @@ gce = 1
 with open('Fall2020 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [64684, 68683]
+crn = [64684, 64683]
 crn_together = {
     crn[0]: [64271],
     crn[1]: [64271],
