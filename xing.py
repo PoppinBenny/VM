@@ -19,7 +19,7 @@ crn_together = {
     # crn[]: [],
 }  # 一个crn可能有的lab和discussion
 drops = {
-    crn[0]: [64680],
+    crn[0]: [64680, 64271],
 }  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120208'  # 学期序列号
@@ -180,9 +180,6 @@ def select(target_crn, drop=None):
         # drop课
         for i in range(len(drop)):
             find_drop(str(drop[i]))
-        driver.implicitly_wait(10)
-        driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-        driver.implicitly_wait(10)
         # 注册目标crn
         for i in range(len(target_crns)):
             driver.find_element_by_id("crn_id" + str(i + 1)).send_keys(target_crns[i])
@@ -217,7 +214,6 @@ def select(target_crn, drop=None):
             for i in range(len(drop)):
                 driver.find_element_by_id("crn_id" + str(i + 1)).send_keys(str(drop[i]))
             driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-            driver.back()
             driver.back()
             driver.back()
         driver.back()
