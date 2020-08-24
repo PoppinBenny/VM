@@ -231,7 +231,7 @@ def main():
     global previous_course
     global new_login
     if new_login:
-        if gce == 1:
+        if gce == 0:
             driver.get('https://banner.apps.uillinois.edu/StudentRegistrationSSB/ssb/registration?mepCode=1UIUC')
             driver.find_element_by_xpath("//*[@id='registerLink']/span[1]").click()
             driver.implicitly_wait(10)
