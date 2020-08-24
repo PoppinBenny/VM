@@ -14,19 +14,20 @@ gce = 1
 with open('Fall2020 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [46976]
+crn = [65489, 57644]
 crn_together = {
-    #crn[0]: [70221],
+    # crn[]: [],
 }  # 一个crn可能有的lab和discussion
 drops = {
-    crn[0]: [55666],
+    crn[0]: [55549],
+    crn[1]: [65590],
 }  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120208'  # 学期序列号
 
 # 账号密码
-account = 'liju2'
-password = 'Ju1011Henry'
+account = 'xijiay2'
+password = 'YxF399995'
 
 # 计数器
 register = 0
@@ -266,7 +267,8 @@ def main():
                 elements = driver.find_elements_by_class_name("notification-flyout-item")
                 for elem in elements:
                     err = elem.text
-                    if ("Closed Section" not in err) and ("Linked course required" not in err):
+                    if ("Closed Section" not in err) and ("Linked course required" not in err) \
+                            and (len(target_crns) <= 1):
                         print(err)
                 driver.find_element_by_xpath("//*[@id='saveButton']").click()
                 time.sleep(3)
