@@ -381,8 +381,7 @@ def main():
         except NoSuchElementException:
             try:
                 next_crn()
-            except Exception as e:
-                print(driver.page_source)
+            except NoSuchElementException as e:
                 print(e)
                 time.sleep(30)
                 main()
