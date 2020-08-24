@@ -296,7 +296,7 @@ def main():
     try:
         driver.find_element_by_link_text("Registration & Records").click()
     except Exception:
-        print('Did not find registration button')
+        print(os.path.basename(sys.argv[0]), 'Did not find registration button')
         print(driver.page_source)
         time.sleep(30)
         if not new_login:
