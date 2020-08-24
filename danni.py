@@ -286,6 +286,8 @@ def main():
         driver.implicitly_wait(10)
     if not new_login:
         driver.get('https://ui2web1.apps.uillinois.edu/BANPROD1/twbkwbis.P_GenMenu?name=bmenu.P_StuMainMnu')
+        time.sleep(5)
+        driver.implicitly_wait(10)
 
     driver.find_element_by_link_text("Registration & Records").click()
     driver.implicitly_wait(10)
