@@ -299,7 +299,6 @@ def main():
         time.sleep(30)
         if not new_login:
             main()
-    new_login = False
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
@@ -348,6 +347,7 @@ def main():
         driver.back()
         driver.back()
         driver.back()
+        new_login = False
 
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)

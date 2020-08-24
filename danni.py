@@ -345,6 +345,7 @@ def main():
         driver.back()
         driver.back()
         driver.back()
+        new_login = False
 
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
