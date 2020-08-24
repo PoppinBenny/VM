@@ -341,6 +341,7 @@ def main():
                 "//html/body/div[3]/form/table[1]/tbody/tr/td[3]")
             d = [str(drop[0]) for drop in drops.values()]
             c = [t.text for t in temp]
+            print(c,d)
             if not all(elem in c for elem in d):
                 print(d, c)
                 print('Drop index does not exist')
