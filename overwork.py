@@ -289,7 +289,14 @@ def main():
         time.sleep(5)
         driver.implicitly_wait(10)
 
-    driver.find_element_by_link_text("Registration & Records").click()
+    try:
+        driver.find_element_by_link_text("Registration & Records").click()
+    except Exception:
+        print('Did not find registration button')
+        print(driver.page_source)
+        time.sleep(30)
+        if not new_login:
+            main()
     new_login = False
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
