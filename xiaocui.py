@@ -26,7 +26,7 @@ semester_number = '120208'  # 学期序列号
 
 # 账号密码
 account = 'mcui5'
-password = 'Xiaocui20010314!'
+password = '20010314xiaocuiN!'
 
 # 计数器
 register = 0
