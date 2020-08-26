@@ -380,7 +380,7 @@ def main():
         except NoSuchElementException:
             try:
                 next_crn()
-            except NoSuchElementException as e:
+            except Exception as e:
                 print(e)
                 time.sleep(30)
                 main()
