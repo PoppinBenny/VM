@@ -14,9 +14,10 @@ gce = 1
 with open('Fall2020 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [74939]
+crn = [74939, 31893]
 crn_together = {
     crn[0]: [74938],
+    crn[1]: [74938],
 }  # 一个crn可能有的lab和discussion
 drops = {
     crn[0]: [74926],
