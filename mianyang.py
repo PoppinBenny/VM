@@ -136,6 +136,8 @@ def next_crn():
             xuhao_position[course] = find(xuhao)
         driver.find_element_by_xpath(
             "//tbody/tr[" + str(xuhao_position[course]) + "]/td/form/input[@value='View Sections']").click()
+        if 'error' in driver.current_url:
+            print(os.path.basename(sys.argv[0]), 'banner self-service error')
     previous_course = course
 
 
