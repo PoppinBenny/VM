@@ -20,6 +20,7 @@ crn_together = {
 }  # 一个crn可能有的lab和discussion
 drops = {
     crn[0]: [62068],
+    crn[1]: [62068]
 }  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120208'  # 学期序列号
