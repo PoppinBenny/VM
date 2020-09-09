@@ -14,19 +14,19 @@ gce = 1
 with open('Fall2020 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [65489, 67829]
+crn = [67829]
 crn_together = {
     # crn[]: [],
 }  # 一个crn可能有的lab和discussion
 drops = {
-    crn[0]: [55549]
+    # crn[]: [],
 }  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120208'  # 学期序列号
 
 # 账号密码
-account = 'xijiay2'
-password = 'YxF399995'
+account = 'xiaowei5'
+password = '20192020Yxw'
 
 # 计数器
 register = 0
