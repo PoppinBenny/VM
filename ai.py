@@ -257,6 +257,8 @@ def main():
             driver.find_element_by_xpath("//*[@id='term-go']").click()
             time.sleep(5)
             driver.implicitly_wait(10)
+            driver.find_element_by_xpath("//*[@id='notification-center']/div/ul[2]/li/div[2]/button").click()
+            driver.implicitly_wait(10)
             driver.find_element_by_xpath("//*[@id='enterCRNs-tab']").click()
             time.sleep(2)
             driver.implicitly_wait(10)
