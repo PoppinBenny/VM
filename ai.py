@@ -37,7 +37,7 @@ semester_number = '120208'  # 学期序列号
 
 # 账号密码
 account = 'shiyim2'
-password = 'maRcel1525465456'
+password = 'MaRcel1525465456'
 
 # 计数器
 register = 0
