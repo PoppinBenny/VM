@@ -241,6 +241,7 @@ def main():
     global previous_course
     global new_login
     if new_login:
+        '''
         if gce == 1:
             driver.get('https://banner.apps.uillinois.edu/StudentRegistrationSSB/ssb/registration?mepCode=1UIUC')
             driver.find_element_by_xpath("//*[@id='registerLink']/span[1]").click()
@@ -285,6 +286,7 @@ def main():
                         print(err)
                 driver.find_element_by_xpath("//*[@id='saveButton']").click()
                 time.sleep(3)
+        '''
         driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
                    '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
                    '%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM'
