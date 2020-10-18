@@ -30,25 +30,14 @@ crn_together = {
     crn[11]: [73319]
 }  # 一个crn可能有的lab和discussion
 drops = {
-    crn[0]: [57351],
-    crn[1]: [57351],
-    crn[2]: [57351],
-    crn[3]: [57351],
-    crn[4]: [57351],
-    crn[5]: [57351],
-    crn[6]: [57351],
-    crn[7]: [57351],
-    crn[8]: [57351],
-    crn[9]: [57351],
-    crn[10]: [57351],
-    crn[11]: [57351]
+    #crn[0]: [57351],
 }  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120208'  # 学期序列号
 
 # 账号密码
-account = 'shiyim2'
-password = 'MarCel1525465456'
+account = 'dye6'
+password = 'GeorgeYe259'
 
 # 计数器
 register = 0

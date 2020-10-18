@@ -25,11 +25,11 @@ drops = {
 }  # 要选的crn对应要drop的crn
 for i in range(25):
     crn_together[crn[i]] = [37728]
-    drops[crn[i]] = [35917, 65184]
+    #drops[crn[i]] = [35917, 65184]
 
 for i in range(25, 37):
     crn_together[crn[i]] = [73319]
-    drops[crn[i]] = [35917, 65184]
+    #drops[crn[i]] = [35917, 65184]
 
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120208'  # 学期序列号
