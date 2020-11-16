@@ -22,7 +22,7 @@ drops = {
     # crn[]: [],
 }  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
-semester_number = '120208'  # 学期序列号
+semester_number = '120211'  # 学期序列号
 
 # 账号密码
 account = ''
