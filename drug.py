@@ -270,6 +270,7 @@ def main():
                     driver.find_element_by_xpath("//*[@id='txt_crn" + str(i + 1) + "']").send_keys(target_crns[i])
                 driver.find_element_by_xpath("//*[@id='addCRNbutton']").click()
                 time.sleep(1)
+                driver.find_element_by_xpath("//*[@id='inner-north-toggler']/span/div[2]").click()
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("//*[@id='saveButton']").click()
                 driver.implicitly_wait(10)
