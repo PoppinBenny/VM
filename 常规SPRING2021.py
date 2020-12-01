@@ -245,9 +245,12 @@ def main():
             driver.find_element_by_xpath("//*[@id='" + semester_number + "']").click()
             driver.find_element_by_xpath("//*[@id='term-go']").click()
             time.sleep(5)
-            driver.find_element_by_xpath("//*[@id='check_agreement']").click()
-            driver.implicitly_wait(10)
-            driver.find_element_by_xpath("/html/body/div[18]/div[11]/div/button").click()
+            try:
+                driver.find_element_by_xpath("//*[@id='check_agreement']").click()
+                driver.implicitly_wait(10)
+                driver.find_element_by_xpath("/html/body/div[18]/div[11]/div/button").click()
+            except Exception:
+                pass
             driver.implicitly_wait(10)
             driver.find_element_by_xpath("//*[@id='notification-center']/div/ul[2]/li/div[2]/button").click()
             driver.implicitly_wait(10)
