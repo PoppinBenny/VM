@@ -249,6 +249,9 @@ def main():
                 driver.find_element_by_xpath("//*[@id='check_agreement']").click()
                 driver.implicitly_wait(10)
                 driver.find_element_by_xpath("/html/body/div[18]/div[11]/div/button").click()
+                driver.implicitly_wait(10)
+                driver.find_element_by_xpath("//*[@id='notification-center']/div/ul[2]/li/div[2]/button").click()
+                driver.implicitly_wait(10)
             except Exception:
                 pass
             driver.implicitly_wait(10)
