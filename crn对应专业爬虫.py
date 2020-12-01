@@ -56,15 +56,15 @@ def main():
         data = json.load(fp)
 
     with open('Spring2021 crn数据.json', 'w') as fp:
-        major_count = 1  # 默认1
+        major_count = 40  # 默认1
         while True:  # major
             try:
                 driver.find_element_by_xpath("// *[ @ id = 'subj_id'] / option[" + str(major_count) + "]").click()
                 driver.find_element_by_xpath("//input[@value='Course Search']").click()
                 driver.implicitly_wait(10)
                 xuhao_count = 3
-                # if major_count==153:
-                # xuhao_count=22
+                if major_count==40:
+                    xuhao_count=35
                 while True:  # xuhao
                     try:
                         driver.find_element_by_xpath(
