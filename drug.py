@@ -242,7 +242,7 @@ def main():
             driver.find_element_by_xpath("//*[@id='s2id_txt_term']/a/span[2]/b").click()
             time.sleep(2)
             driver.implicitly_wait(10)
-            driver.find_element_by_xpath("//*[@id='120208']").click()
+            driver.find_element_by_xpath("//*[@id='120211']").click()
             driver.find_element_by_xpath("//*[@id='term-go']").click()
             time.sleep(5)
             driver.implicitly_wait(10)
