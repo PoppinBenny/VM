@@ -320,13 +320,6 @@ def main():
         driver.find_element_by_xpath("//input[@value='Submit']").click()
         driver.implicitly_wait(10)
 
-        current = int(float(driver.find_element_by_xpath("/html/body/div[3]/form/\
-                table[2]/tbody/tr[1]/td[2]").text))
-        maximum = int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table\
-                [2]/tbody/tr[4]/td[2]").text))
-        if maximum - current < 3 and len(drops.values()) == 0:
-            print(os.path.basename(sys.argv[0]), "has insufficient credits. Current:", current, "Maximum:", maximum)
-            driver.quit()
         # 如果没有drop的课,检查重复的课
         if len(drops.values()) == 0:
             cs = driver.find_elements_by_xpath(
