@@ -14,19 +14,19 @@ gce = 1
 with open('Spring2021 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [61717]
+crn = [70358]
 crn_together = {
     # crn[]: [],
 }  # 一个crn可能有的lab和discussion
 drops = {
-    # crn[]: [],
+    crn[0]: [63552],
 }  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120211'  # 学期序列号
 
 # 账号密码
-account = 'yifanc7'
-password = '19981020Hyouka'
+account = 'jingx7'
+password = '135135Xj'
 
 # 计数器
 register = 0
@@ -327,6 +327,20 @@ def main():
         if maximum - current < 3 and len(drops.values()) == 0:
             print(os.path.basename(sys.argv[0]), "has insufficient credits. Current:", current, "Maximum:", maximum)
             driver.quit()
+        # 如果没有drop的课,检查重复的课
+        if len(drops.values()) == 0:
+            cs = driver.find_elements_by_xpath(
+                "//html/body/div[3]/form/table[1]/tbody/tr/td[4]")
+            nus = driver.find_elements_by_xpath(
+                "//html/body/div[3]/form/table[1]/tbody/tr/td[5]")
+            temp = []
+            for i in range(len(cs)):
+                temp.append(cs[i].text + ' ' + nus[i].text)
+            want_courses = [data[str(cr)] for cr in crn]
+            if any(elem in temp for elem in want_courses):
+                print(temp, want_courses)
+                print('Repeated courses')
+                driver.quit()
 
         # 如果有drop的课,检查是否在在课表内
         if len(drops.values()) != 0:
