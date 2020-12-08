@@ -8,12 +8,12 @@ import os,time
 from selenium.common.exceptions import TimeoutException
 
 options = Options()
-#options.add_argument('--headless')
-#options.add_argument('--no-sandbox')
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
 
 lec=[35801,35802]
-disc=[47451,35808,49446,35820,35809,52874,35810,46833,53113,51927,35812,35828,53114,35955,35811]
-lab=[60732,35979,35981,35984,48280,36010,36017,36022,36030,36086,58972,60731]
+disc=[47451,35808,53113,51927,35812,35828,53114,35955]
+lab=[60732,36010,36017,36022,36030,60731]
 #lecture TR12-1
 
 def func1():
