@@ -24,8 +24,8 @@ def func1():
                '-HTTPS%3a%2f%2fwebprod%2eadmin%2euillinois%2eedu%2fssa%2fservlet%2fSelfServiceLogin%3fappName%3dedu'
                '%2euillinois%2eaits%2eSelfServiceLogin%26dad%3dBANPROD1')
     driver.implicitly_wait(7.5)
-    driver.find_element_by_id("netid").send_keys('jiaruil4')
-    driver.find_element_by_id("easpass").send_keys('Li1216624520')
+    driver.find_element_by_id("netid").send_keys('zeyuli5')
+    driver.find_element_by_id("easpass").send_keys('Lizeyu010705bill')
     driver.find_element_by_name("BTN_LOGIN").click()
     driver.implicitly_wait(10)
 
