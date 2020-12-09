@@ -1,23 +1,37 @@
+import datetime
+import os
+import sys
+import time
+import pytz
+import json
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
-import os,time
-from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.chrome.options import Options
 
 options = Options()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
+
+driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
 
 lec=[35801,35802]
 disc=[47451,35808,53113,51927,35812,35828,53114,35955]
 lab=[60732,36010,36017,36022,36030,60731]
 #lecture TR12-1
 
+def print_error():
+    """print没选上课的error"""
+    i = 2
+    try:
+        while True:
+            status = driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[" + str(i) + "]/td[1]").text
+            c = driver.find_element_by_xpath("/html/body/div[3]/form/table[4]/tbody/tr[" + str(i) + "]/td[2]").text
+            print(c, status)
+            i += 1
+    except NoSuchElementException:
+        print('try again')
+
 def func1():
-    driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
     driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
                '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
                '%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM'
@@ -50,6 +64,7 @@ def func1():
 
     switch=0
     b=False
+    register=0
     while True:
         print('no liz')
         for i in lec:
@@ -68,6 +83,37 @@ def func1():
                         shit3.click()
                         driver.find_element_by_xpath("//input[@value='Register']").click()
                         b=True
+                        driver.implicitly_wait(7.5)
+
+                        # 复查目标crn是否选上
+                        x = 2
+                        try:
+                            while True:
+                                number = driver.find_element_by_xpath(
+                                    "//html/body/div[3]/form/table[1]/tbody/tr[" + str(x) + "]/td[3]").text
+                                c = driver.find_element_by_xpath(
+                                    "//html/body/div[3]/form/table[1]/tbody/tr[" + str(x) + "]/td[4]").text
+                                nu = driver.find_element_by_xpath(
+                                    "//html/body/div[3]/form/table[1]/tbody/tr[" + str(x) + "]/td[5]").text
+                                print(c, nu, number)  # 打课表
+                                if str(i) == number:
+                                    print('Time in Chicago, IL, USA:',
+                                          datetime.datetime.now(pytz.timezone('America/Chicago')))
+                                    print('Course selected')
+                                    driver.quit()
+                                x += 1
+                        except NoSuchElementException:
+                            print('Failed to add ' + str(i) + ' ' + os.path.basename(
+                                sys.argv[0]) + ', ' + 'Time in China: ',
+                                  datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
+                            print_error()
+                            register += 1
+                            if register >= 5:
+                                print(
+                                    'Too many requests for ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
+                                    datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
+                                driver.quit()
+                            driver.back()
                     except NoSuchElementException:
                         try:
                             switch+=1
