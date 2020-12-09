@@ -286,10 +286,10 @@ def main():
         try:
             driver.implicitly_wait(0.2)
             target = crn[crn_counter]
-            if target not in drops:
-                select(target)
-            else:
-                select(target, drops[target])
+            #if target not in drops:
+            select(target)
+            #else:
+                #select(target, drops[target])
             break
         except NoSuchElementException:
             try:
