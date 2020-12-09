@@ -208,55 +208,9 @@ def select(target_crn, drop=None):
 
 def main():
     """主程序"""
-    global previous_course
+    global course
     global new_login
     if new_login:
-        if gce == 1:
-            driver.get('https://banner.apps.uillinois.edu/StudentRegistrationSSB/ssb/registration?mepCode=1UIUC')
-            driver.find_element_by_xpath("//*[@id='registerLink']/span[1]").click()
-            driver.implicitly_wait(10)
-            driver.find_element_by_id("netid").send_keys(account)
-            driver.find_element_by_id("easpass").send_keys(password)
-            driver.find_element_by_name("BTN_LOGIN").click()
-            driver.implicitly_wait(10)
-            driver.find_element_by_xpath("//*[@id='s2id_txt_term']/a/span[2]/b").click()
-            time.sleep(2)
-            driver.implicitly_wait(10)
-            driver.find_element_by_xpath("//*[@id='" + semester_number + "']").click()
-            driver.find_element_by_xpath("//*[@id='term-go']").click()
-            time.sleep(5)
-            try:
-                driver.find_element_by_xpath("//*[@id='check_agreement']").click()
-                driver.implicitly_wait(10)
-                driver.find_element_by_xpath("/html/body/div[18]/div[11]/div/button").click()
-                driver.implicitly_wait(10)
-                driver.find_element_by_xpath("//*[@id='notification-center']/div/ul[2]/li/div[2]/button").click()
-                driver.implicitly_wait(10)
-            except Exception:
-                pass
-            driver.find_element_by_xpath("//*[@id='enterCRNs-tab']").click()
-            time.sleep(2)
-            driver.implicitly_wait(10)
-
-            for target_crns in crn:
-                if len(target_crns) > 1:
-                    for i in range(len(target_crns) - 1):
-                        driver.find_element_by_xpath("//*[@id='addAnotherCRN']").click()
-                for i in range(len(target_crns)):
-                    driver.find_element_by_xpath("//*[@id='txt_crn" + str(i + 1) + "']").send_keys(target_crns[i])
-                driver.find_element_by_xpath("//*[@id='addCRNbutton']").click()
-                time.sleep(1)
-                driver.implicitly_wait(10)
-                driver.find_element_by_xpath("//*[@id='saveButton']").click()
-                driver.implicitly_wait(10)
-                elements = driver.find_elements_by_class_name("notification-flyout-item")
-                for elem in elements:
-                    err = elem.text
-                    if ("Closed Section" not in err) and ("Linked course required" not in err) \
-                            and (len(target_crns) <= 1):
-                        print(err)
-                driver.find_element_by_xpath("//*[@id='saveButton']").click()
-                time.sleep(3)
         driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
                    '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
                    '%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM'
