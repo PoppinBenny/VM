@@ -47,8 +47,8 @@ with open('urlid.json', 'w') as fp2:
     if new_login:
         if gce == 1:
             options = Options()
-            #options.add_argument('--headless')
-            #options.add_argument('--no-sandbox')
+            options.add_argument('--headless')
+            options.add_argument('--no-sandbox')
             driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
         else:
             driver = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
@@ -276,9 +276,7 @@ def main():
                 elements = driver.find_elements_by_class_name("notification-flyout-item")
                 for elem in elements:
                     err = elem.text
-                    print(err)
-                    if ("Closed Section" not in err) and ("Linked course required" not in err) \
-                            and (len(target_crns) <= 1):
+                    if ("Closed Section" not in err) and ("Linked course required" not in err):
                         print(err)
                 driver.find_element_by_xpath("//*[@id='saveButton']").click()
                 time.sleep(3)
