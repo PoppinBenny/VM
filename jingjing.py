@@ -276,6 +276,7 @@ def main():
                 elements = driver.find_elements_by_class_name("notification-flyout-item")
                 for elem in elements:
                     err = elem.text
+                    print(err)
                     if ("Closed Section" not in err) and ("Linked course required" not in err) \
                             and (len(target_crns) <= 1):
                         print(err)
