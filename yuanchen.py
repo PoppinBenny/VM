@@ -26,7 +26,7 @@ semester_number = '120211'  # 学期序列号
 
 # 账号密码
 account = 'yx15'
-password = 'Xyc-GPA-4.0'
+password = 'LsYcX-GPA-4.0'
 
 # 计数器
 register = 0
