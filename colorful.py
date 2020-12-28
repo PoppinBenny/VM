@@ -14,12 +14,11 @@ gce = 1
 with open('Spring2021 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [73075, 73074, 70793, 70792]
+crn = [73075, 73074, 70793]
 crn_together = {
     crn[0]: [70714],
     crn[1]: [70714],
     crn[2]: [70714],
-    crn[3]: [70714],
 }  # 一个crn可能有的lab和discussion
 drops = {
     # crn[]: [],
