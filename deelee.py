@@ -272,6 +272,7 @@ def main():
     course = data[str(crn[crn_counter][0])]
     m = course.split()[0]
     c = course.split()[1]
+    print(crn[crn_counter][0],m,c)
     driver.find_element_by_xpath("//option[@value='" + m + "']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
