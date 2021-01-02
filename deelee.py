@@ -238,7 +238,7 @@ def main():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
-    if new_login:
+    '''if new_login:
         driver.find_element_by_link_text("Add/Drop Classes").click()
         driver.implicitly_wait(10)
         driver.find_element_by_link_text("I Agree to the Above Statement").click()
@@ -258,7 +258,7 @@ def main():
         driver.back()
         driver.back()
         driver.back()
-        new_login = False
+        new_login = False'''
 
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
