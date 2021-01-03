@@ -252,7 +252,7 @@ def main():
                 table[2]/tbody/tr[1]/td[2]").text))
         maximum = int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table\
                 [2]/tbody/tr[4]/td[2]").text))
-        if maximum - current < 3 and len(drops.values()) == 0:
+        if maximum - current < 3 and len(drops) == 0:
             print(os.path.basename(sys.argv[0]), "has insufficient credits. Current:", current, "Maximum:", maximum)
             driver.quit()
         driver.back()
