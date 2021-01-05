@@ -30,7 +30,7 @@ semester_number = '120211'  # 学期序列号
 
 # 账号密码
 account = 'yz74'
-password = '15738326101Yss'
+password = '15738326101ssY'
 
 # 计数器
 register = 0
