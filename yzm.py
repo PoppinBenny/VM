@@ -25,8 +25,8 @@ xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120211'  # 学期序列号
 
 # 账号密码
-account = 'zheyu3'
-password = '19981225zzY!3'
+account = 'zimingy2'
+password = 'Zym989898'
 
 # 计数器
 register = 0
