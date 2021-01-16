@@ -21,6 +21,7 @@ crn_together = {
 drops = {
     crn[0]: [31513],
     crn[1]: [31513],
+    crn[2]: [31513],
 }  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120211'  # 学期序列号
