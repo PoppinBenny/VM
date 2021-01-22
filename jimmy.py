@@ -327,19 +327,6 @@ def main():
             print(os.path.basename(sys.argv[0]), "has insufficient credits. Current:", current, "Maximum:", maximum)
             driver.quit()
         # 如果没有drop的课,检查重复的课
-        if len(drops.values()) == 0:
-            cs = driver.find_elements_by_xpath(
-                "//html/body/div[3]/form/table[1]/tbody/tr/td[4]")
-            nus = driver.find_elements_by_xpath(
-                "//html/body/div[3]/form/table[1]/tbody/tr/td[5]")
-            temp = []
-            for i in range(len(cs)):
-                temp.append(cs[i].text + ' ' + nus[i].text)
-            want_courses = [data[str(cr)] for cr in crn]
-            if any(elem in temp for elem in want_courses):
-                print(temp, want_courses)
-                print('Repeated courses')
-                driver.quit()
 
         # 如果有drop的课,检查是否在在课表内
         if len(drops.values()) != 0:
