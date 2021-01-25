@@ -14,19 +14,20 @@ gce = 1
 with open('Spring2021 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [72388, 67039]
+crn = [62206, 62229]
 crn_together = {
     # crn[]: [],
 }  # 一个crn可能有的lab和discussion
 drops = {
-    # crn[]: [],
+    crn[0]: [30106, 30107],
+    crn[1]: [30106, 30107],
 }  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120211'  # 学期序列号
 
 # 账号密码
-account = 'hanyaoh2'
-password = 'Hhy753951nb6666########'
+account = 'zs17'
+password = 'ZhaoyangSun01617!'
 
 # 计数器
 register = 0
@@ -47,8 +48,8 @@ with open('urlid.json', 'w') as fp2:
     if new_login:
         if gce == 1:
             options = Options()
-            #options.add_argument('--headless')
-            #options.add_argument('--no-sandbox')
+            options.add_argument('--headless')
+            options.add_argument('--no-sandbox')
             driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
         else:
             driver = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
@@ -122,10 +123,6 @@ def next_crn():
             driver.back()
             driver.back()
             driver.back()
-            try:
-                driver.find_element_by_link_text("Look-up or Select Classes").click()
-            except NoSuchElementException:
-                pass
             driver.find_element_by_link_text("I Agree to the Above Statement").click()
             driver.implicitly_wait(10)
             driver.find_element_by_name("p_term").find_element_by_xpath(
