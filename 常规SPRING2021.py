@@ -122,6 +122,7 @@ def next_crn():
             driver.back()
             driver.back()
             driver.back()
+            driver.implicitly_wait(10)
             driver.find_element_by_link_text("I Agree to the Above Statement").click()
             driver.implicitly_wait(10)
             driver.find_element_by_name("p_term").find_element_by_xpath(
