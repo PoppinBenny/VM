@@ -47,8 +47,8 @@ with open('urlid.json', 'w') as fp2:
     if new_login:
         if gce == 1:
             options = Options()
-            options.add_argument('--headless')
-            options.add_argument('--no-sandbox')
+            #options.add_argument('--headless')
+            #options.add_argument('--no-sandbox')
             driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
         else:
             driver = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
@@ -122,6 +122,10 @@ def next_crn():
             driver.back()
             driver.back()
             driver.back()
+            try:  # 临时加的4行
+                driver.find_element_by_link_text("Look-up or Select Classes").click()
+            except NoSuchElementException:
+                pass
             driver.implicitly_wait(10)
             driver.find_element_by_link_text("I Agree to the Above Statement").click()
             driver.implicitly_wait(10)
