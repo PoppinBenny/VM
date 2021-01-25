@@ -115,7 +115,7 @@ def next_crn():
     # 当下一个crn的课不同，或crn遍历一遍之后，需要退出去重新找section
     if previous_course != course or crn_counter == 0:
         print_counter += 1
-        time.sleep(6.0 / (len(xuhao_position.values())))
+        time.sleep(10.0 / (len(xuhao_position.values())))
         driver.back()
         previous_major = previous_course.split()[0]
         if previous_major != major:
@@ -328,51 +328,21 @@ def main():
                 table[2]/tbody/tr[1]/td[2]").text))
         maximum = int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table\
                 [2]/tbody/tr[4]/td[2]").text))
-        if maximum - current < 3:
-            # 如果学分不够，就必须有drop
-            if len(drops.values()) == 0:
-                print(os.path.basename(sys.argv[0]), "has insufficient credits. Current:", current, "Maximum:", maximum)
-                driver.quit()
-            # 如果学分不够，那么每节刷的课都要有一个drop
-            if not all(elem in drops for elem in crn):
-                print(os.path.basename(sys.argv[0]), "has insufficient credits. Each enrolled course must have a "
-                                                     "concurrent drop.")
-
-        cs = driver.find_elements_by_xpath(
-            "//html/body/div[3]/form/table[1]/tbody/tr/td[4]")
-        nus = driver.find_elements_by_xpath(
-            "//html/body/div[3]/form/table[1]/tbody/tr/td[5]")
-        courses = []
-        # 课表里包含的课
-        for i in range(len(cs)):
-            courses.append(cs[i].text + ' ' + nus[i].text)
+        if maximum - current < 3 and len(drops.values()) == 0:
+            print(os.path.basename(sys.argv[0]), "has insufficient credits. Current:", current, "Maximum:", maximum)
+            driver.quit()
         # 如果没有drop的课,检查重复的课
-        if len(drops.values()) == 0:
-            # 想要的课
-            want_courses = [data[str(cr)] for cr in crn]
-            if any(elem in courses for elem in want_courses):
-                print(courses, want_courses)
-                print('Repeated courses')
-                driver.quit()
 
         # 如果有drop的课,检查是否在在课表内
         if len(drops.values()) != 0:
             temp = driver.find_elements_by_xpath(
                 "//html/body/div[3]/form/table[1]/tbody/tr/td[3]")
-            d = []  # 要drop的crn（包括linked section）
-            for drop in drops.values():
-                for dr in drop:
-                    d.append(str(dr))
-            d_courses = [data[ds] for ds in d]  # drop的crn所对应的课（有重复）
-            c = [t.text for t in temp]  # 课表有的crn
+            d = [str(drop[0]) for drop in drops.values()]
+            c = [t.text for t in temp]
             if not all(elem in c for elem in d):
                 print(d, c)
                 print('Drop index does not exist')
                 driver.quit()
-            for elem in d:  # 如果drop的crn在课表里，检查是否有linked section忘记写了
-                if elem in c:
-                    if d_courses.count(data[elem]) < courses.count(data[elem]):
-                        print(elem, 'has linked section, which has to be in drops.')
         driver.back()
         driver.back()
         driver.back()
