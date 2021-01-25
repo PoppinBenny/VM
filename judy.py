@@ -369,10 +369,6 @@ def main():
                 print(d, c)
                 print('Drop index does not exist')
                 driver.quit()
-            for elem in d:  # 如果drop的crn在课表里，检查是否有linked section忘记写了
-                if elem in c:
-                    if d_courses.count(data[elem]) < courses.count(data[elem]):
-                        print(elem, 'has linked section, which has to be in drops.')
         driver.back()
         driver.back()
         driver.back()
