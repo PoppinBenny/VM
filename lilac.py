@@ -48,8 +48,8 @@ with open('urlid.json', 'w') as fp2:
     if new_login:
         if gce == 1:
             options = Options()
-            options.add_argument('--headless')
-            options.add_argument('--no-sandbox')
+            #options.add_argument('--headless')
+            #options.add_argument('--no-sandbox')
             driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
         else:
             driver = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
