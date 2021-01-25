@@ -14,12 +14,10 @@ gce = 1
 with open('Spring2021 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [65098, 65090, 65439, 65440]
+crn = [65439, 65440]
 crn_together = {
-    crn[0]: [65088],
-    crn[1]: [65088],
-    crn[2]: [65433],
-    crn[3]: [65433],
+    crn[0]: [65433],
+    crn[1]: [65433],
 }  # 一个crn可能有的lab和discussion
 drops = {
     # crn[]: [],
@@ -50,8 +48,8 @@ with open('urlid.json', 'w') as fp2:
     if new_login:
         if gce == 1:
             options = Options()
-            options.add_argument('--headless')
-            options.add_argument('--no-sandbox')
+            #options.add_argument('--headless')
+            #options.add_argument('--no-sandbox')
             driver = webdriver.Chrome(chrome_options=options, executable_path=r'/usr/bin/chromedriver')
         else:
             driver = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
