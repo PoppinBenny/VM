@@ -115,14 +115,13 @@ def next_crn():
     # 当下一个crn的课不同，或crn遍历一遍之后，需要退出去重新找section
     if previous_course != course or crn_counter == 0:
         print_counter += 1
-        time.sleep(6.0 / (len(xuhao_position.values())))
+        time.sleep(20.0 / (len(xuhao_position.values())))
         driver.back()
         previous_major = previous_course.split()[0]
         if previous_major != major:
             driver.back()
             driver.back()
             driver.back()
-            time.sleep(2)
             driver.find_element_by_link_text("I Agree to the Above Statement").click()
             driver.implicitly_wait(10)
             driver.find_element_by_name("p_term").find_element_by_xpath(
