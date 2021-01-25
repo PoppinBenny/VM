@@ -14,9 +14,9 @@ gce = 1
 with open('Spring2021 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [64531, 31486, 37737, 57021, 57022, 57024, 57025, 68838, 68839]
+crn = [59118, 59120, 33125, 50999, 51001, 51002, 55439, 58213, 59108, 59112]
 crn_together = {
-    crn[0]: [64455],
+    # crn[]: [],
 }  # 一个crn可能有的lab和discussion
 drops = {
     # crn[]: [],
@@ -25,8 +25,8 @@ xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120211'  # 学期序列号
 
 # 账号密码
-account = 'yifuliu2'
-password = 'l2000508G$'
+account = 'yiming10'
+password = '123456Azx'
 
 # 计数器
 register = 0
@@ -115,7 +115,7 @@ def next_crn():
     # 当下一个crn的课不同，或crn遍历一遍之后，需要退出去重新找section
     if previous_course != course or crn_counter == 0:
         print_counter += 1
-        time.sleep(20.0 / (len(xuhao_position.values())))
+        time.sleep(10.0 / (len(xuhao_position.values())))
         driver.back()
         previous_major = previous_course.split()[0]
         if previous_major != major:
@@ -413,7 +413,7 @@ def main():
                 next_crn()
             except Exception as e:
                 print(e)
-                time.sleep(30)
+                time.sleep(6)
                 main()
 
 

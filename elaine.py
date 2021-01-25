@@ -14,9 +14,9 @@ gce = 1
 with open('Spring2021 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [69366]
+crn = [71549]
 crn_together = {
-    # crn[]: [],
+    crn[0]: [70182],
 }  # 一个crn可能有的lab和discussion
 drops = {
     # crn[]: [],
@@ -25,8 +25,8 @@ xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120211'  # 学期序列号
 
 # 账号密码
-account = 'dsha2'
-password = '199711Sdc'
+account = 'zeweny2'
+password = 'BI2001-lxlxlx'
 
 # 计数器
 register = 0
@@ -115,7 +115,7 @@ def next_crn():
     # 当下一个crn的课不同，或crn遍历一遍之后，需要退出去重新找section
     if previous_course != course or crn_counter == 0:
         print_counter += 1
-        time.sleep(6.0 / (len(xuhao_position.values())))
+        time.sleep(10.0 / (len(xuhao_position.values())))
         driver.back()
         previous_major = previous_course.split()[0]
         if previous_major != major:
@@ -287,9 +287,9 @@ def main():
                 time.sleep(3)
         driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
                    '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
-                   '%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET'
-                   '=-SM-HTTPS%3a%2f%2fwebprod%2eadmin%2euillinois%2eedu%2fssa%2fservlet%2fSelfServiceLogin%3fappName'
-                   '%3dedu%2euillinois%2eaits%2eSelfServiceLogin%26dad%3dBANPROD1')
+                   '%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM'
+                   '-HTTPS%3a%2f%2fwebprod%2eadmin%2euillinois%2eedu%2fssa%2fservlet%2fSelfServiceLogin%3fappName%3dedu'
+                   '%2euillinois%2eaits%2eSelfServiceLogin%26dad%3dBANPROD1')
         try:
             driver.switch_to.alert.accept()
         except Exception:
@@ -413,7 +413,7 @@ def main():
                 next_crn()
             except Exception as e:
                 print(e)
-                time.sleep(30)
+                time.sleep(6)
                 main()
 
 
