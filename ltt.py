@@ -21,7 +21,28 @@ crn_together = {
     # crn[]: [],
 }  # 一个crn可能有的lab和discussion
 drops = {
-    # crn[]: [],
+    crn[0]: [70713],
+    crn[1]: [70713],
+    crn[2]: [70713],
+    crn[3]: [70713],
+    crn[4]: [70713],
+    crn[5]: [70713],
+    crn[6]: [70713],
+    crn[7]: [70713],
+    crn[8]: [70713],
+    crn[9]: [70713],
+    crn[10]: [70713],
+    crn[11]: [70713],
+    crn[12]: [70713],
+    crn[13]: [70713],
+    crn[14]: [70713],
+    crn[15]: [70713],
+    crn[16]: [70713],
+    crn[17]: [70713],
+    crn[18]: [70713],
+    crn[19]: [70713],
+    crn[20]: [70713],
+    crn[21]: [70713],
 }  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120211'  # 学期序列号
@@ -238,7 +259,7 @@ def main():
     global previous_course
     global new_login
     if new_login:
-        if gce == 1:
+        '''if gce == 1:
             driver.get('https://banner.apps.uillinois.edu/StudentRegistrationSSB/ssb/registration?mepCode=1UIUC')
             driver.find_element_by_xpath("//*[@id='registerLink']/span[1]").click()
             driver.implicitly_wait(10)
@@ -286,7 +307,7 @@ def main():
                     if ("Closed Section" not in err) and ("Linked course required" not in err):
                         print(err)
                 driver.find_element_by_xpath("//*[@id='saveButton']").click()
-                time.sleep(3)
+                time.sleep(3)'''
         driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
                    '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
                    '%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM'
