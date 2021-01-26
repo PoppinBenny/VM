@@ -187,9 +187,9 @@ def select(target_crn, drop=None):
         # drop课
         for i in range(len(drop)):
             find_drop(str(drop[i]))
-        driver.implicitly_wait(10)
+        '''driver.implicitly_wait(10)
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
-        driver.implicitly_wait(10)
+        driver.implicitly_wait(10)'''
         # 注册目标crn
         for i in range(len(target_crns)):
             driver.find_element_by_id("crn_id" + str(i + 1)).send_keys(target_crns[i])
@@ -226,7 +226,7 @@ def select(target_crn, drop=None):
             driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
             driver.back()
             driver.back()
-            driver.back()
+            #driver.back()
         driver.back()
     raise NoSuchElementException
 
