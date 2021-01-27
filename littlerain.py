@@ -14,10 +14,9 @@ gce = 1
 with open('Spring2021 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [37406, 37410]
+crn = [40008]
 crn_together = {
-    crn[0]: [37414],
-    crn[1]: [37414],
+    # crn[]: [],
 }  # 一个crn可能有的lab和discussion
 drops = {
     # crn[]: [],
@@ -26,8 +25,8 @@ xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120211'  # 学期序列号
 
 # 账号密码
-account = 'xiaoman4'
-password = 'Haohaoshuijiao99!'
+account = 'xiaoyu10'
+password = '19990928Hmw'
 
 # 计数器
 register = 0
@@ -216,10 +215,6 @@ def select(target_crn, drop=None):
               datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
         print_error()
         register += 1
-        if register >= limit:
-            print('Too many requests for ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
-                  datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
-            driver.quit()
         # 如果有drop，但是没选上，加回一开始drop的crn
         if drop:
             for i in range(len(drop)):
@@ -228,6 +223,10 @@ def select(target_crn, drop=None):
             driver.back()
             driver.back()
             driver.back()
+        if register >= limit:
+            print('Too many requests for ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
+                  datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
+            driver.quit()
         driver.back()
     raise NoSuchElementException
 
@@ -414,7 +413,7 @@ def main():
                 next_crn()
             except Exception as e:
                 print(e)
-                time.sleep(30)
+                time.sleep(6)
                 main()
 
 
