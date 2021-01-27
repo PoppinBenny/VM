@@ -216,10 +216,6 @@ def select(target_crn, drop=None):
               datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
         print_error()
         register += 1
-        if register >= limit:
-            print('Too many requests for ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
-                  datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
-            driver.quit()
         # 如果有drop，但是没选上，加回一开始drop的crn
         if drop:
             for i in range(len(drop)):
@@ -228,6 +224,10 @@ def select(target_crn, drop=None):
             driver.back()
             driver.back()
             driver.back()
+        if register >= limit:
+            print('Too many requests for ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
+                  datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
+            driver.quit()
         driver.back()
     raise NoSuchElementException
 
