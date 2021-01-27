@@ -14,19 +14,23 @@ gce = 1
 with open('Spring2021 crn数据.json') as fp:
     data = json.load(fp)
 
-crn = [36809]
-crn_together = {
-    # crn[]: [],
-}  # 一个crn可能有的lab和discussion
-drops = {
-    #crn[0]: [38665],
-}  # 要选的crn对应要drop的crn
+lec = [35804]
+disc = [35810, 46833, 53113, 51927]
+lab = [36010, 36017, 35984, 48280]
+
+crn = []  # 2d array
+for x in lec:
+    for y in disc:
+        for z in lab:
+            crn.append([x, y, z])
+
+drops = [61458]  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120211'  # 学期序列号
 
 # 账号密码
-account = 'zhixing3'
-password = 'XXz88508975'
+account = 'jing12'
+password = 'woaizQQ1314'
 
 # 计数器
 register = 0
@@ -34,7 +38,7 @@ limit = 5  # 1.失败register的次数上限
 print_counter = 5 * 10
 print_counter_limit = print_counter  # 2.n分钟*10*6秒之后报告一次还在运行
 crn_counter = 0  # 3.下一个crn的计数器
-previous_course = ''
+course = ''
 
 driver_data = {}
 # 是否在gce上面run
@@ -99,7 +103,7 @@ def next_crn():
     global print_counter
     global crn_counter
     global xuhao_position
-    global previous_course
+    global course
 
     if print_counter >= print_counter_limit:
         print_counter = 0
@@ -109,40 +113,15 @@ def next_crn():
     crn_counter += 1
     crn_counter = crn_counter % (len(crn))
 
-    course = data[str(crn[crn_counter])]
-    major = course.split()[0]
-    xuhao = course.split()[1]
     # 当下一个crn的课不同，或crn遍历一遍之后，需要退出去重新找section
-    if previous_course != course or crn_counter == 0:
+    if crn_counter == 0:
         print_counter += 1
-        time.sleep(10.0 / (len(xuhao_position.values())))
+        time.sleep(6.0 / (len(xuhao_position.values())))
         driver.back()
-        previous_major = previous_course.split()[0]
-        if previous_major != major:
-            driver.back()
-            driver.back()
-            driver.back()
-            try:  # 临时加的4行
-                driver.find_element_by_link_text("Look-up or Select Classes").click()
-            except NoSuchElementException:
-                pass
-            driver.implicitly_wait(10)
-            driver.find_element_by_link_text("I Agree to the Above Statement").click()
-            driver.implicitly_wait(10)
-            driver.find_element_by_name("p_term").find_element_by_xpath(
-                "//option[@value='" + semester_number + "']").click()
-            driver.find_element_by_xpath("//input[@value='Submit']").click()
-            driver.implicitly_wait(10)
-            driver.find_element_by_xpath("//option[@value='" + major + "']").click()
-            driver.find_element_by_xpath("//input[@value='Course Search']").click()
-            driver.implicitly_wait(10)
-        if course not in xuhao_position:  # 如果现在crn的课还不知道在页面上位置
-            xuhao_position[course] = find(xuhao)
         driver.find_element_by_xpath(
             "//tbody/tr[" + str(xuhao_position[course]) + "]/td/form/input[@value='View Sections']").click()
         if 'error' in driver.current_url:
             print(os.path.basename(sys.argv[0]), 'banner self-service error')
-    previous_course = course
 
 
 def print_error():
@@ -164,16 +143,10 @@ def select(target_crn, drop=None):
     if drop is None:
         drop = []
     # 搜所有目标crn
-    shit = driver.find_element_by_xpath("//input[@value='" + str(target_crn) + " " + semester_number + "']")
-    target_crns = [str(target_crn)]  # 存一下本循环需要的所有crn
-    target_elements = [shit]  # 存一下crn对应的网页元素
-    if target_crn in crn_together:
-        for together in crn_together[target_crn]:
-            shit = driver.find_element_by_xpath("//input[@value='" + str(together) + " " + semester_number + "']")
-            target_elements.append(shit)
-            target_crns.append(str(together))
-    target_crn = str(target_crn)
-    print(os.path.basename(sys.argv[0]), 'found', target_crn)
+    target_elements = []  # 存一下crn对应的网页元素
+    for together in target_crn:
+        shit = driver.find_element_by_xpath("//input[@value='" + str(together) + " " + semester_number + "']")
+        target_elements.append(shit)
 
     # 如果没有drop则挨个click直接选课
     if not drop:
@@ -191,8 +164,8 @@ def select(target_crn, drop=None):
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
         driver.implicitly_wait(10)
         # 注册目标crn
-        for i in range(len(target_crns)):
-            driver.find_element_by_id("crn_id" + str(i + 1)).send_keys(target_crns[i])
+        for i in range(len(target_crn)):
+            driver.find_element_by_id("crn_id" + str(i + 1)).send_keys(target_crn[i])
         driver.find_element_by_xpath("//input[@value='Submit Changes']").click()
         driver.implicitly_wait(10)
 
@@ -205,20 +178,16 @@ def select(target_crn, drop=None):
             c = driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[4]").text
             nu = driver.find_element_by_xpath("//html/body/div[3]/form/table[1]/tbody/tr[" + str(i) + "]/td[5]").text
             print(c, nu, number)  # 打课表
-            if target_crn == number:
+            if target_crn[0] == number:
                 print('Time in Chicago, IL, USA:', datetime.datetime.now(pytz.timezone('America/Chicago')))
                 print('Course selected')
                 driver.quit()
             i += 1
     except NoSuchElementException:
-        print('Failed to add ' + target_crn + ' ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
+        print('Failed to add ' + target_crn[0] + ' ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
               datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
         print_error()
         register += 1
-        if register >= limit:
-            print('Too many requests for ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
-                  datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
-            driver.quit()
         # 如果有drop，但是没选上，加回一开始drop的crn
         if drop:
             for i in range(len(drop)):
@@ -227,64 +196,19 @@ def select(target_crn, drop=None):
             driver.back()
             driver.back()
             driver.back()
+        if register >= limit:
+            print('Too many requests for ' + os.path.basename(sys.argv[0]) + ', ' + 'Time in China: ',
+                  datetime.datetime.now(pytz.timezone('Asia/Shanghai')))
+            driver.quit()
         driver.back()
     raise NoSuchElementException
 
 
 def main():
     """主程序"""
-    global previous_course
+    global course
     global new_login
     if new_login:
-        if gce == 1:
-            driver.get('https://banner.apps.uillinois.edu/StudentRegistrationSSB/ssb/registration?mepCode=1UIUC')
-            driver.find_element_by_xpath("//*[@id='registerLink']/span[1]").click()
-            driver.implicitly_wait(10)
-            driver.find_element_by_id("netid").send_keys(account)
-            driver.find_element_by_id("easpass").send_keys(password)
-            driver.find_element_by_name("BTN_LOGIN").click()
-            driver.implicitly_wait(10)
-            driver.find_element_by_xpath("//*[@id='s2id_txt_term']/a/span[2]/b").click()
-            time.sleep(2)
-            driver.implicitly_wait(10)
-            driver.find_element_by_xpath("//*[@id='" + semester_number + "']").click()
-            driver.find_element_by_xpath("//*[@id='term-go']").click()
-            time.sleep(5)
-            try:
-                driver.find_element_by_xpath("//*[@id='check_agreement']").click()
-                driver.implicitly_wait(10)
-                driver.find_element_by_xpath("/html/body/div[18]/div[11]/div/button").click()
-                driver.implicitly_wait(10)
-                driver.find_element_by_xpath("//*[@id='notification-center']/div/ul[2]/li/div[2]/button").click()
-                driver.implicitly_wait(10)
-            except Exception:
-                pass
-            driver.find_element_by_xpath("//*[@id='enterCRNs-tab']").click()
-            time.sleep(2)
-            driver.implicitly_wait(10)
-
-            for target_crn in crn:
-                target_crns = [str(target_crn)]  # 存一下本循环需要的所有crn
-                if target_crn in crn_together:
-                    for together in crn_together[target_crn]:
-                        target_crns.append(str(together))
-                if len(target_crns) > 1:
-                    for i in range(len(target_crns) - 1):
-                        driver.find_element_by_xpath("//*[@id='addAnotherCRN']").click()
-                for i in range(len(target_crns)):
-                    driver.find_element_by_xpath("//*[@id='txt_crn" + str(i + 1) + "']").send_keys(target_crns[i])
-                driver.find_element_by_xpath("//*[@id='addCRNbutton']").click()
-                time.sleep(1)
-                driver.implicitly_wait(10)
-                driver.find_element_by_xpath("//*[@id='saveButton']").click()
-                driver.implicitly_wait(10)
-                elements = driver.find_elements_by_class_name("notification-flyout-item")
-                for elem in elements:
-                    err = elem.text
-                    if ("Closed Section" not in err) and ("Linked course required" not in err):
-                        print(err)
-                driver.find_element_by_xpath("//*[@id='saveButton']").click()
-                time.sleep(3)
         driver.get('https://login.uillinois.edu/auth/SystemLogin/sm_login.fcc?TYPE=33554433&REALMOID=06-a655cb7c-58d0'
                    '-4028-b49f-79a4f5c6dd58&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-dr9Cn7JnD4pZ'
                    '%2fX9Y7a9FAQedR3gjL8aBVPXnJiLeXLOpk38WGJuo%2fOQRlFkbatU7C%2b9kHQgeqhK7gmsMW81KnMmzfZ3v0paM&TARGET=-SM'
@@ -314,7 +238,7 @@ def main():
     driver.implicitly_wait(10)
     driver.find_element_by_link_text("Classic Registration").click()
     driver.implicitly_wait(10)
-    if new_login:
+    '''if new_login:
         driver.find_element_by_link_text("Add/Drop Classes").click()
         driver.implicitly_wait(10)
         driver.find_element_by_link_text("I Agree to the Above Statement").click()
@@ -328,55 +252,13 @@ def main():
                 table[2]/tbody/tr[1]/td[2]").text))
         maximum = int(float(driver.find_element_by_xpath("/html/body/div[3]/form/table\
                 [2]/tbody/tr[4]/td[2]").text))
-        if maximum - current < 3:
-            # 如果学分不够，就必须有drop
-            if len(drops.values()) == 0:
-                print(os.path.basename(sys.argv[0]), "has insufficient credits. Current:", current, "Maximum:", maximum)
-                driver.quit()
-            # 如果学分不够，那么每节刷的课都要有一个drop
-            if not all(elem in drops for elem in crn):
-                print(os.path.basename(sys.argv[0]), "has insufficient credits. Each enrolled course must have a "
-                                                     "concurrent drop.")
-
-        cs = driver.find_elements_by_xpath(
-            "//html/body/div[3]/form/table[1]/tbody/tr/td[4]")
-        nus = driver.find_elements_by_xpath(
-            "//html/body/div[3]/form/table[1]/tbody/tr/td[5]")
-        courses = []
-        # 课表里包含的课
-        for i in range(len(cs)):
-            courses.append(cs[i].text + ' ' + nus[i].text)
-        # 如果没有drop的课,检查重复的课
-        if len(drops.values()) == 0:
-            # 想要的课
-            want_courses = [data[str(cr)] for cr in crn]
-            if any(elem in courses for elem in want_courses):
-                print(courses, want_courses)
-                print('Repeated courses')
-                driver.quit()
-
-        # 如果有drop的课,检查是否在在课表内
-        if len(drops.values()) != 0:
-            temp = driver.find_elements_by_xpath(
-                "//html/body/div[3]/form/table[1]/tbody/tr/td[3]")
-            d = []  # 要drop的crn（包括linked section）
-            for drop in drops.values():
-                for dr in drop:
-                    d.append(str(dr))
-            d_courses = [data[ds] for ds in d]  # drop的crn所对应的课（有重复）
-            c = [t.text for t in temp]  # 课表有的crn
-            if not all(elem in c for elem in d):
-                print(d, c)
-                print('Drop index does not exist')
-                driver.quit()
-            for elem in d:  # 如果drop的crn在课表里，检查是否有linked section忘记写了
-                if elem in c:
-                    if d_courses.count(data[elem]) < courses.count(data[elem]):
-                        print(elem, 'has linked section, which has to be in drops.')
+        if maximum - current < 3 and len(drops) == 0:
+            print(os.path.basename(sys.argv[0]), "has insufficient credits. Current:", current, "Maximum:", maximum)
+            driver.quit()
         driver.back()
         driver.back()
         driver.back()
-        new_login = False
+        new_login = False'''
 
     driver.find_element_by_link_text("Look-up or Select Classes").click()
     driver.implicitly_wait(10)
@@ -387,10 +269,10 @@ def main():
     driver.find_element_by_xpath("//input[@value='Submit']").click()
     driver.implicitly_wait(10)
 
-    course = data[str(crn[crn_counter])]
-    previous_course = course
+    course = data[str(crn[crn_counter][0])]
     m = course.split()[0]
     c = course.split()[1]
+    print(crn[crn_counter][0],m,c)
     driver.find_element_by_xpath("//option[@value='" + m + "']").click()
     driver.find_element_by_xpath("//input[@value='Course Search']").click()
     driver.implicitly_wait(10)
@@ -403,10 +285,10 @@ def main():
         try:
             driver.implicitly_wait(0.2)
             target = crn[crn_counter]
-            if target not in drops:
+            if not drops:
                 select(target)
             else:
-                select(target, drops[target])
+                select(target, drops)
             break
         except NoSuchElementException:
             try:
