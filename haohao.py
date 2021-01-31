@@ -16,7 +16,7 @@ with open('Spring2021 crn数据.json') as fp:
 
 lec = [35804]
 disc = [35810, 46833, 53113, 51927]
-lab = [36010, 36017, 35984, 48280]
+lab = [36010, 36017, 35984, 48280, 36073, 36068, 36008, 36064, 49447, 36058]
 
 crn = []  # 2d array
 for x in lec:
@@ -24,7 +24,7 @@ for x in lec:
         for z in lab:
             crn.append([x, y, z])
 
-drops = [61458]  # 要选的crn对应要drop的crn
+drops = []  # 要选的crn对应要drop的crn
 xuhao_position = {}  # 序号在页面上的位置
 semester_number = '120211'  # 学期序列号
 
