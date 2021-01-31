@@ -26,7 +26,7 @@ semester_number = '120211'  # 学期序列号
 
 # 账号密码
 account = 'pujunx2'
-password = 'Victoriaq2000'
+password = 'Victoriaw2000'
 
 # 计数器
 register = 0
