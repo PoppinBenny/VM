@@ -16,8 +16,8 @@ with open('Spring2021 crn数据.json') as fp:
 
 crn = [65098, 65090]
 crn_together = {
-    crn[0]: [65088],
-    crn[1]: [65088],
+    crn[0]: [67005],
+    crn[1]: [67005],
 }  # 一个crn可能有的lab和discussion
 drops = {
     # crn[]: [],
